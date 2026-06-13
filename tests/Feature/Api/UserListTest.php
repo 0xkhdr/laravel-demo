@@ -18,7 +18,7 @@ it('returns paginated list of users with correct structure', function () {
                 '*' => ['id', 'name', 'email', 'created_at'],
             ],
             'links' => ['first', 'last', 'prev', 'next'],
-            'meta'  => ['current_page', 'from', 'last_page', 'per_page', 'to', 'total'],
+            'meta' => ['current_page', 'from', 'last_page', 'per_page', 'to', 'total'],
         ]);
 });
 
@@ -58,8 +58,8 @@ it('is publicly accessible without authentication', function () {
 });
 
 it('returns users ordered by most recently created first', function () {
-    $old  = User::factory()->create(['created_at' => now()->subDays(2)]);
-    $new  = User::factory()->create(['created_at' => now()]);
+    $old = User::factory()->create(['created_at' => now()->subDays(2)]);
+    $new = User::factory()->create(['created_at' => now()]);
 
     $data = $this->getJson('/api/users')->json('data');
 
