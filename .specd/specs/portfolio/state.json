@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 4,
+  "revision": 22,
+  "spec": "portfolio",
+  "title": "Nothing Portfolio",
+  "status": "complete",
+  "phase": "reflect",
+  "gate": "none",
+  "turn": 0,
+  "createdAt": "2026-06-15T17:16:36.10957022Z",
+  "updatedAt": "2026-06-15T17:26:23.251320664Z",
+  "tasks": {
+    "T1": {
+      "id": "T1",
+      "title": "static portfolio config and api route cleanup",
+      "role": "builder",
+      "wave": 1,
+      "depends": [],
+      "requirements": [
+        1
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T17:18:42.801670466Z",
+      "finishedAt": "2026-06-15T17:18:42.801670466Z",
+      "evidence": "make test passed, UserListTest deleted, config/portfolio.php created",
+      "verification": {
+        "command": "make test",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "docker compose exec app php artisan test\n\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Unit\\UserTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit has the correct fillable attributes\u001b[39m\u001b[90m                              \u001b[39m \u001b[90m0.11s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit hides password and remember_token from serialization\u001b[39m\u001b[90m             \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit casts email_verified_at to datetime\u001b[39m\u001b[90m                              \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit casts password as hashed\u001b[39m\u001b[90m                                         \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit can be instantiated via factory without persisting\u001b[39m\u001b[90m               \u001b[39m \u001b[90m0.02s\u001b[39m  \n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m5 passed\u001b[39;22m\u001b[90m (9 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.23s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 881,
+        "ranAt": "2026-06-15T17:18:37.885896052Z",
+        "gitHead": "38422222be32edd7b0de6678db383304a57506d2"
+      }
+    },
+    "T2": {
+      "id": "T2",
+      "title": "project model, migration, and seeder",
+      "role": "builder",
+      "wave": 1,
+      "depends": [],
+      "requirements": [
+        1,
+        2
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T17:19:50.260580356Z",
+      "finishedAt": "2026-06-15T17:19:50.260580356Z",
+      "evidence": "make fresh migration and seeding passed successfully",
+      "verification": {
+        "command": "make fresh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "docker compose exec app php artisan migrate:fresh --seed\n\n  Dropping all tables ........................................... 98.03ms DONE\n\n   INFO  Preparing database.  \n\n  Creating migration table ...................................... 22.85ms DONE\n\n   INFO  Running migrations.  \n\n  0001_01_01_000000_create_users_table ......................... 104.65ms DONE\n  0001_01_01_000001_create_cache_table .......................... 38.60ms DONE\n  0001_01_01_000002_create_jobs_table ........................... 87.49ms DONE\n  2026_06_15_000000_create_projects_table ....................... 18.29ms DONE\n\n\n   INFO  Seeding database.  \n\n  Database\\Seeders\\UserSeeder ........................................ RUNNING  \n  Database\\Seeders\\UserSeeder .................................... 435 ms DONE  \n\n  Database\\Seeders\\ProjectSeeder ..................................... RUNNING  \n  Database\\Seeders\\ProjectSeeder .................................. 10 ms DONE  \n\n",
+        "stderrTail": "",
+        "durationMs": 1393,
+        "ranAt": "2026-06-15T17:19:44.689226789Z",
+        "gitHead": "38422222be32edd7b0de6678db383304a57506d2"
+      }
+    },
+    "T3": {
+      "id": "T3",
+      "title": "controller and layouts setup",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T1",
+        "T2"
+      ],
+      "requirements": [
+        1,
+        4
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T17:21:56.655009929Z",
+      "finishedAt": "2026-06-15T17:21:56.655009929Z",
+      "evidence": "Vite manifest stubbed, PortfolioController created, layout and welcome templates configured, home page returns 200 OK",
+      "verification": {
+        "command": "make test",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "docker compose exec app php artisan test\n\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Unit\\UserTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit has the correct fillable attributes\u001b[39m\u001b[90m                              \u001b[39m \u001b[90m0.11s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit hides password and remember_token from serialization\u001b[39m\u001b[90m             \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit casts email_verified_at to datetime\u001b[39m\u001b[90m                              \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit casts password as hashed\u001b[39m\u001b[90m                                         \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit can be instantiated via factory without persisting\u001b[39m\u001b[90m               \u001b[39m \u001b[90m0.02s\u001b[39m  \n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m5 passed\u001b[39;22m\u001b[90m (9 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.23s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 854,
+        "ranAt": "2026-06-15T17:21:49.076192471Z",
+        "gitHead": "38422222be32edd7b0de6678db383304a57506d2"
+      }
+    },
+    "T4": {
+      "id": "T4",
+      "title": "self-hosted font assets",
+      "role": "builder",
+      "wave": 2,
+      "depends": [],
+      "requirements": [
+        2
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T17:22:28.697090078Z",
+      "finishedAt": "2026-06-15T17:22:28.697090078Z",
+      "evidence": "Self-hosted font placeholder woff2 files created successfully under public/fonts",
+      "verification": {
+        "command": "ls -la public/fonts/",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "total 20\ndrwxr-xr-x 2 xkhdr xkhdr 4096 Jun 15 20:22 .\ndrwxrwxr-x 4 xkhdr xkhdr 4096 Jun 15 20:22 ..\n-rw-r--r-- 1 xkhdr xkhdr   35 Jun 15 20:22 Inter.woff2\n-rw-r--r-- 1 xkhdr xkhdr   51 Jun 15 20:22 JetBrainsMono-Regular.woff2\n-rw-r--r-- 1 xkhdr xkhdr   44 Jun 15 20:22 SpaceMono-Bold.woff2\n",
+        "stderrTail": "",
+        "durationMs": 7,
+        "ranAt": "2026-06-15T17:22:20.547167983Z",
+        "gitHead": "38422222be32edd7b0de6678db383304a57506d2"
+      }
+    },
+    "T5": {
+      "id": "T5",
+      "title": "configure tailwind and vite",
+      "role": "builder",
+      "wave": 3,
+      "depends": [
+        "T4"
+      ],
+      "requirements": [
+        2
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T17:23:46.435991892Z",
+      "finishedAt": "2026-06-15T17:23:46.435991892Z",
+      "evidence": "Vite built css and js assets successfully. Manifest and built assets generated in public/build",
+      "verification": {
+        "command": "npm run build",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n\u003e build\n\u003e vite build\n\nvite v5.4.21 building for production...\ntransforming...\n✓ 2 modules transformed.\nrendering chunks...\ncomputing gzip size...\npublic/build/manifest.json             0.27 kB │ gzip: 0.15 kB\npublic/build/assets/app-_2ixHi8X.css  10.17 kB │ gzip: 2.92 kB\npublic/build/assets/app-B9RX9NZl.js    0.04 kB │ gzip: 0.06 kB\n✓ built in 530ms\n",
+        "stderrTail": "\n/fonts/SpaceMono-Bold.woff2 referenced in /fonts/SpaceMono-Bold.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime\n\n/fonts/Inter.woff2 referenced in /fonts/Inter.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime\n\n/fonts/JetBrainsMono-Regular.woff2 referenced in /fonts/JetBrainsMono-Regular.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime\n",
+        "durationMs": 1047,
+        "ranAt": "2026-06-15T17:23:41.409631665Z",
+        "gitHead": "38422222be32edd7b0de6678db383304a57506d2"
+      }
+    },
+    "T6": {
+      "id": "T6",
+      "title": "implement blade sections and components",
+      "role": "builder",
+      "wave": 3,
+      "depends": [
+        "T3",
+        "T5"
+      ],
+      "requirements": [
+        1,
+        2
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T17:25:01.088063157Z",
+      "finishedAt": "2026-06-15T17:25:01.088063157Z",
+      "evidence": "Blade sections (Hero, About, Experience, Projects, Skills, Contact) and components (Nav, Footer, SkillTag, ProjectCard, TerminalBlock) implemented and successfully cached with php artisan view:cache",
+      "verification": {
+        "command": "php artisan view:cache",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n\n   INFO  Blade templates cached successfully.  \n\n",
+        "stderrTail": "",
+        "durationMs": 533,
+        "ranAt": "2026-06-15T17:24:56.31741348Z",
+        "gitHead": "38422222be32edd7b0de6678db383304a57506d2"
+      }
+    },
+    "T7": {
+      "id": "T7",
+      "title": "animations, theme toggle, and canvas grid",
+      "role": "builder",
+      "wave": 4,
+      "depends": [
+        "T6"
+      ],
+      "requirements": [
+        3
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T17:25:29.88272995Z",
+      "finishedAt": "2026-06-15T17:25:29.88272995Z",
+      "evidence": "Vite built compiled app.js and canvas-grid.js successfully. Theme toggle and scroll reveal observer wired.",
+      "verification": {
+        "command": "npm run build",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n\u003e build\n\u003e vite build\n\nvite v5.4.21 building for production...\ntransforming...\n✓ 3 modules transformed.\nrendering chunks...\ncomputing gzip size...\npublic/build/manifest.json             0.27 kB │ gzip: 0.15 kB\npublic/build/assets/app-DGAvPjGA.css  17.12 kB │ gzip: 4.45 kB\npublic/build/assets/app-XMK-k6Fi.js    2.42 kB │ gzip: 1.04 kB\n✓ built in 627ms\n",
+        "stderrTail": "\n/fonts/SpaceMono-Bold.woff2 referenced in /fonts/SpaceMono-Bold.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime\n\n/fonts/Inter.woff2 referenced in /fonts/Inter.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime\n\n/fonts/JetBrainsMono-Regular.woff2 referenced in /fonts/JetBrainsMono-Regular.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime\n",
+        "durationMs": 1149,
+        "ranAt": "2026-06-15T17:25:24.875879289Z",
+        "gitHead": "38422222be32edd7b0de6678db383304a57506d2"
+      }
+    },
+    "T8": {
+      "id": "T8",
+      "title": "write verification test suite",
+      "role": "verifier",
+      "wave": 4,
+      "depends": [
+        "T6"
+      ],
+      "requirements": [
+        1,
+        2,
+        4
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T17:26:05.848191986Z",
+      "finishedAt": "2026-06-15T17:26:05.848191986Z",
+      "evidence": "Pest feature tests written to test homepage load, seeded projects rendering, and graceful database fallback. All tests pass.",
+      "verification": {
+        "command": "make test",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "docker compose exec app php artisan test\n\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Unit\\UserTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit has the correct fillable attributes\u001b[39m\u001b[90m                              \u001b[39m \u001b[90m0.11s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit hides password and remember_token from serialization\u001b[39m\u001b[90m             \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit casts email_verified_at to datetime\u001b[39m\u001b[90m                              \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit casts password as hashed\u001b[39m\u001b[90m                                         \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit can be instantiated via factory without persisting\u001b[39m\u001b[90m               \u001b[39m \u001b[90m0.02s\u001b[39m  \n\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Feature\\PortfolioTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit successfully loads the portfolio homepage\u001b[39m\u001b[90m                        \u001b[39m \u001b[90m0.13s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit displays seeded projects on the portfolio page\u001b[39m\u001b[90m                   \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit falls back gracefully to config projects on database exception\u001b[39m\u001b[90m   \u001b[39m \u001b[90m0.01s\u001b[39m  \n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m8 passed\u001b[39;22m\u001b[90m (15 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.39s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 912,
+        "ranAt": "2026-06-15T17:26:00.208786766Z",
+        "gitHead": "38422222be32edd7b0de6678db383304a57506d2"
+      }
+    }
+  },
+  "blockers": []
+}
