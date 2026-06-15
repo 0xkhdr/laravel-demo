@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 4,
+  "revision": 25,
+  "spec": "sqlite-portfolio",
+  "title": "SQLite Portfolio and JSON Seeding",
+  "status": "complete",
+  "phase": "reflect",
+  "gate": "none",
+  "turn": 0,
+  "createdAt": "2026-06-15T18:16:48.60178166Z",
+  "updatedAt": "2026-06-15T18:22:28.154165108Z",
+  "tasks": {
+    "T1": {
+      "id": "T1",
+      "title": "Create database files and project JSON data",
+      "role": "builder",
+      "wave": 1,
+      "depends": [],
+      "requirements": [
+        1,
+        2
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T18:18:21.484262174Z",
+      "finishedAt": "2026-06-15T18:18:21.484262174Z",
+      "evidence": "verified: `php -r \"assert(file_exists('database/data/projects.json'));\"` → exit 0 @ 994072e4a148ed759daff449653f17950df755c8 (2026-06-15T18:18:18.852847408Z)",
+      "verification": {
+        "command": "php -r \"assert(file_exists('database/data/projects.json'));\"",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 57,
+        "ranAt": "2026-06-15T18:18:18.852847408Z",
+        "gitHead": "994072e4a148ed759daff449653f17950df755c8"
+      }
+    },
+    "T2": {
+      "id": "T2",
+      "title": "Create and implement App\\Services\\ProjectLoader",
+      "role": "builder",
+      "wave": 1,
+      "depends": [
+        "T1"
+      ],
+      "requirements": [
+        2,
+        3
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T18:18:52.971310791Z",
+      "finishedAt": "2026-06-15T18:18:52.971310791Z",
+      "evidence": "verified: `php artisan tinker --execute=\"class_exists('App\\Services\\ProjectLoader') || throw new Exception('Not found');\"` → exit 0 @ 994072e4a148ed759daff449653f17950df755c8 (2026-06-15T18:18:48.965161982Z)",
+      "verification": {
+        "command": "php artisan tinker --execute=\"class_exists('App\\Services\\ProjectLoader') || throw new Exception('Not found');\"",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 355,
+        "ranAt": "2026-06-15T18:18:48.965161982Z",
+        "gitHead": "994072e4a148ed759daff449653f17950df755c8"
+      }
+    },
+    "T3": {
+      "id": "T3",
+      "title": "Implement ProjectLoaderTest",
+      "role": "verifier",
+      "wave": 1,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        2,
+        3
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T18:19:11.609923116Z",
+      "finishedAt": "2026-06-15T18:19:11.609923116Z",
+      "evidence": "verified: `php artisan test --filter=ProjectLoaderTest` → exit 0 @ 994072e4a148ed759daff449653f17950df755c8 (2026-06-15T18:19:07.808108219Z)",
+      "verification": {
+        "command": "php artisan test --filter=ProjectLoaderTest",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Unit\\ProjectLoaderTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit loads projects from a valid JSON file\u001b[39m\u001b[90m                            \u001b[39m \u001b[90m0.13s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit throws exception if JSON file is missing\u001b[39m\u001b[90m                         \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit throws exception if JSON file content is not an array\u001b[39m\u001b[90m            \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit throws exception if project item is not an object\u001b[39m\u001b[90m                \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit throws exception if JSON file is malformed\u001b[39m\u001b[90m                       \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit throws exception if required fields are missing\u001b[39m\u001b[90m                  \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit throws exception if technologies is not an array\u001b[39m\u001b[90m                 \u001b[39m \u001b[90m0.01s\u001b[39m  \n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m7 passed\u001b[39;22m\u001b[90m (15 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.31s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 871,
+        "ranAt": "2026-06-15T18:19:07.808108219Z",
+        "gitHead": "994072e4a148ed759daff449653f17950df755c8"
+      }
+    },
+    "T4": {
+      "id": "T4",
+      "title": "Update ProjectSeeder to use ProjectLoader",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        1,
+        2
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T18:20:12.339769823Z",
+      "finishedAt": "2026-06-15T18:20:12.339769823Z",
+      "evidence": "verified: `docker compose exec app php artisan db:seed --class=ProjectSeeder \u0026\u0026 docker compose exec app php artisan tinker --execute=\"App\\Models\\Project::count() \u003e 0 || exit(1);\"` → exit 0 @ 994072e4a148ed759daff449653f17950df755c8 (2026-06-15T18:20:08.027596542Z)",
+      "verification": {
+        "command": "docker compose exec app php artisan db:seed --class=ProjectSeeder \u0026\u0026 docker compose exec app php artisan tinker --execute=\"App\\Models\\Project::count() \u003e 0 || exit(1);\"",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n   INFO  Seeding database.  \n\n",
+        "stderrTail": "",
+        "durationMs": 1138,
+        "ranAt": "2026-06-15T18:20:08.027596542Z",
+        "gitHead": "994072e4a148ed759daff449653f17950df755c8"
+      }
+    },
+    "T5": {
+      "id": "T5",
+      "title": "Update PortfolioController for offline JSON fallback",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        3
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T18:20:46.218532354Z",
+      "finishedAt": "2026-06-15T18:20:46.218532354Z",
+      "evidence": "verified: `docker compose exec app php artisan test --filter=\"successfully loads the portfolio homepage\"` → exit 0 @ 994072e4a148ed759daff449653f17950df755c8 (2026-06-15T18:20:41.231248789Z)",
+      "verification": {
+        "command": "docker compose exec app php artisan test --filter=\"successfully loads the portfolio homepage\"",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Feature\\PortfolioTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit successfully loads the portfolio homepage\u001b[39m\u001b[90m                        \u001b[39m \u001b[90m0.23s\u001b[39m  \n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m1 passed\u001b[39;22m\u001b[90m (1 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.36s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 1070,
+        "ranAt": "2026-06-15T18:20:41.231248789Z",
+        "gitHead": "994072e4a148ed759daff449653f17950df755c8"
+      }
+    },
+    "T6": {
+      "id": "T6",
+      "title": "Update PortfolioTest feature tests",
+      "role": "verifier",
+      "wave": 2,
+      "depends": [
+        "T5"
+      ],
+      "requirements": [
+        3
+      ],
+      "status": "complete",
+      "startedAt": "2026-06-15T18:21:37.609442306Z",
+      "finishedAt": "2026-06-15T18:21:37.609442306Z",
+      "evidence": "verified: `docker compose exec app php artisan test --filter=PortfolioTest` → exit 0 @ 994072e4a148ed759daff449653f17950df755c8 (2026-06-15T18:21:32.654190427Z)",
+      "verification": {
+        "command": "docker compose exec app php artisan test --filter=PortfolioTest",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Feature\\PortfolioTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit successfully loads the portfolio homepage\u001b[39m\u001b[90m                        \u001b[39m \u001b[90m0.23s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit displays seeded projects on the portfolio page when database is\u001b[39m\u001b[90m… \u001b[39m \u001b[90m0.02s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit falls back to projects from JSON file when database connection f\u001b[39m\u001b[90m…\u001b[39m \u001b[90m0.02s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mit falls back to config fallback projects when database connection\u001b[39m\u001b[90m… \u001b[39m \u001b[90m0.02s\u001b[39m  \n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m4 passed\u001b[39;22m\u001b[90m (9 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.37s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 985,
+        "ranAt": "2026-06-15T18:21:32.654190427Z",
+        "gitHead": "994072e4a148ed759daff449653f17950df755c8"
+      }
+    }
+  },
+  "blockers": [],
+  "acceptance": {
+    "1.1": {
+      "requirement": 1,
+      "criterion": 1,
+      "status": "pass",
+      "evidence": "Ran 'php artisan migrate:fresh --seed --database=sqlite' in app container successfully.",
+      "ranAt": "2026-06-15T18:22:01.825029602Z"
+    },
+    "1.2": {
+      "requirement": 1,
+      "criterion": 2,
+      "status": "pass",
+      "evidence": "Verified via tinker that Project::count() returns 3 projects on SQLite connection.",
+      "ranAt": "2026-06-15T18:22:05.89443925Z"
+    },
+    "2.1": {
+      "requirement": 2,
+      "criterion": 1,
+      "status": "pass",
+      "evidence": "ProjectSeeder reads database/data/projects.json and inserts records successfully.",
+      "ranAt": "2026-06-15T18:22:09.261108509Z"
+    },
+    "2.2": {
+      "requirement": 2,
+      "criterion": 2,
+      "status": "pass",
+      "evidence": "ProjectLoaderTest unit tests check that ProjectLoader throws RuntimeException on missing/malformed json.",
+      "ranAt": "2026-06-15T18:22:12.866503951Z"
+    },
+    "3.1": {
+      "requirement": 3,
+      "criterion": 1,
+      "status": "pass",
+      "evidence": "PortfolioTest feature test 'it falls back to projects from JSON file when database connection fails' passes.",
+      "ranAt": "2026-06-15T18:22:17.194010209Z"
+    },
+    "3.2": {
+      "requirement": 3,
+      "criterion": 2,
+      "status": "pass",
+      "evidence": "PortfolioTest feature test 'it falls back to config fallback projects when database connection fails and JSON loading fails' passes.",
+      "ranAt": "2026-06-15T18:22:20.87490797Z"
+    }
+  }
+}
