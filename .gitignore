@@ -18,3 +18,6 @@ Homestead.yaml
 auth.json
 npm-debug.log
 yarn-error.log
+
+/CV.pdf
+/CV.docx

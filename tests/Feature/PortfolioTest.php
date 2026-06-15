@@ -44,8 +44,8 @@ it('falls back to projects from JSON file when database connection fails', funct
 
     // Assert it loads successfully and renders the project from the JSON file
     $response->assertStatus(200)
-        ->assertSee('Nothing OS Cloud Backend')
-        ->assertDontSee('Nothing OS Cloud Backend (Config Fallback)');
+        ->assertSee('specd')
+        ->assertDontSee('specd (Config Fallback)');
 });
 
 it('falls back to config fallback projects when database connection fails and JSON loading fails', function () {
@@ -73,5 +73,5 @@ it('falls back to config fallback projects when database connection fails and JS
 
     // Assert it falls back to the config fallback project
     $response->assertStatus(200)
-        ->assertSee('Nothing OS Cloud Backend (Config Fallback)');
+        ->assertSee('specd (Config Fallback)');
 });

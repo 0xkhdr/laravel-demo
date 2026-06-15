@@ -1,23 +1,37 @@
 [
   {
-    "title": "Nothing OS Cloud Backend",
-    "description": "A highly scalable, stateless backend API gateway for Nothing OS notification services. Built with Symfony and Redis, managing 100k+ concurrent websocket connections.",
-    "github_url": "https://github.com/0xkhdr/nothing-cloud",
-    "live_url": "https://nothing.tech",
-    "technologies": ["Symfony", "Redis", "Websockets", "Docker"]
-  },
-  {
-    "title": "Distributed Task Queue Broker",
-    "description": "A custom message broker and task queue engine implementing the AMQP protocol in Go. Supports delayed execution, priority queuing, and dead-letter exchanges.",
-    "github_url": "https://github.com/0xkhdr/task-broker",
+    "title": "specd",
+    "description": "A spec-driven developer harness CLI featuring validation gates, DAG-based task execution, and evidence-gated completion checks.",
+    "github_url": "https://github.com/0xkhdr/specd",
     "live_url": null,
-    "technologies": ["Go", "AMQP", "gRPC", "PostgreSQL"]
+    "technologies": ["Go", "CLI", "DAG", "JSON Schema"]
   },
   {
-    "title": "Laravel REST API Boilerplate",
-    "description": "A production-ready Laravel REST API boilerplate showcasing domain-driven design, JWT/Sanctum authentication, automated test suites, and Docker environment integration.",
-    "github_url": "https://github.com/0xkhdr/laravel-ddd-boilerplate",
-    "live_url": "https://boilerplate.khedr.dev",
-    "technologies": ["Laravel", "MySQL", "Docker", "Pest"]
+    "title": "revive",
+    "description": "A transaction-safe developer environment manager with journaling for 7-step rollbacks, Age secret encryption, and a security plugin sandbox.",
+    "github_url": "https://github.com/0xkhdr/revive",
+    "live_url": null,
+    "technologies": ["Python", "Cryptography", "Security Sandbox", "CLI"]
+  },
+  {
+    "title": "Khedma",
+    "description": "A full-featured freelancing marketplace built from scratch with custom job matching algorithms, wallet transaction ledgers, and NoonPayments integration.",
+    "github_url": null,
+    "live_url": "https://5edmah.com/",
+    "technologies": ["Laravel", "MongoDB", "NoonPayments", "HMVC"]
+  },
+  {
+    "title": "frontier",
+    "description": "A modular, enterprise-grade Laravel starter kit enforcing strict domain separation, automated action classes, and predefined repository layers.",
+    "github_url": "https://github.com/0xkhdr/frontier",
+    "live_url": null,
+    "technologies": ["Laravel", "PHP", "Modular Architecture", "Pest"]
+  },
+  {
+    "title": "caller",
+    "description": "A modular, Fluent HTTP client package implementing an immutable DTO-driven pipeline (Caller -> Service -> Receiver -> DTO) with built-in testing mocks.",
+    "github_url": "https://github.com/0xkhdr/caller",
+    "live_url": null,
+    "technologies": ["PHP", "Laravel", "HTTP Client", "DTOs"]
   }
 ]

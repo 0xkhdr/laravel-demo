@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Ahmed Khedr — Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #111827; /* Charcoal/Off-Black */
+            --color-secondary: #4B5563; /* Slate Gray */
+            --color-accent: #2563EB; /* Professional Blue */
+            --color-light: #F3F4F6;
+            --color-border: #E5E7EB;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--color-primary);
+            background-color: #f0f2f5;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            padding: 40px 20px;
+        }
+
+        .cv-page {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 50px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 4px;
+        }
+
+        /* Header Layout */
+        .header {
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header-left h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--color-primary);
+            text-transform: uppercase;
+        }
+
+        .header-left .title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 12px;
+            color: var(--color-secondary);
+            line-height: 1.6;
+        }
+
+        .header-right a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .header-right a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Section Layout */
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+        }
+
+        /* Professional Summary */
+        .summary-text {
+            font-size: 13px;
+            color: var(--color-secondary);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Skill Grid */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .skills-table tr {
+            border-bottom: 1px dashed var(--color-border);
+        }
+
+        .skills-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .skills-table td {
+            padding: 6px 0;
+            vertical-align: top;
+        }
+
+        .skills-category {
+            font-weight: 600;
+            width: 160px;
+            color: var(--color-primary);
+        }
+
+        .skills-list {
+            color: var(--color-secondary);
+        }
+
+        /* Experience Items */
+        .exp-item {
+            margin-bottom: 20px;
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+        }
+
+        .exp-company-role {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .exp-company-role span {
+            color: var(--color-secondary);
+            font-weight: 400;
+        }
+
+        .exp-date-location {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--color-secondary);
+            text-align: right;
+        }
+
+        .exp-bullets {
+            list-style-type: square;
+            padding-left: 18px;
+            font-size: 12.5px;
+            color: var(--color-secondary);
+            line-height: 1.5;
+        }
+
+        .exp-bullets li {
+            margin-bottom: 5px;
+        }
+
+        .exp-bullets li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Side Projects & Open Source */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .project-item {
+            font-size: 12.5px;
+            color: var(--color-secondary);
+        }
+
+        .project-item strong {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .project-item a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 11px;
+            margin-left: 4px;
+        }
+
+        .project-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer & Pages */
+        .education-languages {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Print styling overrides */
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+            }
+
+            .cv-page {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            @page {
+                size: letter;
+                margin: 0.5in;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-page">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <h1>Mohamed Ahmed Khedr</h1>
+                <div class="title">Senior Backend & Systems Engineer</div>
+            </div>
+            <div class="header-right">
+                <div>📞 +20 155 881 2335 | 📧 <a href="mailto:mohamedkhedr700@gmail.com">mohamedkhedr700@gmail.com</a></div>
+                <div>📍 Cairo, Egypt | 🔗 <a href="https://linkedin.com/in/mohamed-khedr-6959831ba" target="_blank">LinkedIn</a> | 💻 <a href="https://github.com/0xkhdr" target="_blank">GitHub</a></div>
+            </div>
+        </div>
+
+        <!-- Section: Professional Summary -->
+        <div class="section">
+            <div class="section-title">Professional Summary</div>
+            <p class="summary-text">
+                Senior Backend & Systems Engineer with over 5 years of professional experience architecting, scaling, and managing distributed systems and high-throughput APIs across fleet management, e-commerce, and EdTech. Deep expertise in the Laravel ecosystem, event-driven architectures (Apache Kafka in production), and modular software design. Proven history of end-to-end backend ownership of complex systems, from custom package architectures to optimized database performance. Active open-source builder authoring developer environment managers and developer tools in Go and Python.
+            </p>
+        </div>
+
+        <!-- Section: Technical Skills -->
+        <div class="section">
+            <div class="section-title">Technical Skills</div>
+            <table class="skills-table">
+                <tr>
+                    <td class="skills-category">Languages</td>
+                    <td class="skills-list">PHP (Expert, 5+ years), Go (Advanced), Python (Advanced), SQL, Bash</td>
+                </tr>
+                <tr>
+                    <td class="skills-category">Frameworks & Tools</td>
+                    <td class="skills-list">Laravel (Modules, Repositories, Actions, Queues/Horizon, Sanctum, Passport)</td>
+                </tr>
+                <tr>
+                    <td class="skills-category">System Architecture</td>
+                    <td class="skills-list">Distributed Systems, Event-Driven Architecture (EDA), CQRS, Event Sourcing, Domain-Driven Design (DDD)</td>
+                </tr>
+                <tr>
+                    <td class="skills-category">Event Streaming & DBs</td>
+                    <td class="skills-list">Apache Kafka (Production Consumers), Debezium / CDC, MySQL/MariaDB, MongoDB, Redis, SQLite</td>
+                </tr>
+                <tr>
+                    <td class="skills-category">DevOps & Infrastructure</td>
+                    <td class="skills-list">Docker, Docker Compose, Podman, Nginx (Reverse Proxy & Load Balancing), Linux Server Administration</td>
+                </tr>
+                <tr>
+                    <td class="skills-category">Testing & Quality (DX)</td>
+                    <td class="skills-list">Pest (Primary), PHPUnit, Mockery, Static Analysis (mypy, phpstan), Security Scanning (bandit, Ruff)</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Section: Work Experience -->
+        <div class="section">
+            <div class="section-title">Work Experience</div>
+
+            <!-- Job 1 -->
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-company-role">Afaqy <span>— Senior Backend & Systems Engineer</span></div>
+                    <div class="exp-date-location">May 2024 – Present | Cairo, Egypt</div>
+                </div>
+                <ul class="exp-bullets">
+                    <li><strong>Distributed Event-Driven Architecture:</strong> Architected and deployed production-grade Apache Kafka consumers to synchronize fleet telemetry and core account/vehicle data in near real-time across 3 decoupled domains, eliminating manual data reconciliation.</li>
+                    <li><strong>Regulatory Compliance:</strong> Designed and integrated Saudi Arabia's WASL tracking system, implementing idempotent request handling and fail-safe retry mechanics to ensure 100% compliant trip audits.</li>
+                    <li><strong>API Performance:</strong> Optimized Laravel and MySQL REST APIs using composite indexes, query refactoring, and Nginx reverse proxying, maintaining responsiveness under heavy traffic.</li>
+                    <li><strong>Testing Standards:</strong> Mandated code quality by maintaining comprehensive Pest test suites covering core trip lifecycle states, facilitating zero-regression deployments.</li>
+                    <li><strong>Sole Backend Ownership:</strong> Managed the platform's database design, systems design, and container deployments as the primary technical anchor for a 15+ member cross-functional team.</li>
+                </ul>
+            </div>
+
+            <!-- Page Break for clean PDF layout -->
+            <div class="page-break"></div>
+
+            <!-- Job 2 -->
+            <div class="exp-item" style="margin-top: 25px;">
+                <div class="exp-header">
+                    <div class="exp-company-role">Rowaad <span>— Backend Developer (Sole Engineer)</span></div>
+                    <div class="exp-date-location">Feb 2022 – Apr 2024 | Cairo, Egypt</div>
+                </div>
+                <ul class="exp-bullets">
+                    <li><strong>Sole Systems Ownership:</strong> Served as the sole backend engineer, owning database schema design, API implementation, server configuration, and deployments for 5 distinct production platforms (Marketplaces, E-commerce, Booking, and Digital Cards).</li>
+                    <li><strong>Khedma Freelance Marketplace:</strong> Architected the platform from scratch using Laravel HMVC and Mongez Repository layers, implementing job matching engines and transaction ledgers via NoonPayments.</li>
+                    <li><strong>E-Commerce Integrations:</strong> Engineered branch-specific inventory systems and shipping integrations (Aramex) for Coffee Solutions and Vision & Look. Integrated NoonPayments, Oursms, and Firebase Cloud.</li>
+                    <li><strong>Asynchronous Scaling:</strong> Decoupled third-party service latency from client requests by implementing Redis-backed Laravel Horizon queue worker pipelines, optimizing response latency under load.</li>
+                </ul>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-company-role">Sectors <span>— Laravel Backend Developer</span></div>
+                    <div class="exp-date-location">Jul 2021 – Feb 2022 | Cairo, Egypt</div>
+                </div>
+                <ul class="exp-bullets">
+                    <li><strong>Platform Modularization:</strong> Developed the backend core for the "3almny" EdTech platform. Designed complex database relations and schemas supporting parent, teacher, student, and center interactions.</li>
+                    <li><strong>API Orchestration:</strong> Integrated Zoom and Google Meet APIs to automate virtual session generation and scheduling workflows.</li>
+                </ul>
+            </div>
+
+            <!-- Job 4 -->
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div class="exp-company-role">Giraffe Code <span>— Backend Developer</span></div>
+                    <div class="exp-date-location">Feb 2021 – Jul 2021 | Cairo, Egypt</div>
+                </div>
+                <ul class="exp-bullets">
+                    <li><strong>Collaborative API Design:</strong> Contributed to backend API design and implementation for an innovative in-store scan-and-shop e-commerce mobile application (No.Q) and a tech retail store (Elmaged).</li>
+                    <li><strong>Quality Assurance:</strong> Maintained code coverage using PHPUnit and documented API endpoints with Swagger/OpenAPI.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section: Side Projects & Open Source -->
+        <div class="section">
+            <div class="section-title">Side Projects & Open Source</div>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <strong>specd</strong> (Go) — Spec-driven coding harness CLI featuring validation gates, DAG execution, and evidence-gated completion checks. <a href="https://github.com/0xkhdr/specd" target="_blank">github.com/0xkhdr/specd</a>
+                </div>
+                <div class="project-item">
+                    <strong>revive</strong> (Python) — Transaction-safe dev-environment manager with journaling, Age encryption, and plugin sandboxing. <a href="https://github.com/0xkhdr/revive" target="_blank">github.com/0xkhdr/revive</a>
+                </div>
+                <div class="project-item">
+                    <strong>clipress</strong> (Python) — Universal CLI compressor for AI agents (70–95% reduction in context sizes). <a href="https://github.com/0xkhdr/clipress" target="_blank">github.com/0xkhdr/clipress</a>
+                </div>
+                <div class="project-item">
+                    <strong>frontier</strong> (PHP) — Modular Laravel starter kit enforcing strict domain separation and action classes. <a href="https://github.com/0xkhdr/frontier" target="_blank">github.com/0xkhdr/frontier</a>
+                </div>
+                <div class="project-item">
+                    <strong>caller</strong> (PHP) — Fluent HTTP client implementing DTO-driven pipelines (Caller -> Service -> Receiver -> DTO). <a href="https://github.com/0xkhdr/caller" target="_blank">github.com/0xkhdr/caller</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Education & Languages -->
+        <div class="education-languages">
+            <div class="section" style="margin-bottom: 0;">
+                <div class="section-title">Education</div>
+                <div style="font-size: 13px; font-weight: 600; color: var(--color-primary);">B.S. in Information Systems</div>
+                <div style="font-size: 12px; color: var(--color-secondary);">Higher Institute of Computer Science and Information Technology | 2019</div>
+            </div>
+            <div class="section" style="margin-bottom: 0;">
+                <div class="section-title">Languages</div>
+                <div style="font-size: 12.5px; color: var(--color-primary); line-height: 1.6;">
+                    <strong>Arabic:</strong> Native Speaker<br>
+                    <strong>English:</strong> Professional Working Proficiency
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
