@@ -18,7 +18,7 @@ it('displays seeded projects on the portfolio page', function () {
     ]);
 
     $response = $this->get('/');
-    
+
     $response->assertStatus(200)
         ->assertSee('TESTING BACKEND COMPONENT')
         ->assertSee('This is a test description for the verification suite.');

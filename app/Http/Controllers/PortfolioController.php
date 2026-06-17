@@ -20,12 +20,12 @@ class PortfolioController extends Controller
         try {
             $projects = Project::all();
         } catch (Exception $e) {
-            Log::error('Database error in PortfolioController: ' . $e->getMessage());
+            Log::error('Database error in PortfolioController: '.$e->getMessage());
             $dbConnected = false;
         }
 
         // Fallback projects from config if DB is offline or projects collection is empty
-        if (!$dbConnected || $projects->isEmpty()) {
+        if (! $dbConnected || $projects->isEmpty()) {
             $projects = collect(config('portfolio.fallback_projects', []))->map(function ($proj) {
                 return (object) $proj;
             });
