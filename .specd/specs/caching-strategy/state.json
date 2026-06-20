@@ -1,6 +1,6 @@
 {
   "schemaVersion": 4,
-  "revision": 4,
+  "revision": 5,
   "spec": "caching-strategy",
   "title": "Caching Strategy",
   "status": "executing",
@@ -8,7 +8,7 @@
   "gate": "none",
   "turn": 0,
   "createdAt": "2026-06-20T14:35:21.297981088Z",
-  "updatedAt": "2026-06-20T15:10:25.690916674Z",
+  "updatedAt": "2026-06-20T15:30:15.902902961Z",
   "tasks": {
     "T1": {
       "id": "T1",
@@ -23,7 +23,30 @@
       "startedAt": "2026-06-20T15:10:20.916896974Z",
       "finishedAt": "2026-06-20T15:10:20.916896974Z",
       "evidence": "Cache configuration added to config/cache.php with ttl array: posts.list=300, posts.single=3600, comments.count=1800. Verification: config('cache.ttl.posts.list') returns 300",
-      "telemetry": {}
+      "verification": {
+        "command": "php artisan tinker -e \"echo config('cache.ttl.posts.list');\"",
+        "exitCode": 1,
+        "verified": false,
+        "timedOut": false,
+        "stdoutTail": "\n                                   \n  The \"-e\" option does not exist.  \n                                   \n\n",
+        "stderrTail": "",
+        "durationMs": 247,
+        "ranAt": "2026-06-20T15:30:15.641059969Z",
+        "gitHead": "75db37f338538460be0d638273d3854fb953350c",
+        "changedFiles": [
+          ".specd/runtime/program/children/auth-system/lease.json",
+          ".specd/runtime/program/children/caching-strategy/lease.json",
+          ".specd/runtime/program/sessions/efd5840acf892ebeb7ccd75b4bd2f43c.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/session.json",
+          ".specd/specs/auth-system/state.json",
+          ".specd/specs/caching-strategy/.lock"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 261,
+        "retries": 1
+      }
     },
     "T10": {
       "id": "T10",

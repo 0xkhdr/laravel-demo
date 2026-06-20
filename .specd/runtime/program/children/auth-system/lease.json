@@ -1,9 +1,10 @@
 {
   "version": 1,
   "parentSessionId": "efd5840acf892ebeb7ccd75b4bd2f43c",
-  "childSessionId": "fa1808f9a5775449aafec10f5cdf3930",
+  "childSessionId": "21cb0a3ff6ea2374dbac9956ecb62a60",
   "slug": "auth-system",
-  "status": "active",
-  "acquiredAt": "2026-06-20T14:38:04.479517264Z",
-  "leaseUntil": "2026-06-20T14:40:04.479517264Z"
+  "status": "escalated",
+  "acquiredAt": "2026-06-20T15:28:41.405002544Z",
+  "leaseUntil": "2026-06-20T15:30:41.405002544Z",
+  "escalatedAt": "2026-06-20T15:28:52.840772434Z"
 }

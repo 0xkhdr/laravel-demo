@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "sessionId": "2087529ea9d8737776fec1baeb64c77a",
+  "spec": "auth-system",
+  "owner": "brain-run",
+  "status": "running",
+  "policy": {
+    "approvalPolicy": "planning",
+    "maxWorkers": 1,
+    "maxRetries": 3,
+    "sessionTimeoutSeconds": 7200,
+    "hostReportedCostLimitUSD": 0
+  },
+  "createdAt": "2026-06-20T18:14:53.722947133Z",
+  "updatedAt": "2026-06-20T18:14:53.722947133Z",
+  "expiresAt": "2026-06-20T20:14:53.722947133Z",
+  "lastSequence": 0
+}

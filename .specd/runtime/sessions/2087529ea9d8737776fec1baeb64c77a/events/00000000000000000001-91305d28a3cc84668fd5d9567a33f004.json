@@ -1,0 +1,129 @@
+{
+  "version": "1",
+  "messageId": "91305d28a3cc84668fd5d9567a33f004",
+  "sessionId": "2087529ea9d8737776fec1baeb64c77a",
+  "sequence": 1,
+  "createdAt": "2026-06-20T18:14:53.733592111Z",
+  "expiresAt": "2026-06-20T19:14:53.733592111Z",
+  "type": "mission",
+  "from": "brain",
+  "to": "pinky-t4-a1",
+  "spec": "auth-system",
+  "task": "T4",
+  "attempt": 1,
+  "payload": {
+    "dispatchDigest": "dd69559cec437a771ff9fc251788122478f4545ec95f981750b9472bdbfeb81b",
+    "role": "builder",
+    "contextCommand": "specd context auth-system",
+    "contextManifest": {
+      "version": 1,
+      "softTokenCeiling": 12000,
+      "strategy": "Load required items in order. Keep optional/reference items collapsed unless needed. Stop expanding optional items before the soft ceiling; never skip required role, skill, context, or scoped files.",
+      "items": [
+        {
+          "order": 1,
+          "kind": "role",
+          "path": ".specd/roles/builder.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 800,
+          "rationale": "role authority and constraints"
+        },
+        {
+          "order": 2,
+          "kind": "skill",
+          "path": ".specd/skills/specd-pinky/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "Pinky lease/report lifecycle"
+        },
+        {
+          "order": 3,
+          "kind": "phase-skill",
+          "path": ".specd/skills/specd-execute/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1600,
+          "rationale": "phase-scoped workflow; do not load unrelated stage guidance"
+        },
+        {
+          "order": 4,
+          "kind": "spec-context",
+          "command": "specd context auth-system",
+          "mode": "run-command",
+          "required": true,
+          "tokenHint": 1800,
+          "rationale": "phase briefing, load list, blockers, approvals"
+        },
+        {
+          "order": 5,
+          "kind": "scope-file",
+          "path": "app/Models/User.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 6,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-system/requirements.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 1200,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        },
+        {
+          "order": 7,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-system/design.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 1200,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        },
+        {
+          "order": 8,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-system/tasks.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 1200,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        }
+      ]
+    },
+    "contract": "Update User model to use Spatie's HasRoles trait. Add methods: hasRole(name), hasPermission(name), roles(), permissions(). Keep factory for seeding. Do NOT add password mutation (bcrypt should be in Action, not model).",
+    "files": [
+      "app/Models/User.php"
+    ],
+    "acceptance": "User model has HasRoles trait, hasRole/hasPermission methods exist, roles() and permissions() relationships return collections, factory can create users with roles",
+    "verifyCommand": "php artisan tinker -e \"\\$u = \\App\\Models\\User::factory()-\u003ecreate(); \\$u-\u003eassignRole('author'); echo \\$u-\u003ehasRole('author') ? 'OK' : 'FAIL';\"",
+    "dependencies": [
+      "T3"
+    ],
+    "authority": {
+      "readOnly": false,
+      "allowedActions": [
+        "read",
+        "edit",
+        "verify",
+        "report"
+      ]
+    }
+  },
+  "decision": {
+    "version": 1,
+    "action": "dispatch",
+    "spec": "auth-system",
+    "taskId": "T4",
+    "attempt": 1,
+    "reason": "dispatch next runnable task",
+    "idempotencyKey": "2087529ea9d8737776fec1baeb64c77a:17:dispatch:T4:1",
+    "escalation": {
+      "code": "none",
+      "message": ""
+    }
+  }
+}

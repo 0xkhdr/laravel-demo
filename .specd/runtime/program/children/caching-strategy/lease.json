@@ -1,9 +1,9 @@
 {
   "version": 1,
   "parentSessionId": "efd5840acf892ebeb7ccd75b4bd2f43c",
-  "childSessionId": "8529bbc1fd547ff0cbdad0e5d8efaa91",
+  "childSessionId": "4e77b1e8e88b0e762e7dabf573493431",
   "slug": "caching-strategy",
   "status": "active",
-  "acquiredAt": "2026-06-20T14:38:04.485636135Z",
-  "leaseUntil": "2026-06-20T14:40:04.485636135Z"
+  "acquiredAt": "2026-06-20T15:28:41.413724823Z",
+  "leaseUntil": "2026-06-20T15:30:41.413724823Z"
 }

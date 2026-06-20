@@ -1,6 +1,6 @@
 {
   "schemaVersion": 4,
-  "revision": 16,
+  "revision": 33,
   "spec": "auth-system",
   "title": "Auth System",
   "status": "executing",
@@ -8,7 +8,7 @@
   "gate": "none",
   "turn": 0,
   "createdAt": "2026-06-20T14:35:15.571806957Z",
-  "updatedAt": "2026-06-20T15:23:25.187233898Z",
+  "updatedAt": "2026-06-20T18:38:04.430292567Z",
   "tasks": {
     "T1": {
       "id": "T1",
@@ -29,16 +29,26 @@
       "evidence": "Migration file verified: database/migrations/0001_01_01_000000_create_users_table.php contains id (PK), name, email, password, email_verified_at (nullable), remember_token, created_at, updated_at",
       "verification": {
         "command": "php artisan migrate:fresh \u0026\u0026 php artisan tinker -e \"echo \\DB::table('users')-\u003egetConnection()-\u003egetSchemaBuilder()-\u003egetColumnListing('users');\"",
-        "exitCode": 124,
+        "exitCode": 1,
         "verified": false,
-        "timedOut": true,
-        "stdoutTail": "",
+        "timedOut": false,
+        "stdoutTail": "\n\n   Illuminate\\Database\\QueryException \n\n  could not find driver (Connection: mysql, Host: mysql, Port: 3306, Database: laravel, SQL: select exists (select 1 from information_schema.tables where table_schema = schema() and table_name = 'migrations' and table_type in ('BASE TABLE', 'SYSTEM VERSIONED')) as `exists`)\n\n  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:841\n    837▕             $exceptionType = ($isUniqueConstraintError = $this-\u003eisUniqueConstraintError($e))\n    838▕                 ? UniqueConstraintViolationException::class\n    839▕                 : QueryException::class;\n    840▕ \n  ➜ 841▕             $exception = new $exceptionType(\n    842▕                 $this-\u003egetNameWithReadWriteType(),\n    843▕                 $query,\n    844▕                 $this-\u003eprepareBindings($bindings),\n    845▕                 $e,\n\n      \u001b[2m+50 vendor frames \u001b[22m\n\n  51  artisan:12\n      Illuminate\\Foundation\\Application::handleCommand()\n\n",
         "stderrTail": "",
-        "durationMs": 0,
-        "ranAt": "2026-06-20T15:01:44.299377614Z"
+        "durationMs": 337,
+        "ranAt": "2026-06-20T15:29:59.261445738Z",
+        "gitHead": "75db37f338538460be0d638273d3854fb953350c",
+        "changedFiles": [
+          ".specd/runtime/program/children/auth-system/lease.json",
+          ".specd/runtime/program/children/caching-strategy/lease.json",
+          ".specd/runtime/program/sessions/efd5840acf892ebeb7ccd75b4bd2f43c.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/session.json",
+          ".specd/specs/auth-system/.lock"
+        ],
+        "coverage": "unavailable"
       },
       "telemetry": {
-        "retries": 2
+        "verifyDurationMs": 352,
+        "retries": 3
       }
     },
     "T10": {
@@ -58,7 +68,53 @@
         3,
         5
       ],
-      "status": "pending"
+      "status": "pending",
+      "verification": {
+        "command": "php artisan test tests/Feature/Auth/RegisterTest.php",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Feature\\Auth\\RegisterTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mregister controller exists\u001b[39m\u001b[90m                                          \u001b[39m \u001b[90m0.14s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlogin controller exists\u001b[39m\u001b[90m                                             \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mme controller exists\u001b[39m\u001b[90m                                                \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlogout controller exists\u001b[39m\u001b[90m                                            \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mcontrollers extend controller\u001b[39m\u001b[90m                                       \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mauth routes exist\u001b[39m\u001b[90m                                                   \u001b[39m \u001b[90m0.01s\u001b[39m  \n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m6 passed\u001b[39;22m\u001b[90m (12 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.28s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 640,
+        "ranAt": "2026-06-20T18:38:03.768203947Z",
+        "gitHead": "bd190ba17f7325a5f0552ad41878ef42b358e0be",
+        "changedFiles": [
+          ".env.test",
+          ".specd/runtime/program/children/auth-system/lease.json",
+          ".specd/runtime/program/children/caching-strategy/lease.json",
+          ".specd/runtime/program/sessions/efd5840acf892ebeb7ccd75b4bd2f43c.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000001-91305d28a3cc84668fd5d9567a33f004.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000002-0e38e05ab52058f970fab3a55fde3309.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/session.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/workers/builder/lease.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/session.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/workers/builder/lease.json",
+          ".specd/specs/auth-system/.lock",
+          ".specd/specs/auth-system/state.json",
+          ".specd/specs/caching-strategy/state.json",
+          "app/Actions/Auth/LoginUser.php",
+          "app/Actions/Auth/LogoutUser.php",
+          "app/Actions/Auth/RegisterUser.php",
+          "app/Http/Controllers/Api/UserController.php",
+          "app/Http/Controllers/Auth/LoginController.php",
+          "app/Http/Controllers/Auth/LogoutController.php",
+          "app/Http/Controllers/Auth/MeController.php",
+          "app/Http/Controllers/Auth/RegisterController.php",
+          "config/auth.php",
+          "config/database.php",
+          "routes/api.php",
+          "tests/Feature/Auth/RegisterTest.php",
+          "tests/Unit/Actions/LoginUserTest.php",
+          "tests/Unit/Actions/LogoutUserTest.php",
+          "tests/Unit/Actions/RegisterUserTest.php"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 660,
+        "retries": 4
+      }
     },
     "T11": {
       "id": "T11",
@@ -249,7 +305,53 @@
         1,
         4
       ],
-      "status": "pending"
+      "status": "pending",
+      "verification": {
+        "command": "php artisan tinker -e \"\\$u = \\App\\Models\\User::factory()-\u003ecreate(); \\$u-\u003eassignRole('author'); echo \\$u-\u003ehasRole('author') ? 'OK' : 'FAIL';\"",
+        "exitCode": 1,
+        "verified": false,
+        "timedOut": false,
+        "stdoutTail": "\n                                   \n  The \"-e\" option does not exist.  \n                                   \n\n",
+        "stderrTail": "",
+        "durationMs": 431,
+        "ranAt": "2026-06-20T18:37:36.915263504Z",
+        "gitHead": "bd190ba17f7325a5f0552ad41878ef42b358e0be",
+        "changedFiles": [
+          ".env.test",
+          ".specd/runtime/program/children/auth-system/lease.json",
+          ".specd/runtime/program/children/caching-strategy/lease.json",
+          ".specd/runtime/program/sessions/efd5840acf892ebeb7ccd75b4bd2f43c.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000001-91305d28a3cc84668fd5d9567a33f004.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000002-0e38e05ab52058f970fab3a55fde3309.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/session.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/workers/builder/lease.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/session.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/workers/builder/lease.json",
+          ".specd/specs/auth-system/.lock",
+          ".specd/specs/auth-system/state.json",
+          ".specd/specs/caching-strategy/state.json",
+          "app/Actions/Auth/LoginUser.php",
+          "app/Actions/Auth/LogoutUser.php",
+          "app/Actions/Auth/RegisterUser.php",
+          "app/Http/Controllers/Api/UserController.php",
+          "app/Http/Controllers/Auth/LoginController.php",
+          "app/Http/Controllers/Auth/LogoutController.php",
+          "app/Http/Controllers/Auth/MeController.php",
+          "app/Http/Controllers/Auth/RegisterController.php",
+          "config/auth.php",
+          "config/database.php",
+          "routes/api.php",
+          "tests/Feature/Auth/RegisterTest.php",
+          "tests/Unit/Actions/LoginUserTest.php",
+          "tests/Unit/Actions/LogoutUserTest.php",
+          "tests/Unit/Actions/RegisterUserTest.php"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 445,
+        "retries": 3
+      }
     },
     "T5": {
       "id": "T5",
@@ -326,7 +428,53 @@
       "requirements": [
         1
       ],
-      "status": "pending"
+      "status": "pending",
+      "verification": {
+        "command": "php artisan test tests/Unit/Actions/RegisterUserTest.php",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Unit\\Actions\\RegisterUserTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mregister user action is callable\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction accepts register request\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction returns user instance\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction uses hash make for password\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction assigns author role\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction loads roles relationship\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction checks for existing email\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction throws validation exception on duplicate email\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction creates user with create method\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction uses correct field names\u001b[39m\n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m10 passed\u001b[39;22m\u001b[90m (14 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.10s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 445,
+        "ranAt": "2026-06-20T18:37:23.621433737Z",
+        "gitHead": "bd190ba17f7325a5f0552ad41878ef42b358e0be",
+        "changedFiles": [
+          ".env.test",
+          ".specd/runtime/program/children/auth-system/lease.json",
+          ".specd/runtime/program/children/caching-strategy/lease.json",
+          ".specd/runtime/program/sessions/efd5840acf892ebeb7ccd75b4bd2f43c.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000001-91305d28a3cc84668fd5d9567a33f004.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000002-0e38e05ab52058f970fab3a55fde3309.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/session.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/workers/builder/lease.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/session.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/workers/builder/lease.json",
+          ".specd/specs/auth-system/.lock",
+          ".specd/specs/auth-system/state.json",
+          ".specd/specs/caching-strategy/state.json",
+          "app/Actions/Auth/LoginUser.php",
+          "app/Actions/Auth/LogoutUser.php",
+          "app/Actions/Auth/RegisterUser.php",
+          "app/Http/Controllers/Api/UserController.php",
+          "app/Http/Controllers/Auth/LoginController.php",
+          "app/Http/Controllers/Auth/LogoutController.php",
+          "app/Http/Controllers/Auth/MeController.php",
+          "app/Http/Controllers/Auth/RegisterController.php",
+          "config/auth.php",
+          "config/database.php",
+          "routes/api.php",
+          "tests/Feature/Auth/RegisterTest.php",
+          "tests/Unit/Actions/LoginUserTest.php",
+          "tests/Unit/Actions/LogoutUserTest.php",
+          "tests/Unit/Actions/RegisterUserTest.php"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 457,
+        "retries": 2
+      }
     },
     "T7": {
       "id": "T7",
@@ -339,7 +487,53 @@
       "requirements": [
         2
       ],
-      "status": "pending"
+      "status": "pending",
+      "verification": {
+        "command": "php artisan test tests/Unit/Actions/LoginUserTest.php",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Unit\\Actions\\LoginUserTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlogin user action is callable\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction accepts login request\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction returns array\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction uses auth attempt\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction uses auth user\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction creates token\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction returns plain text token\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction throws authentication exception\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction uses validated data\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction returns token and user\u001b[39m\n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m10 passed\u001b[39;22m\u001b[90m (12 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.10s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 465,
+        "ranAt": "2026-06-20T18:37:17.73202837Z",
+        "gitHead": "bd190ba17f7325a5f0552ad41878ef42b358e0be",
+        "changedFiles": [
+          ".env.test",
+          ".specd/runtime/program/children/auth-system/lease.json",
+          ".specd/runtime/program/children/caching-strategy/lease.json",
+          ".specd/runtime/program/sessions/efd5840acf892ebeb7ccd75b4bd2f43c.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000001-91305d28a3cc84668fd5d9567a33f004.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000002-0e38e05ab52058f970fab3a55fde3309.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/session.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/workers/builder/lease.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/session.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/workers/builder/lease.json",
+          ".specd/specs/auth-system/.lock",
+          ".specd/specs/auth-system/state.json",
+          ".specd/specs/caching-strategy/state.json",
+          "app/Actions/Auth/LoginUser.php",
+          "app/Actions/Auth/LogoutUser.php",
+          "app/Actions/Auth/RegisterUser.php",
+          "app/Http/Controllers/Api/UserController.php",
+          "app/Http/Controllers/Auth/LoginController.php",
+          "app/Http/Controllers/Auth/LogoutController.php",
+          "app/Http/Controllers/Auth/MeController.php",
+          "app/Http/Controllers/Auth/RegisterController.php",
+          "config/auth.php",
+          "config/database.php",
+          "routes/api.php",
+          "tests/Feature/Auth/RegisterTest.php",
+          "tests/Unit/Actions/LoginUserTest.php",
+          "tests/Unit/Actions/LogoutUserTest.php",
+          "tests/Unit/Actions/RegisterUserTest.php"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 485,
+        "retries": 1
+      }
     },
     "T8": {
       "id": "T8",
@@ -352,7 +546,53 @@
       "requirements": [
         5
       ],
-      "status": "pending"
+      "status": "pending",
+      "verification": {
+        "command": "php artisan test tests/Unit/Actions/LogoutUserTest.php",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Unit\\Actions\\LogoutUserTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlogout user action is callable\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction accepts user parameter\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction returns void\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction deletes tokens\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90maction calls auth logout\u001b[39m\n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m5 passed\u001b[39;22m\u001b[90m (7 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.09s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 480,
+        "ranAt": "2026-06-20T18:37:26.87587038Z",
+        "gitHead": "bd190ba17f7325a5f0552ad41878ef42b358e0be",
+        "changedFiles": [
+          ".env.test",
+          ".specd/runtime/program/children/auth-system/lease.json",
+          ".specd/runtime/program/children/caching-strategy/lease.json",
+          ".specd/runtime/program/sessions/efd5840acf892ebeb7ccd75b4bd2f43c.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000001-91305d28a3cc84668fd5d9567a33f004.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000002-0e38e05ab52058f970fab3a55fde3309.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/session.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/workers/builder/lease.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/session.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/workers/builder/lease.json",
+          ".specd/specs/auth-system/.lock",
+          ".specd/specs/auth-system/state.json",
+          ".specd/specs/caching-strategy/state.json",
+          "app/Actions/Auth/LoginUser.php",
+          "app/Actions/Auth/LogoutUser.php",
+          "app/Actions/Auth/RegisterUser.php",
+          "app/Http/Controllers/Api/UserController.php",
+          "app/Http/Controllers/Auth/LoginController.php",
+          "app/Http/Controllers/Auth/LogoutController.php",
+          "app/Http/Controllers/Auth/MeController.php",
+          "app/Http/Controllers/Auth/RegisterController.php",
+          "config/auth.php",
+          "config/database.php",
+          "routes/api.php",
+          "tests/Feature/Auth/RegisterTest.php",
+          "tests/Unit/Actions/LoginUserTest.php",
+          "tests/Unit/Actions/LogoutUserTest.php",
+          "tests/Unit/Actions/RegisterUserTest.php"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 496,
+        "retries": 4
+      }
     },
     "T9": {
       "id": "T9",
@@ -368,7 +608,53 @@
         3,
         5
       ],
-      "status": "pending"
+      "status": "pending",
+      "verification": {
+        "command": "php artisan route:list | grep auth",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "  POST      api/auth/login .............................. Auth\\LoginController\n  POST      api/auth/logout ............................ Auth\\LogoutController\n  GET|HEAD  api/auth/profile ............................... Auth\\MeController\n  POST      api/auth/register ........................ Auth\\RegisterController\n",
+        "stderrTail": "",
+        "durationMs": 299,
+        "ranAt": "2026-06-20T18:37:29.868477146Z",
+        "gitHead": "bd190ba17f7325a5f0552ad41878ef42b358e0be",
+        "changedFiles": [
+          ".env.test",
+          ".specd/runtime/program/children/auth-system/lease.json",
+          ".specd/runtime/program/children/caching-strategy/lease.json",
+          ".specd/runtime/program/sessions/efd5840acf892ebeb7ccd75b4bd2f43c.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000001-91305d28a3cc84668fd5d9567a33f004.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/events/00000000000000000002-0e38e05ab52058f970fab3a55fde3309.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/session.json",
+          ".specd/runtime/sessions/2087529ea9d8737776fec1baeb64c77a/workers/builder/lease.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/session.json",
+          ".specd/runtime/sessions/21cb0a3ff6ea2374dbac9956ecb62a60/workers/builder/lease.json",
+          ".specd/specs/auth-system/.lock",
+          ".specd/specs/auth-system/state.json",
+          ".specd/specs/caching-strategy/state.json",
+          "app/Actions/Auth/LoginUser.php",
+          "app/Actions/Auth/LogoutUser.php",
+          "app/Actions/Auth/RegisterUser.php",
+          "app/Http/Controllers/Api/UserController.php",
+          "app/Http/Controllers/Auth/LoginController.php",
+          "app/Http/Controllers/Auth/LogoutController.php",
+          "app/Http/Controllers/Auth/MeController.php",
+          "app/Http/Controllers/Auth/RegisterController.php",
+          "config/auth.php",
+          "config/database.php",
+          "routes/api.php",
+          "tests/Feature/Auth/RegisterTest.php",
+          "tests/Unit/Actions/LoginUserTest.php",
+          "tests/Unit/Actions/LogoutUserTest.php",
+          "tests/Unit/Actions/RegisterUserTest.php"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 314,
+        "retries": 2
+      }
     }
   },
   "blockers": []

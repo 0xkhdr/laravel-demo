@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "sessionId": "2087529ea9d8737776fec1baeb64c77a",
+  "workerId": "builder",
+  "spec": "auth-system",
+  "task": "T6",
+  "attempt": 1,
+  "status": "released",
+  "acquiredAt": "2026-06-20T18:21:43.252485632Z",
+  "heartbeatAt": "2026-06-20T18:23:11.043424713Z",
+  "leaseUntil": "2026-06-20T18:25:11.043424713Z",
+  "messageExpiresAt": "2026-06-20T19:21:43.244491156Z",
+  "releasedAt": "2026-06-20T18:23:26.5180158Z"
+}
