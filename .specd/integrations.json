@@ -11,6 +11,39 @@
       "target": ".mcp.json",
       "fingerprint": "sha256:9b043f3890b515dbbd21d0750c0955ac97460a6ac9680b9ffdab1ac3aef1e322",
       "installedAt": "2026-06-20T13:38:41.508892739Z"
+    },
+    {
+      "host": "cursor",
+      "scope": "project",
+      "serverName": "specd",
+      "root": ".",
+      "rootStrategy": "project",
+      "method": "project-json",
+      "target": ".cursor/mcp.json",
+      "fingerprint": "sha256:8642a5309ef3a3b22e38213bdecd76c6325d21c96333cb360dee2578be37cc2f",
+      "installedAt": "2026-06-20T14:59:13.131122485Z"
+    },
+    {
+      "host": "gemini",
+      "scope": "project",
+      "serverName": "specd",
+      "root": ".",
+      "rootStrategy": "project",
+      "method": "native-cli",
+      "target": ".gemini/settings.json",
+      "fingerprint": "sha256:8642a5309ef3a3b22e38213bdecd76c6325d21c96333cb360dee2578be37cc2f",
+      "installedAt": "2026-06-20T14:59:15.909006726Z"
+    },
+    {
+      "host": "vscode",
+      "scope": "project",
+      "serverName": "specd",
+      "root": ".",
+      "rootStrategy": "project",
+      "method": "project-json",
+      "target": ".vscode/mcp.json",
+      "fingerprint": "sha256:3f079c8c38b7063faa8988a54fe9b950ddf8a8bd70d7a86b2f8dae808df06a00",
+      "installedAt": "2026-06-20T14:59:15.912532895Z"
     }
   ]
 }

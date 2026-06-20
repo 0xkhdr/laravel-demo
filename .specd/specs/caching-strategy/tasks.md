@@ -19,9 +19,9 @@ a task's deps must live in an earlier-or-equal wave; the DAG must be acyclic.
 Do NOT hand-edit checkboxes — flip them with `specd task`.
 -->
 
-## Wave 1 — Configuration Foundation
+## Wave 1
 
-- [ ] T1 — Create cache configuration
+- [x] T1 — Create cache configuration ✓ complete · evidence: Cache configuration added to config/cache.php with ttl array: posts.list=300, posts.single=3600, comments.count=1800. Verification: config('cache.ttl.posts.list') returns 300 · 2026-06-20T15:10:20.916896974Z
   - why: Define TTL per resource (Req 5). config/cache.php extended with custom 'ttl' array.
   - role: builder
   - files: config/cache.php
@@ -31,7 +31,7 @@ Do NOT hand-edit checkboxes — flip them with `specd task`.
   - depends: —
   - requirements: 5
 
-- [ ] T2 — Create PostRepository class
+- [x] T2 — Create PostRepository class ✓ complete · evidence: PostRepository class created at app/Repositories/PostRepository.php with scaffolding methods: list(filters, page, perPage), find(id), flush(pattern). Verification: app(\\App\\Repositories\\PostRepository::class) instantiates successfully, returns OK · 2026-06-20T15:10:25.686331107Z
   - why: Abstract cache layer from controllers (Design: Repository pattern). Central place for post queries with caching.
   - role: builder
   - files: app/Repositories/PostRepository.php
@@ -41,7 +41,7 @@ Do NOT hand-edit checkboxes — flip them with `specd task`.
   - depends: —
   - requirements: 1
 
-## Wave 2 — Cache Layer Implementation
+## Wave 2
 
 - [ ] T3 — Implement PostRepository::list() with caching
   - why: Cache post listings with 5-min TTL (Req 1).
@@ -73,7 +73,7 @@ Do NOT hand-edit checkboxes — flip them with `specd task`.
   - depends: T3, T4
   - requirements: 2
 
-## Wave 3 — Event-Driven Invalidation
+## Wave 3
 
 - [ ] T6 — Create cache invalidation listeners
   - why: Invalidate cache on post/comment mutations (Req 2, 4).
@@ -95,7 +95,7 @@ Do NOT hand-edit checkboxes — flip them with `specd task`.
   - depends: T6
   - requirements: 2, 4
 
-## Wave 4 — Controller Integration
+## Wave 4
 
 - [ ] T8 — Update Post controllers to use PostRepository
   - why: Replace raw queries with caching layer (Req 1, 3).
@@ -117,7 +117,7 @@ Do NOT hand-edit checkboxes — flip them with `specd task`.
   - depends: T8
   - requirements: 1
 
-## Wave 5 — Tests
+## Wave 5
 
 - [ ] T10 — Write unit tests for PostRepository
   - why: Verify caching logic (Req 1, 3, 4).
@@ -149,7 +149,7 @@ Do NOT hand-edit checkboxes — flip them with `specd task`.
   - depends: T6, T7, T11
   - requirements: 2, 4
 
-## Wave 6 — Verification
+## Wave 6
 
 - [ ] T13 — Run full cache test suite
   - why: Verify all caching features work together.

@@ -3,7 +3,7 @@
   "sessionId": "fa1808f9a5775449aafec10f5cdf3930",
   "spec": "auth-system",
   "owner": "program:efd5840acf892ebeb7ccd75b4bd2f43c",
-  "status": "running",
+  "status": "failed",
   "policy": {
     "approvalPolicy": "manual",
     "maxWorkers": 4,
@@ -12,7 +12,7 @@
     "hostReportedCostLimitUSD": 0
   },
   "createdAt": "2026-06-20T14:38:04.483499898Z",
-  "updatedAt": "2026-06-20T14:38:04.483499898Z",
+  "updatedAt": "2026-06-20T15:01:44.307566434Z",
   "expiresAt": "2026-06-20T15:38:04.483499898Z",
-  "lastSequence": 0
+  "lastSequence": 2
 }

@@ -37,7 +37,7 @@ Redis-based caching layer for hot queries and computed data. Cache Posts, Commen
 1. THE SYSTEM SHALL cache comment_count per post with 30-min TTL
 2. WHEN comment created/deleted THE SYSTEM SHALL invalidate post comment count cache
 3. THE SYSTEM SHALL use cached count in Post.count_comments accessor
-4. EXCEPT when comment pagination requested THEN THE SYSTEM SHALL query fresh
+4. WHEN comment pagination is requested THEN THE SYSTEM SHALL query fresh comments from database
 
 ## Requirement 5 — Cache Configuration
 **User story:** As DevOps engineer, I want cache layer configurable, so that TTL can be tuned per environment.

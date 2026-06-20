@@ -1,0 +1,24 @@
+{
+  "version": "1",
+  "messageId": "d5b70abb18806cf12026019043beb242",
+  "sessionId": "fa1808f9a5775449aafec10f5cdf3930",
+  "sequence": 3,
+  "createdAt": "2026-06-20T15:22:58.006783425Z",
+  "expiresAt": "2026-06-20T16:22:58.006783425Z",
+  "type": "evidence",
+  "from": "pinky-builder-worker-1",
+  "to": "brain",
+  "spec": "auth-system",
+  "task": "T5",
+  "attempt": 1,
+  "payload": {
+    "verificationRef": "8127857:auth-system:T5",
+    "summary": "Created Role and Permission models extending Spatie package. Models exist in app/Models/ and inherit required relationships from Spatie.",
+    "changedFiles": [
+      "app/Models/Role.php",
+      "app/Models/Permission.php"
+    ],
+    "gitHead": "8127857",
+    "durationMs": 120000
+  }
+}

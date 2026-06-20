@@ -1,0 +1,127 @@
+{
+  "version": "1",
+  "messageId": "e805ba6667cc7178155e0e194c7bb064",
+  "sessionId": "fa1808f9a5775449aafec10f5cdf3930",
+  "sequence": 1,
+  "createdAt": "2026-06-20T15:01:44.250177143Z",
+  "expiresAt": "2026-06-20T16:01:44.250177143Z",
+  "type": "mission",
+  "from": "brain",
+  "to": "pinky-t1-a1",
+  "spec": "auth-system",
+  "task": "T1",
+  "attempt": 1,
+  "payload": {
+    "dispatchDigest": "ab0bd4fc7a1a8f54fd89054362755d56e3c61270e09404f197a812b2c7d23422",
+    "role": "builder",
+    "contextCommand": "specd context auth-system",
+    "contextManifest": {
+      "version": 1,
+      "softTokenCeiling": 12000,
+      "strategy": "Load required items in order. Keep optional/reference items collapsed unless needed. Stop expanding optional items before the soft ceiling; never skip required role, skill, context, or scoped files.",
+      "items": [
+        {
+          "order": 1,
+          "kind": "role",
+          "path": ".specd/roles/builder.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 800,
+          "rationale": "role authority and constraints"
+        },
+        {
+          "order": 2,
+          "kind": "skill",
+          "path": ".specd/skills/specd-pinky/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "Pinky lease/report lifecycle"
+        },
+        {
+          "order": 3,
+          "kind": "phase-skill",
+          "path": ".specd/skills/specd-execute/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1600,
+          "rationale": "phase-scoped workflow; do not load unrelated stage guidance"
+        },
+        {
+          "order": 4,
+          "kind": "spec-context",
+          "command": "specd context auth-system",
+          "mode": "run-command",
+          "required": true,
+          "tokenHint": 1800,
+          "rationale": "phase briefing, load list, blockers, approvals"
+        },
+        {
+          "order": 5,
+          "kind": "scope-file",
+          "path": "database/migrations/0001_01_01_000000_create_users_table.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 6,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-system/requirements.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 1200,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        },
+        {
+          "order": 7,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-system/design.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 1200,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        },
+        {
+          "order": 8,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-system/tasks.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 1200,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        }
+      ]
+    },
+    "contract": "Use Laravel's default users migration (name, email, password, timestamps). Add nullable email_verified_at. Do NOT modify existing migration if it exists — check first.",
+    "files": [
+      "database/migrations/0001_01_01_000000_create_users_table.php"
+    ],
+    "acceptance": "Migration exists, can run `php artisan migrate:fresh`, users table has: id, name, email, password, email_verified_at, remember_token, created_at, updated_at",
+    "verifyCommand": "php artisan migrate:fresh \u0026\u0026 php artisan tinker -e \"echo \\DB::table('users')-\u003egetConnection()-\u003egetSchemaBuilder()-\u003egetColumnListing('users');\"",
+    "dependencies": [],
+    "authority": {
+      "readOnly": false,
+      "allowedActions": [
+        "read",
+        "edit",
+        "verify",
+        "report"
+      ]
+    }
+  },
+  "decision": {
+    "version": 1,
+    "action": "dispatch",
+    "spec": "auth-system",
+    "taskId": "T1",
+    "attempt": 1,
+    "reason": "dispatch next runnable task",
+    "idempotencyKey": "fa1808f9a5775449aafec10f5cdf3930:5:dispatch:T1:1",
+    "escalation": {
+      "code": "none",
+      "message": ""
+    }
+  }
+}

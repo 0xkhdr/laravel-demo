@@ -1,8 +1,8 @@
 # Tasks — Auth System
 
-## Wave 1 — Foundation & Migrations
+## Wave 1
 
-- [ ] T1 — Create User migration
+- [x] T1 — Create User migration ✓ complete · evidence: Migration file verified: database/migrations/0001_01_01_000000_create_users_table.php contains id (PK), name, email, password, email_verified_at (nullable), remember_token, created_at, updated_at · 2026-06-20T15:07:23.250821216Z
   - why: Foundation for all auth features (Req 1-5). User table holds email/password/name.
   - role: builder
   - files: database/migrations/0001_01_01_000000_create_users_table.php
@@ -12,7 +12,7 @@
   - depends: —
   - requirements: 1, 2, 3, 4, 5
 
-- [ ] T2 — Create Role and Permission migrations (Spatie)
+- [x] T2 — Create Role and Permission migrations (Spatie) ✓ complete · evidence: Spatie laravel-permission package installed (v8.0.0). Migrations published in database/migrations/2026_06_20_151208_create_permission_tables.php. All 4 tables created: roles, permissions, model_has_roles, role_has_permissions. Verified with php artisan migrate:fresh in Docker · 2026-06-20T15:16:43.127287626Z
   - why: Store roles and permissions for RBAC (Req 4). Use Spatie's package structure.
   - role: builder
   - files: database/migrations/XXXX_XX_XX_XXXXXX_create_roles_table.php, database/migrations/XXXX_XX_XX_XXXXXX_create_permissions_table.php, database/migrations/XXXX_XX_XX_XXXXXX_create_model_has_roles_table.php, database/migrations/XXXX_XX_XX_XXXXXX_create_role_has_permissions_table.php
@@ -22,7 +22,7 @@
   - depends: T1
   - requirements: 4
 
-- [ ] T3 — Seed default roles (author, admin)
+- [x] T3 — Seed default roles (author, admin) ✓ complete · evidence: RoleSeeder created at database/seeders/RoleSeeder.php. Creates 2 roles (author, admin) and 5 permissions (create_posts, edit_posts, delete_posts, view_posts, delete_users). Admin has all 5, author has 4 post-only permissions. Seeder runs without error and is idempotent. · 2026-06-20T15:18:56.676824587Z
   - why: Bootstrap roles for new users (Req 4). RegisterUser assigns author role by default.
   - role: builder
   - files: database/seeders/RoleSeeder.php
@@ -32,7 +32,7 @@
   - depends: T2
   - requirements: 4
 
-## Wave 2 — Models
+## Wave 2
 
 - [ ] T4 — Create User model with roles/permissions
   - why: User entity central to auth (Req 1-5). Relationships to roles and permissions.
@@ -44,7 +44,7 @@
   - depends: T3
   - requirements: 1, 4
 
-- [ ] T5 — Create Role and Permission models (Spatie)
+- [x] T5 — Create Role and Permission models (Spatie) ✓ complete · evidence: Role and Permission models created in app/Models/ extending Spatie package models. Both models properly configured with relationships: Role has permissions() relationship, Permission has roles() relationship. Models can be queried with App\\Models\\Role::all() · 2026-06-20T15:23:25.182336058Z
   - why: Represent roles and permissions as Eloquent models for database queries.
   - role: builder
   - files: app/Models/Role.php, app/Models/Permission.php
@@ -54,7 +54,7 @@
   - depends: T2
   - requirements: 4
 
-## Wave 3 — Business Logic (Actions)
+## Wave 3
 
 - [ ] T6 — Create RegisterUser action
   - why: Handle user registration with password hashing and author role assignment (Req 1).
@@ -86,7 +86,7 @@
   - depends: T4
   - requirements: 5
 
-## Wave 4 — Routes & Controllers
+## Wave 4
 
 - [ ] T9 — Create auth routes
   - why: Define endpoints for register, login, logout, me (Req 1, 2, 3, 5).
@@ -108,7 +108,7 @@
   - depends: T6, T7, T8, T9
   - requirements: 1, 2, 3, 5
 
-- [ ] T11 — Create request validation classes
+- [x] T11 — Create request validation classes ✓ complete · evidence: Request classes implemented at app/Http/Requests/Auth/RegisterRequest.php and app/Http/Requests/Auth/LoginRequest.php with proper validation rules. RegisterRequest: name, email (unique), password (min 8). LoginRequest: email, password. · 2026-06-20T15:07:29.556507489Z
   - why: Validate register/login requests before Actions (Req 1, 2).
   - role: builder
   - files: app/Http/Requests/Auth/RegisterRequest.php, app/Http/Requests/Auth/LoginRequest.php
@@ -128,7 +128,7 @@
   - depends: T4
   - requirements: 4
 
-## Wave 5 — Tests
+## Wave 5
 
 - [ ] T13 — Write unit tests for Auth Actions
   - why: Verify business logic (RegisterUser, LoginUser, LogoutUser).
@@ -160,7 +160,7 @@
   - depends: T10, T14
   - requirements: 1, 2, 3, 5
 
-## Wave 6 — Verification
+## Wave 6
 
 - [ ] T16 — Run full test suite
   - why: Verify all auth features work together.

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "specd": {
+      "args": [
+        "mcp",
+        "--root",
+        "/var/www/html/rai/up/laravel-demo"
+      ],
+      "command": "specd"
+    }
+  }
+}

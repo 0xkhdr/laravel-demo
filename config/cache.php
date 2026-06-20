@@ -25,4 +25,14 @@ return [
     ],
 
     'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache_'),
+
+    'ttl' => [
+        'posts' => [
+            'list' => 5 * 60,
+            'single' => 60 * 60,
+        ],
+        'comments' => [
+            'count' => 30 * 60,
+        ],
+    ],
 ];
