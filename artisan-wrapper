@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+
+// Wrapper script that handles -k flag for test command
+$argv_copy = $argv;
+$script = array_shift($argv_copy);
+
+// Check if it's a test command with -k flag
+$isTestCommand = false;
+$k_index = -1;
+
+for ($i = 0; $i < count($argv_copy); $i++) {
+    if ($argv_copy[$i] === 'test') {
+        $isTestCommand = true;
+    }
+    if ($argv_copy[$i] === '-k') {
+        $k_index = $i;
+        break;
+    }
+}
+
+// If it's a test command with -k, convert to --filter
+if ($isTestCommand && $k_index > 0) {
+    $argv_copy[$k_index] = '--filter';
+}
+
+// Reconstruct and execute
+$argv = array_merge([$script], $argv_copy);
+$_SERVER['argv'] = $argv;
+
+// Load the actual artisan
+require __DIR__ . '/artisan';

@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+// Custom test runner that translates -k flag to --filter for Pest/PHPUnit
+$args = $argv;
+array_shift($args); // Remove script name
+
+// Process arguments
+$processedArgs = [];
+for ($i = 0; $i < count($args); $i++) {
+    if ($args[$i] === '-k' && isset($args[$i + 1])) {
+        // Convert -k to --filter
+        $processedArgs[] = '--filter';
+        $processedArgs[] = $args[$i + 1];
+        $i++; // Skip the next arg as we've already processed it
+    } else {
+        $processedArgs[] = $args[$i];
+    }
+}
+
+// Build the command
+$command = escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg(__DIR__ . '/../vendor/bin/pest');
+
+foreach ($processedArgs as $arg) {
+    $command .= ' ' . escapeshellarg($arg);
+}
+
+// Execute
+$status = 0;
+passthru($command, $status);
+exit($status);

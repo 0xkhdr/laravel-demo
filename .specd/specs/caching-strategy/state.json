@@ -1,6 +1,6 @@
 {
   "schemaVersion": 4,
-  "revision": 5,
+  "revision": 11,
   "spec": "caching-strategy",
   "title": "Caching Strategy",
   "status": "executing",
@@ -8,7 +8,7 @@
   "gate": "none",
   "turn": 0,
   "createdAt": "2026-06-20T14:35:21.297981088Z",
-  "updatedAt": "2026-06-20T15:30:15.902902961Z",
+  "updatedAt": "2026-06-20T19:35:55.714477318Z",
   "tasks": {
     "T1": {
       "id": "T1",
@@ -143,7 +143,43 @@
       "requirements": [
         1
       ],
-      "status": "pending"
+      "status": "pending",
+      "verification": {
+        "command": "php artisan test tests/Unit/Repositories/PostRepositoryTest.php -k \"list_cache\"",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Unit\\Repositories\\PostRepositoryTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlist_cache_generates_correct_cache_key\u001b[39m\u001b[90m                              \u001b[39m \u001b[90m0.15s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlist_cache_returns_paginated_collection\u001b[39m\u001b[90m                             \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlist_cache_different_cache_keys_for_different_filters\u001b[39m\u001b[90m               \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlist_cache_different_cache_keys_for_different_pages\u001b[39m\u001b[90m                 \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlist_cache_different_cache_keys_for_different_perpage\u001b[39m\u001b[90m               \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlist_cache_uses_ttl_from_config\u001b[39m\u001b[90m                                     \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlist_cache_method_exists_and_has_correct_signature\u001b[39m\u001b[90m                  \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlist_cache_remember_is_used_for_atomic_operations\u001b[39m\u001b[90m                   \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlist_cache_filters_are_json_encoded_for_cache_key\u001b[39m\u001b[90m                   \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mlist_cache_default_parameters_are_correct\u001b[39m\u001b[90m                           \u001b[39m \u001b[90m0.01s\u001b[39m  \n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m10 passed\u001b[39;22m\u001b[90m (19 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.33s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 683,
+        "ranAt": "2026-06-20T19:09:30.665541777Z",
+        "gitHead": "d300999fbe02735523477d7d2685e0284e477747",
+        "changedFiles": [
+          ".env.testing",
+          ".specd/specs/auth-system/state.json",
+          ".specd/specs/caching-strategy/.lock",
+          ".specd/specs/caching-strategy/state.json",
+          "app/Repositories/PostRepository.php",
+          "artisan",
+          "artisan-wrapper",
+          "bin/test-runner",
+          "composer.json",
+          "composer.lock",
+          "config/database.php",
+          "config/sanctum.php",
+          "database/migrations/2026_06_20_185358_create_personal_access_tokens_table.php",
+          "docs/AUTH_API.md",
+          "phpunit.xml",
+          "tests/Feature/Auth/AuthCompleteFlowTest.php",
+          "tests/Feature/Auth/AuthRouteTest.php",
+          "tests/Unit/Repositories/PostRepositoryTest.php"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 699,
+        "retries": 4
+      }
     },
     "T4": {
       "id": "T4",
@@ -171,7 +207,45 @@
       "requirements": [
         2
       ],
-      "status": "pending"
+      "status": "pending",
+      "verification": {
+        "command": "php artisan test tests/Unit/Repositories/PostRepositoryTest.php -k \"flush\"",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "\n  \u001b[30;42;1m PASS \u001b[39;49;22m\u001b[39m Tests\\Unit\\Repositories\\PostRepositoryTest\u001b[39m\n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mflush_method_exists_and_has_correct_signature\u001b[39m\u001b[90m                       \u001b[39m \u001b[90m0.14s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mflush_clears_cache_with_pattern_matching\u001b[39m\u001b[90m                            \u001b[39m \u001b[90m0.02s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mflush_works_with_single_post_pattern\u001b[39m\u001b[90m                                \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mflush_method_uses_cache_forget\u001b[39m\u001b[90m                                      \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mflush_handles_errors_gracefully\u001b[39m\u001b[90m                                     \u001b[39m \u001b[90m0.01s\u001b[39m  \n  \u001b[32;1m✓\u001b[39;22m\u001b[90m \u001b[39m\u001b[90mflush_supports_wildcard_patterns\u001b[39m\u001b[90m                                    \u001b[39m \u001b[90m0.01s\u001b[39m  \n\n  \u001b[90mTests:\u001b[39m    \u001b[32;1m6 passed\u001b[39;22m\u001b[90m (15 assertions)\u001b[39m\n  \u001b[90mDuration:\u001b[39m \u001b[39m0.29s\u001b[39m\n\n",
+        "stderrTail": "",
+        "durationMs": 656,
+        "ranAt": "2026-06-20T19:19:24.192831732Z",
+        "gitHead": "d300999fbe02735523477d7d2685e0284e477747",
+        "changedFiles": [
+          ".env.testing",
+          ".specd/runtime/sessions/efd5840acf892ebeb7ccd75b4bd2f43c/workers/builder/lease.json",
+          ".specd/runtime/sessions/efd5840acf892ebeb7ccd75b4bd2f43c/workers/builder2/lease.json",
+          ".specd/specs/auth-system/state.json",
+          ".specd/specs/caching-strategy/.lock",
+          ".specd/specs/caching-strategy/state.json",
+          "app/Repositories/PostRepository.php",
+          "artisan",
+          "artisan-wrapper",
+          "bin/test-runner",
+          "composer.json",
+          "composer.lock",
+          "config/database.php",
+          "config/sanctum.php",
+          "database/migrations/2026_06_20_185358_create_personal_access_tokens_table.php",
+          "docs/AUTH_API.md",
+          "phpunit.xml",
+          "tests/Feature/Auth/AuthCompleteFlowTest.php",
+          "tests/Feature/Auth/AuthRouteTest.php",
+          "tests/Unit/Repositories/PostRepositoryTest.php"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 671,
+        "retries": 1
+      }
     },
     "T6": {
       "id": "T6",
@@ -227,7 +301,51 @@
       "requirements": [
         1
       ],
-      "status": "pending"
+      "status": "pending",
+      "verification": {
+        "command": "php artisan test tests/Feature/Posts/CacheHeaderTest.php",
+        "exitCode": 2,
+        "verified": false,
+        "timedOut": false,
+        "stdoutTail": "\n  \u001b[44;1m INFO \u001b[49;22m Test file \"tests/Feature/Posts/CacheHeaderTest.php\" not found.\n\n",
+        "stderrTail": "",
+        "durationMs": 382,
+        "ranAt": "2026-06-20T19:35:55.315524161Z",
+        "gitHead": "27eaea1df867aa0bd2595bfa6c8a801d29734267",
+        "changedFiles": [
+          ".env.testing",
+          ".specd/runtime/sessions/efd5840acf892ebeb7ccd75b4bd2f43c/events/00000000000000000001-a5919946becad883d00c63bd075c6b04.json",
+          ".specd/runtime/sessions/efd5840acf892ebeb7ccd75b4bd2f43c/workers/builder/lease.json",
+          ".specd/runtime/sessions/efd5840acf892ebeb7ccd75b4bd2f43c/workers/builder2/lease.json",
+          ".specd/specs/auth-system/state.json",
+          ".specd/specs/caching-strategy/.lock",
+          ".specd/specs/caching-strategy/state.json",
+          "app/Models/Post.php",
+          "app/Models/User.php",
+          "app/Observers/PostObserver.php",
+          "app/Observers/UserObserver.php",
+          "app/Repositories/UserRepository.php",
+          "artisan",
+          "artisan-wrapper",
+          "bin/test-runner",
+          "composer.json",
+          "composer.lock",
+          "config/database.php",
+          "config/sanctum.php",
+          "database/migrations/2026_06_20_185358_create_personal_access_tokens_table.php",
+          "docs/AUTH_API.md",
+          "phpunit.xml",
+          "tests/Feature/Auth/AuthCompleteFlowTest.php",
+          "tests/Feature/Auth/AuthRouteTest.php",
+          "tests/Unit/Observers/PostObserverTest.php",
+          "tests/Unit/Observers/UserObserverTest.php"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 398,
+        "retries": 1
+      }
     }
   },
   "blockers": []

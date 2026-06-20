@@ -182,7 +182,7 @@ class UserRepository
      * @param string $pattern Cache key pattern (e.g., 'users:*', 'user:*')
      * @return void
      */
-    private function flush(string $pattern): void
+    public function flush(string $pattern): void
     {
         try {
             $store = Cache::getStore();

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "sessionId": "efd5840acf892ebeb7ccd75b4bd2f43c",
+  "workerId": "builder2",
+  "spec": "caching-strategy",
+  "task": "T5",
+  "attempt": 1,
+  "status": "released",
+  "acquiredAt": "2026-06-20T19:18:30.806095221Z",
+  "heartbeatAt": "2026-06-20T19:18:30.806095221Z",
+  "leaseUntil": "2026-06-20T19:20:30.806095221Z",
+  "messageExpiresAt": "2026-06-20T20:18:30.805029405Z",
+  "releasedAt": "2026-06-20T19:19:35.032426241Z"
+}

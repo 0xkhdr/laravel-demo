@@ -7,6 +7,17 @@ define('LARAVEL_START', microtime(true));
 
 require __DIR__.'/vendor/autoload.php';
 
+// Handle -k flag conversion for test command compatibility
+if (isset($GLOBALS['argv']) && is_array($GLOBALS['argv'])) {
+    $argv = &$GLOBALS['argv'];
+    for ($i = 0; $i < count($argv); $i++) {
+        if ($argv[$i] === '-k' && $i + 1 < count($argv)) {
+            $argv[$i] = '--filter';
+        }
+    }
+    $_SERVER['argv'] = $argv;
+}
+
 $app = require_once __DIR__.'/bootstrap/app.php';
 
 $status = $app->handleCommand(new ArgvInput);
