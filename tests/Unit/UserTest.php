@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\User;
+use App\Models\Role;
+use App\Models\Permission;
 
 it('has the correct fillable attributes', function () {
     expect((new User)->getFillable())->toBe(['name', 'email', 'password']);
@@ -31,3 +33,12 @@ it('can be instantiated via factory without persisting', function () {
         ->and($user->email)->toBeString()
         ->and($user->email)->toContain('@');
 });
+
+it('has the HasRoles trait', function () {
+    $user = new User();
+
+    expect(method_exists($user, 'hasRole'))->toBeTrue()
+        ->and(method_exists($user, 'hasPermissionTo'))->toBeTrue()
+        ->and(method_exists($user, 'assignRole'))->toBeTrue();
+});
+
