@@ -34,5 +34,10 @@ return [
         'comments' => [
             'count' => 30 * 60,
         ],
+        'users' => [
+            'list' => 60 * 60,
+            'single' => 60 * 60,
+            'email' => 30 * 60,
+        ],
     ],
 ];
