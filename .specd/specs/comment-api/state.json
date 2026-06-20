@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 4,
+  "revision": 1,
+  "spec": "comment-api",
+  "title": "Comment Api",
+  "status": "requirements",
+  "phase": "analyze",
+  "gate": "none",
+  "turn": 0,
+  "createdAt": "2026-06-20T14:35:21.250155161Z",
+  "updatedAt": "2026-06-20T14:35:21.25017761Z",
+  "tasks": {},
+  "blockers": []
+}

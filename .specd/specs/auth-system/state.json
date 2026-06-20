@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 4,
+  "revision": 1,
+  "spec": "auth-system",
+  "title": "Auth System",
+  "status": "requirements",
+  "phase": "analyze",
+  "gate": "none",
+  "turn": 0,
+  "createdAt": "2026-06-20T14:35:15.571806957Z",
+  "updatedAt": "2026-06-20T14:35:15.571825551Z",
+  "tasks": {},
+  "blockers": []
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "sessionId": "8529bbc1fd547ff0cbdad0e5d8efaa91",
+  "spec": "caching-strategy",
+  "owner": "program:efd5840acf892ebeb7ccd75b4bd2f43c",
+  "status": "running",
+  "policy": {
+    "approvalPolicy": "manual",
+    "maxWorkers": 4,
+    "maxRetries": 2,
+    "sessionTimeoutSeconds": 3600,
+    "hostReportedCostLimitUSD": 0
+  },
+  "createdAt": "2026-06-20T14:38:04.488833882Z",
+  "updatedAt": "2026-06-20T14:38:04.488833882Z",
+  "expiresAt": "2026-06-20T15:38:04.488833882Z",
+  "lastSequence": 0
+}

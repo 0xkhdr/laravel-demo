@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "host": "claude-code",
+      "scope": "project",
+      "serverName": "specd",
+      "root": ".",
+      "rootStrategy": "project",
+      "method": "native-cli",
+      "target": ".mcp.json",
+      "fingerprint": "sha256:9b043f3890b515dbbd21d0750c0955ac97460a6ac9680b9ffdab1ac3aef1e322",
+      "installedAt": "2026-06-20T13:38:41.508892739Z"
+    }
+  ]
+}

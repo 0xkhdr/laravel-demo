@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 4,
+  "revision": 1,
+  "spec": "search-filtering",
+  "title": "Search Filtering",
+  "status": "requirements",
+  "phase": "analyze",
+  "gate": "none",
+  "turn": 0,
+  "createdAt": "2026-06-20T14:35:21.283061639Z",
+  "updatedAt": "2026-06-20T14:35:21.283089487Z",
+  "tasks": {},
+  "blockers": []
+}
