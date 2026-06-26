@@ -1,6 +1,6 @@
 # Tech — Stack, dependencies, runtime
 
-Laravel 13 REST API built with PHP 8.3+, Composer package manager.
+Laravel 13 REST API built with PHP 8.3+, Composer package manager. See: composer.json, phpunit.xml
 
 ## Backend
 
