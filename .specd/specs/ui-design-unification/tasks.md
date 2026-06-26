@@ -2,7 +2,7 @@
 
 ## Wave 1
 
-- [ ] T1 — Create design-system.css with tokens and component classes
+- [x] T1 — Create design-system.css with tokens and component classes ✓ complete · evidence: 7a8630a6cd42fd2387ba28fffb264d14 · 2026-06-26T13:14:19.754092269Z
   - why: "R3 — centralize all design system tokens and component styles in one file so views can reuse them consistently"
   - role: builder
   - files: resources/css/design-system.css
@@ -12,7 +12,7 @@
   - depends: —
   - requirements: 3
 
-- [ ] T2 — Include design-system.css in app.blade.php layout
+- [x] T2 — Include design-system.css in app.blade.php layout ✓ complete · evidence: bc24deb8112ac129d4b0af653d71c90c · 2026-06-26T13:19:35.448971018Z
   - why: "R1, R2, R4 — make design tokens available to all views by linking the CSS in the main layout"
   - role: builder
   - files: resources/views/app.blade.php
@@ -24,7 +24,7 @@
 
 ## Wave 2
 
-- [ ] T3 — Update login.blade.php with design system styling
+- [x] T3 — Update login.blade.php with design system styling ✓ complete · evidence: build-verified · 2026-06-26T13:35:29.13149235Z
   - why: "R1 — login page must follow design system colors, spacing, typography"
   - role: builder
   - files: resources/views/auth/login.blade.php
@@ -34,7 +34,7 @@
   - depends: T2
   - requirements: 1
 
-- [ ] T4 — Update register.blade.php with design system styling
+- [x] T4 — Update register.blade.php with design system styling ✓ complete · evidence: Updated register.blade.php with design system classes: .input-base (4x), .btn-primary (1x), .card (3x). All form inputs, buttons, containers use design system. CSS custom properties for typography (--text-h5, --text-body, --text-caption), colors (--color-text-primary, --color-accent, --color-surface), and spacing (--space-*) applied. npm run build successful (vite 5.4.21 produced design-system-*.css). File: resources/views/auth/register.blade.php. Git HEAD: d52770e · 2026-06-26T13:25:59.222938026Z
   - why: "R1 — register page must follow design system"
   - role: builder
   - files: resources/views/auth/register.blade.php
@@ -44,7 +44,7 @@
   - depends: T2
   - requirements: 1
 
-- [ ] T5 — Update forgot-password.blade.php with design system styling
+- [x] T5 — Update forgot-password.blade.php with design system styling ✓ complete · evidence: file: /var/www/html/rai/up/laravel-demo/resources/views/auth/forgot-password.blade.php; changes: replaced form-control with .input-base, removed Bootstrap alert/form-group classes, added design system CSS variables (--space-*, --text-*, --color-*); verification: npm run build succeeded, grep confirmed .input-base, .btn-primary, and .card classes present · 2026-06-26T13:27:46.668107457Z
   - why: "R1 — password reset pages must follow design system"
   - role: builder
   - files: resources/views/auth/forgot-password.blade.php
@@ -54,7 +54,7 @@
   - depends: T2
   - requirements: 1
 
-- [ ] T6 — Update reset-password.blade.php with design system styling
+- [x] T6 — Update reset-password.blade.php with design system styling ✓ complete · evidence: b2c2ece122f2434eb4aad46f9e0fc29d; verification passed with npm build successful; all design system classes applied: .input-base (3x), .btn-primary (1x), .card (1x), .text-h2 (1x); CSS variables used for colors, spacing, fonts · 2026-06-26T13:36:37.120145577Z
   - why: "R1 — password reset form must follow design system"
   - role: builder
   - files: resources/views/auth/reset-password.blade.php
