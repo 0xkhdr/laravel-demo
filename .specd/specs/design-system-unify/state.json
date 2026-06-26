@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 5,
+  "revision": 1,
+  "spec": "design-system-unify",
+  "title": "Unify Design System Across Project Pages",
+  "status": "requirements",
+  "phase": "analyze",
+  "gate": "none",
+  "turn": 0,
+  "createdAt": "2026-06-26T22:08:08.391768945Z",
+  "updatedAt": "2026-06-26T22:08:08.391812787Z",
+  "tasks": {},
+  "blockers": []
+}
