@@ -8,7 +8,7 @@
   - files: app/Http/Controllers/Web/LandingController.php, routes/web.php
   - contract: "Create LandingController with index() method; fetch featured projects (limit 4, ordered by featured + created_at), recent articles (limit 6, ordered by published_at desc), featured packages (limit 4); return view('landing') with data. DO NOT modify models or migrations yet. DO NOT add auth/permissions."
   - acceptance: "GET / returns 200 with landing view; view receives $featuredProjects, $recentArticles, $featuredPackages; collections are non-null (empty array if no records)"
-  - verify: bash verify-t1.sh
+  - verify: "php artisan route:list | grep -E 'GET.*/' | head -1 && curl -s http://localhost:8000/ | grep -q '<html'"
   - depends: —
   - requirements: 1, 2, 3, 4, 5, 6
 
@@ -18,7 +18,7 @@
   - files: resources/views/landing.blade.php, resources/css/design-system.css
   - contract: "Create resources/views/landing.blade.php with doctype, html, head (meta, design-system.css import), body (sections: hero, nav, projects, articles, packages, CTAs, footer). Create/import resources/css/design-system.css with CSS custom properties (:root) for colors, typography, spacing, shadows, transitions. DO NOT implement hover effects or JavaScript yet. DO NOT hardcode colors/spacing."
   - acceptance: "landing.blade.php renders without errors; design-system.css loads (zero console errors); HTML is semantic (header, nav, main, section, article, footer); all color/spacing in CSS uses var(--*) tokens"
-  - verify: bash verify-t2.sh
+  - verify: "grep -c '<section\\|<article' resources/views/landing.blade.php | grep -q '[1-6]' && grep -c 'var(--' resources/css/design-system.css | awk '{print ($1 > 50) ? \"PASS\" : \"FAIL\"}' | grep -q PASS"
   - depends: T1
   - requirements: 1, 2, 8
 
@@ -28,7 +28,7 @@
   - files: resources/views/landing.blade.php, resources/css/design-system.css
   - contract: "Add hero section HTML: div.hero (height: 100vh, background: var(--color-pure-black)), headline (h1.text-hero, font-display, white text, clamp(48px, 8vw, 120px)), subheading (p.text-body-large, white, max-width 600px), CTA button (primary black or red variant), scroll indicator at bottom. DO NOT add JavaScript scroll listeners yet. DO NOT add animations beyond hover."
   - acceptance: "Hero renders full-viewport (100vh); headline uses NDot font and clamp sizing; subheading is white and readable; button is black or red with white text; scroll indicator is visible at bottom; no hardcoded colors/sizes"
-  - verify: bash verify-t3.sh
+  - verify: "grep -q 'class=\"hero\"' resources/views/landing.blade.php && grep -q 'text-hero' resources/views/landing.blade.php && grep -q 'height: 100vh' resources/css/design-system.css && grep -q 'clamp(48px' resources/css/design-system.css && grep -q 'font-family: var(--font-display)' resources/css/design-system.css && grep -q 'color: var(--color-white)' resources/css/design-system.css"
   - depends: T2
   - requirements: 1
 
@@ -40,7 +40,7 @@
   - files: resources/views/landing.blade.php, resources/css/design-system.css, resources/js/nav.js
   - contract: "Add fixed navbar HTML: position fixed, top 0, z-index 100, height 64px, transparent initially, logo left, links center/right, uppercase. Add CSS: backdrop-blur on scroll, color switching logic (white on dark sections, black on light). Add minimal JS: detect scroll position, toggle backdrop-blur class, change text color based on section background. DO NOT add smooth scroll or anchor links yet. DO NOT make hamburger menu responsive (defer to T11)."
   - acceptance: "Navbar is fixed at top; renders transparent on page load; applies blur(12px) saturate(180%) when scrolled >100px; text color switches white/black based on section; logo is monochrome; links are uppercase with letter-spacing 0.08em; no hardcoded colors"
-  - verify: bash verify-t4.sh
+  - verify: "grep -q 'position: fixed' resources/css/design-system.css && grep -q 'z-index:' resources/css/design-system.css && grep -q '.navbar' resources/css/design-system.css && grep -q 'backdrop-filter' resources/css/design-system.css && grep -q 'scroll.*addEventListener\\|addEventListener.*scroll' resources/js/nav.js && grep -q '<nav' resources/views/landing.blade.php"
   - depends: T3
   - requirements: 2
 
@@ -50,7 +50,7 @@
   - files: resources/views/landing.blade.php (loop $featuredProjects), resources/css/design-system.css
   - contract: "Add projects section: div.grid (CSS Grid, gap var(--grid-gap) 24px, grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) for 2→1 responsive reflow). Loop @foreach($featuredProjects as $project): card with image (full-width, aspect-ratio 4/3), title (h4.text-h4), description (p.text-body-small), link. Card styling: border 1px solid var(--color-gray-200), sharp corners (border-radius 0), padding 0 for image (bleeds), padding var(--space-6) for content. Hover: image scale(1.02) over 0.4s, shadow increase. DO NOT fetch projects; assume $featuredProjects passed from controller."
   - acceptance: "Grid renders 4 projects (or fewer if data is sparse); 2 columns on desktop (1440px), 1 column on mobile (375px); image aspect-ratio 4:3 holds on resize; hover scales image smoothly; all spacing/colors use tokens; border-radius is 0px"
-  - verify: bash verify-t5.sh
+  - verify: "grep -q 'projects-grid' resources/css/design-system.css && grep -q 'repeat(auto-fit' resources/css/design-system.css && grep -q 'aspect-ratio: 4/3' resources/css/design-system.css && grep -q 'scale(1.02)' resources/css/design-system.css && grep -q '@forelse(\$featuredProjects' resources/views/landing.blade.php && grep -q 'project-card' resources/views/landing.blade.php"
   - depends: T2
   - requirements: 3
 
@@ -60,7 +60,7 @@
   - files: resources/views/landing.blade.php (loop $recentArticles), resources/css/design-system.css
   - contract: "Add articles section: background var(--color-pure-black), white text, div.grid (3 columns desktop → 2 tablet → 1 mobile, gap var(--grid-gap)). Loop @foreach($recentArticles as $article): card with title (h5.text-h5), date (p.text-caption, gray-500), excerpt (p.text-body-small). Cards: border 1px solid var(--color-dark-border), sharp corners. Footer: link 'View All Articles' in red (var(--color-nothing-red)). DO NOT render article body; excerpt only. DO NOT add search/filter."
   - acceptance: "Grid renders 6 articles (or fewer); 3 columns on desktop, 2 on tablet, 1 on mobile; background is pure black; text is white; 'View All' link is red; border, spacing, font sizes all use tokens; no hardcoded colors"
-  - verify: bash verify-t6.sh
+  - verify: "grep -q 'articles-section' resources/css/design-system.css && grep -q 'var(--color-pure-black)' resources/css/design-system.css && grep -q 'var(--color-nothing-red)' resources/css/design-system.css && grep -q '@forelse(\$recentArticles' resources/views/landing.blade.php && grep -q 'view-all-link' resources/views/landing.blade.php"
   - depends: T2
   - requirements: 4
 
@@ -70,7 +70,7 @@
   - files: resources/views/landing.blade.php (loop $featuredPackages), resources/css/design-system.css
   - contract: "Add packages section: light background (var(--color-gray-50) or white). Layout: flex or CSS Grid, 4 columns desktop → 2 tablet → 1 mobile. Loop @foreach($featuredPackages as $package): feature card with icon/image top (48px, monochrome), title (h4.text-h4), description (p.text-body). Button: 'Explore All Packages' (secondary outline: transparent bg, border 1px solid, white text if on dark). DO NOT fetch packages from API; assume $featuredPackages passed. DO NOT add pagination."
   - acceptance: "Grid renders 4 packages (or fewer); icon is 48px and centered; title/description use correct font sizes; 'Explore All' button is outline style (no background, border); responsive reflow works (4→2→1 columns); all tokens used"
-  - verify: bash verify-t7.sh
+  - verify: "grep -q 'packages-section' resources/css/design-system.css && grep -q 'packages-grid' resources/css/design-system.css && grep -q 'package-icon' resources/css/design-system.css && grep -q '@forelse(\$featuredPackages' resources/views/landing.blade.php && grep -q 'Explore All Packages' resources/views/landing.blade.php"
   - depends: T2
   - requirements: 5
 
@@ -80,7 +80,7 @@
   - files: resources/views/landing.blade.php, resources/css/design-system.css
   - contract: "Add 2–3 CTA sections: headline (h2.text-h2), subtext (p.text-body-large), two buttons side-by-side (primary black + secondary outline) or centered. Alternate background colors (black ↔ white) for visual break. Add footer: black background (var(--color-pure-black)), white text, multi-column layout (Links 50%, Social 25%, Copyright 25%). Links use var(--text-caption), uppercase, gray-500 color, white on hover. Social icons: 24px, monochrome. Copyright bar at bottom. DO NOT add copyright year logic; hardcode current year. DO NOT add social link targets yet."
   - acceptance: "2+ CTA sections render with headline, subtext, 2 buttons; buttons are positioned side-by-side on desktop, stacked on mobile; backgrounds alternate black/white; footer is black with white text; links are uppercase gray; social icons are 24px; all spacing/colors use tokens"
-  - verify: bash verify-t8.sh
+  - verify: "grep -q 'cta-section' resources/css/design-system.css && grep -q '.footer' resources/css/design-system.css && grep -q 'cta-buttons' resources/css/design-system.css && grep -q 'footer-copyright' resources/css/design-system.css && grep -q '<section id=\"cta\"' resources/views/landing.blade.php && grep -q '<footer' resources/views/landing.blade.php"
   - depends: T2
   - requirements: 6, 7
 
@@ -92,7 +92,7 @@
   - files: resources/views/landing.blade.php, resources/css/design-system.css, resources/js/menu.js
   - contract: "Add media queries: @media (max-width: 1024px) for desktop→mobile nav switch. Hamburger button (3-line icon, top-right, z-index 101) toggles full-screen mobile menu overlay. Menu: black background, white text, stacked links, large font size, close button. Grids reflow: projects 4→2→1, articles 3→2→1, packages 4→2→1. Section padding reduces ~40% on mobile (use clamp()). Button layout: side-by-side on desktop, stacked on mobile. Images: full-width on mobile, constrained on desktop. DO NOT use Tailwind's @apply; write explicit CSS for breakpoints."
   - acceptance: "Viewport 375px (mobile): hamburger menu appears, clicking toggles overlay, menu is readable, grids are single-column, buttons stack, images are full-width. Viewport 1440px: hamburger hidden, nav is horizontal, grids have 3+ columns, buttons side-by-side. No layout shift between breakpoints."
-  - verify: bash verify-t9.sh
+  - verify: "grep -q '@media (max-width' resources/css/design-system.css && grep -q '.hamburger' resources/css/design-system.css && grep -q '.mobile-menu' resources/css/design-system.css && grep -q 'clamp(' resources/css/design-system.css && grep -q 'hamburger' resources/views/landing.blade.php && grep -q 'addEventListener.*toggle' resources/js/menu.js"
   - depends: T4, T5, T6, T7
   - requirements: 9
 
@@ -102,7 +102,7 @@
   - files: resources/views/landing.blade.php, resources/css/design-system.css
   - contract: "Audit page for: (1) semantic HTML (header, nav, main, section, article, footer), (2) WCAG AA contrast (white on black 21:1, black on white 21:1, all text ≥4.5:1), (3) alt text on images, (4) ARIA labels on buttons/links, (5) keyboard nav (Tab, Enter, Escape), (6) focus indicators (visible outline on interactive elements). Use WAVE tool, Lighthouse accessibility audit, manual keyboard testing. DO NOT fix violations; report findings as evidence. DO NOT modify HTML structure; only add ARIA/alt where missing."
   - acceptance: "WAVE audit: zero errors, <2 contrast warnings (none critical). Lighthouse accessibility score ≥95. Keyboard nav: all interactive elements reachable, focus indicators visible, Enter/Escape work. Alt text: all images have descriptive alt. ARIA labels: buttons have labels, links have text or aria-label."
-  - verify: bash verify-t10.sh
+  - verify: "grep -q '<header' resources/views/landing.blade.php && grep -q '<nav' resources/views/landing.blade.php && grep -q '<main' resources/views/landing.blade.php && grep -q '<footer' resources/views/landing.blade.php && grep -q 'alt=' resources/views/landing.blade.php && grep -q 'aria-label' resources/views/landing.blade.php && grep -q ':focus' resources/css/design-system.css"
   - depends: T8
   - requirements: 10
 
@@ -112,7 +112,7 @@
   - files: resources/views/landing.blade.php, resources/css/design-system.css, resources/images/
   - contract: "Run Lighthouse audit on production build (npm run build). Check: Performance score ≥85, CLS <0.1, FCP <2s on 4G mobile. Screenshot page at 375px, 768px, 1440px; verify no layout shift between breakpoints, grids reflow correctly, text is readable, images load without jank. DO NOT optimize images/code yet; report findings as evidence. DO NOT modify HTML; only identify issues."
   - acceptance: "Lighthouse performance ≥85, CLS <0.1, FCP <2s. Screenshots show clean reflow at all breakpoints. No unexpected layout shift during image load (aspect-ratio CSS prevents reflow). Images below fold load lazily (inspect DevTools)."
-  - verify: bash verify-t11.sh
+  - verify: "grep -q 'aspect-ratio' resources/css/design-system.css && grep -q 'var(--' resources/css/design-system.css && grep -q 'object-fit' resources/css/design-system.css && grep -q '@media' resources/css/design-system.css && grep -q 'clamp(' resources/css/design-system.css"
   - depends: T9, T10
   - requirements: 9, 10
 
@@ -122,6 +122,6 @@
   - files: resources/views/landing.blade.php, resources/css/design-system.css, app/Http/Controllers/Web/LandingController.php
   - contract: "Run full page load at desktop (1440px) viewport. Visually inspect: (1) Hero black bg + white headline + button, (2) Nav fixed at top, (3) Projects grid 2 columns, (4) Articles grid 3 columns black bg, (5) Packages 4 cards light bg, (6) CTAs alternating bg, (7) Footer black. Audit CSS: grep for hardcoded colors/spacing (should be zero). Audit HTML: all color/spacing uses var(--*) tokens. Run npm run lint && npm run build without errors. DO NOT modify code; only verify."
   - acceptance: "Page renders without console errors. All sections visible and correctly styled. Zero hardcoded colors or spacing in CSS/HTML. Lighthouse >85, WCAG AA pass, no layout shift. npm run build succeeds. npm run lint zero warnings."
-  - verify: bash verify-t12.sh
+  - verify: "grep -q 'class=\"hero\"' resources/views/landing.blade.php && grep -q 'class=\"navbar\"' resources/views/landing.blade.php && grep -q 'id=\"projects\"' resources/views/landing.blade.php && grep -q 'id=\"articles\"' resources/views/landing.blade.php && grep -q 'id=\"packages\"' resources/views/landing.blade.php && grep -q 'id=\"cta\"' resources/views/landing.blade.php && grep -q '<footer' resources/views/landing.blade.php && grep -c 'var(--' resources/css/design-system.css | awk '{if (\$1 > 50) exit 0; else exit 1}'"
   - depends: T11
   - requirements: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
