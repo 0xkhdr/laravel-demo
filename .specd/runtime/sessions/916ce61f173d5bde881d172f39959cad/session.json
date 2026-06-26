@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "sessionId": "9162edf2dc9d849a53ac1dc22774f693",
+  "sessionId": "916ce61f173d5bde881d172f39959cad",
   "spec": "ui-design-unification",
   "owner": "brain-run",
-  "status": "running",
+  "status": "failed",
   "policy": {
     "approvalPolicy": "planning",
     "maxWorkers": 4,
@@ -11,8 +11,8 @@
     "sessionTimeoutSeconds": 7200,
     "hostReportedCostLimitUSD": 0
   },
-  "createdAt": "2026-06-26T13:00:52.495464878Z",
-  "updatedAt": "2026-06-26T13:00:52.495464878Z",
-  "expiresAt": "2026-06-26T15:00:52.495464878Z",
-  "lastSequence": 0
+  "createdAt": "2026-06-26T13:09:02.630589642Z",
+  "updatedAt": "2026-06-26T13:09:57.287733243Z",
+  "expiresAt": "2026-06-26T15:09:02.630589642Z",
+  "lastSequence": 2
 }

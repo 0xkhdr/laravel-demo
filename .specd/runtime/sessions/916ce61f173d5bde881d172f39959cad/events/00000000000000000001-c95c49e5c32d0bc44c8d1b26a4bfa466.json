@@ -1,20 +1,20 @@
 {
   "version": "1",
-  "messageId": "5cb90131dfdd43f2fdb93ed4a61248e2",
-  "sessionId": "e3ff2b9a5acd7ff88dc0b42d8f79a919",
+  "messageId": "c95c49e5c32d0bc44c8d1b26a4bfa466",
+  "sessionId": "916ce61f173d5bde881d172f39959cad",
   "sequence": 1,
-  "createdAt": "2026-06-26T11:45:51.888018157Z",
-  "expiresAt": "2026-06-26T12:45:51.888018157Z",
+  "createdAt": "2026-06-26T13:09:02.636255487Z",
+  "expiresAt": "2026-06-26T14:09:02.636255487Z",
   "type": "mission",
   "from": "brain",
-  "to": "pinky-t11-a1",
-  "spec": "auth-user-mgmt",
-  "task": "T11",
+  "to": "pinky-t1-a1",
+  "spec": "ui-design-unification",
+  "task": "T1",
   "attempt": 1,
   "payload": {
-    "dispatchDigest": "60ff03641b40b68183a1e3b2ce832a70e54255a5d7a8a15c42ad4e98959f83af",
+    "dispatchDigest": "5580d2e78dd0335759158576a6769e4f4883cb58bd69525a5f98b210498b62da",
     "role": "builder",
-    "contextCommand": "specd context auth-user-mgmt",
+    "contextCommand": "specd context ui-design-unification",
     "contextManifest": {
       "version": 1,
       "softTokenCeiling": 12000,
@@ -50,7 +50,7 @@
         {
           "order": 4,
           "kind": "spec-context",
-          "command": "specd context auth-user-mgmt",
+          "command": "specd context ui-design-unification",
           "mode": "run-command",
           "required": true,
           "tokenHint": 1800,
@@ -59,7 +59,7 @@
         {
           "order": 5,
           "kind": "scope-file",
-          "path": "app/Http/Controllers/Auth/VerificationController.php",
+          "path": "resources/css/design-system.css",
           "mode": "read-targeted",
           "required": true,
           "tokenHint": 1200,
@@ -68,44 +68,41 @@
         {
           "order": 6,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/requirements.md",
+          "path": ".specd/specs/ui-design-unification/requirements.md",
           "mode": "read-targeted",
           "required": false,
-          "tokenHint": 191,
+          "tokenHint": 130,
           "rationale": "only the requirements this task covers"
         },
         {
           "order": 7,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/design.md",
+          "path": ".specd/specs/ui-design-unification/design.md",
           "mode": "reference-if-needed",
           "required": false,
-          "tokenHint": 3326,
+          "tokenHint": 1043,
           "rationale": "source of truth; expand only if required by contract or context command"
         },
         {
           "order": 8,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/tasks.md",
+          "path": ".specd/specs/ui-design-unification/tasks.md",
           "mode": "read-targeted",
           "required": false,
-          "tokenHint": 195,
+          "tokenHint": 269,
           "rationale": "the task's row only, not the whole task list"
         }
       ],
       "estimatedTokens": 6600,
       "budget": 13500
     },
-    "contract": "Methods: showVerifyEmailPage(), verify(VerifyEmailRequest), resend(). Verify: extract email + token, find token in email_verification_tokens, check expiry, mark user.email_verified_at, consume token, redirect to login. Resend: rate-limit to 1/min, generate new token, dispatch notification. Do NOT auto-login user after verify. Do NOT allow unverified emails to log in (check in AuthController, not here).",
+    "contract": "Create resources/css/design-system.css with complete CSS custom properties (colors, spacing, typography, effects, z-index) extracted from nothing-tech-design-system.md. Include component classes (.btn-primary, .btn-secondary, .btn-accent, .input-base, .card, .hero, .section, .footer). Include dark theme override block [data-theme=\"dark\"]. Verify that custom properties are correct and complete. Do NOT add view-specific CSS; keep only reusable tokens and component base styles.",
     "files": [
-      "app/Http/Controllers/Auth/VerificationController.php"
+      "resources/css/design-system.css"
     ],
-    "acceptance": "Controller exists, can handle verify and resend flows",
-    "verifyCommand": "php artisan test tests/Feature/VerificationControllerTest.php",
-    "dependencies": [
-      "T5",
-      "T8"
-    ],
+    "acceptance": "CSS file compiles without errors. All custom properties from nothing-tech-design-system.md are present. Component classes render correctly when applied to HTML. Dark theme variables are defined.",
+    "verifyCommand": "npm run build \u0026\u0026 grep -c \"^  --\" resources/css/design-system.css",
+    "dependencies": [],
     "authority": {
       "readOnly": false,
       "allowedActions": [
@@ -119,11 +116,11 @@
   "decision": {
     "version": 1,
     "action": "dispatch",
-    "spec": "auth-user-mgmt",
-    "taskId": "T11",
+    "spec": "ui-design-unification",
+    "taskId": "T1",
     "attempt": 1,
     "reason": "dispatch next runnable task",
-    "idempotencyKey": "e3ff2b9a5acd7ff88dc0b42d8f79a919:35:dispatch:T11:1",
+    "idempotencyKey": "916ce61f173d5bde881d172f39959cad:6:dispatch:T1:1",
     "escalation": {
       "code": "none",
       "message": ""

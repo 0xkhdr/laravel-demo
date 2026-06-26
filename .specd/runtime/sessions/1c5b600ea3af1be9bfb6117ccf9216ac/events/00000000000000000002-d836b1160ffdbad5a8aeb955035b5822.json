@@ -1,20 +1,20 @@
 {
   "version": "1",
-  "messageId": "41bb02e244c94221173205c04fd5d758",
-  "sessionId": "e3ff2b9a5acd7ff88dc0b42d8f79a919",
-  "sequence": 5,
-  "createdAt": "2026-06-26T12:26:55.926419773Z",
-  "expiresAt": "2026-06-26T13:26:55.926419773Z",
+  "messageId": "d836b1160ffdbad5a8aeb955035b5822",
+  "sessionId": "1c5b600ea3af1be9bfb6117ccf9216ac",
+  "sequence": 2,
+  "createdAt": "2026-06-26T13:42:02.997903739Z",
+  "expiresAt": "2026-06-26T14:42:02.997903739Z",
   "type": "mission",
   "from": "brain",
-  "to": "pinky-t15-a1",
-  "spec": "auth-user-mgmt",
-  "task": "T15",
+  "to": "pinky-t7-a1",
+  "spec": "ui-design-unification",
+  "task": "T7",
   "attempt": 1,
   "payload": {
-    "dispatchDigest": "b73ec5c263acd480a745de64a1112b262409075160115df12e1c89d6e42db58f",
-    "role": "verifier",
-    "contextCommand": "specd context auth-user-mgmt",
+    "dispatchDigest": "ac121b7a65f0fb4465d38cd087ad2e3572dec9366ed45dd180b8239a1e0a3a8c",
+    "role": "builder",
+    "contextCommand": "specd context ui-design-unification",
     "contextManifest": {
       "version": 1,
       "softTokenCeiling": 12000,
@@ -23,7 +23,7 @@
         {
           "order": 1,
           "kind": "role",
-          "path": ".specd/roles/verifier.md",
+          "path": ".specd/roles/builder.md",
           "mode": "read-full",
           "required": true,
           "tokenHint": 800,
@@ -50,7 +50,7 @@
         {
           "order": 4,
           "kind": "spec-context",
-          "command": "specd context auth-user-mgmt",
+          "command": "specd context ui-design-unification",
           "mode": "run-command",
           "required": true,
           "tokenHint": 1800,
@@ -59,7 +59,7 @@
         {
           "order": 5,
           "kind": "scope-file",
-          "path": "tests/Feature/AuthFlowTest.php",
+          "path": "resources/views/auth/verify-email.blade.php",
           "mode": "read-targeted",
           "required": true,
           "tokenHint": 1200,
@@ -68,44 +68,42 @@
         {
           "order": 6,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/requirements.md",
+          "path": ".specd/specs/ui-design-unification/requirements.md",
           "mode": "read-targeted",
           "required": false,
-          "tokenHint": 638,
+          "tokenHint": 206,
           "rationale": "only the requirements this task covers"
         },
         {
           "order": 7,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/design.md",
+          "path": ".specd/specs/ui-design-unification/design.md",
           "mode": "reference-if-needed",
           "required": false,
-          "tokenHint": 3326,
+          "tokenHint": 1043,
           "rationale": "source of truth; expand only if required by contract or context command"
         },
         {
           "order": 8,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/tasks.md",
+          "path": ".specd/specs/ui-design-unification/tasks.md",
           "mode": "read-targeted",
           "required": false,
-          "tokenHint": 185,
+          "tokenHint": 162,
           "rationale": "the task's row only, not the whole task list"
         }
       ],
       "estimatedTokens": 6600,
       "budget": 13500
     },
-    "contract": "Test: register with valid data → email queued → navigate to verify-email → click verification link → email verified → log in with same credentials → session created. Test: register with invalid data → validation errors. Test: login before email verified → redirected to verify-email. Do NOT mock the queue; use fake queue or in-memory database.",
+    "contract": "Apply typography scale (--text-h2 for title), .btn-primary for action buttons, --space-* for spacing. Keep messaging clear.",
     "files": [
-      "tests/Feature/AuthFlowTest.php"
+      "resources/views/auth/verify-email.blade.php"
     ],
-    "acceptance": "All tests pass, auth flow works end-to-end",
-    "verifyCommand": "php artisan test tests/Feature/AuthFlowTest.php",
+    "acceptance": "Page renders with design system styling. Buttons and text follow design system scale.",
+    "verifyCommand": "npm run build \u0026\u0026 php artisan serve \u0026 sleep 2 \u0026\u0026 curl -s http://localhost:8000/email/verify | grep -c \"btn-primary\" || echo \"requires-auth\"",
     "dependencies": [
-      "T11",
-      "T14",
-      "T9"
+      "T2"
     ],
     "authority": {
       "readOnly": false,
@@ -120,11 +118,11 @@
   "decision": {
     "version": 1,
     "action": "dispatch",
-    "spec": "auth-user-mgmt",
-    "taskId": "T15",
+    "spec": "ui-design-unification",
+    "taskId": "T7",
     "attempt": 1,
     "reason": "dispatch next runnable task",
-    "idempotencyKey": "e3ff2b9a5acd7ff88dc0b42d8f79a919:42:dispatch:T15:1",
+    "idempotencyKey": "1c5b600ea3af1be9bfb6117ccf9216ac:26:dispatch:T7:1",
     "escalation": {
       "code": "none",
       "message": ""

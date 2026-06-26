@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "sessionId": "1c5b600ea3af1be9bfb6117ccf9216ac",
+  "workerId": "pinky-t7-a2",
+  "attempt": 2,
+  "spec": "ui-design-unification",
+  "task": "T7",
+  "title": "Update verify-email.blade.php with design system styling",
+  "role": "builder",
+  "contract": "Replace generic Bootstrap/inline styles in verify-email.blade.php with nothing-tech design system classes: Buttons use .btn-primary for submit, .btn-secondary for links. Cards/containers use .card class with proper padding. Typography uses CSS custom properties for sizes (var(--type-*)). Colors use CSS custom properties (var(--color-*)). Spacing uses CSS custom properties (var(--space-*)). Alert/message boxes styled with design system color variables.",
+  "files": [
+    "resources/views/auth/verify-email.blade.php"
+  ],
+  "verify": "npm run build && grep -q \".btn-primary\\|.card\" resources/views/auth/verify-email.blade.php && echo \"\u2713 Design system classes applied\"",
+  "contextManifest": {
+    "required": [
+      {
+        "path": ".specd/roles/builder.md",
+        "mode": "read-full",
+        "tokenHint": 800
+      },
+      {
+        "path": ".specd/skills/specd-pinky/SKILL.md",
+        "mode": "read-full",
+        "tokenHint": 1200
+      },
+      {
+        "path": ".specd/skills/specd-execute/SKILL.md",
+        "mode": "read-full",
+        "tokenHint": 1600
+      },
+      {
+        "path": "resources/views/auth/verify-email.blade.php",
+        "mode": "read-targeted",
+        "tokenHint": 1200
+      }
+    ],
+    "reference-if-needed": [
+      {
+        "path": ".specd/specs/ui-design-unification/design.md",
+        "mode": "read-targeted",
+        "tokenHint": 1043
+      }
+    ],
+    "estimatedTokens": 4800,
+    "budget": 15000
+  },
+  "orchestration": {
+    "leaseSeconds": 600,
+    "maxRetries": 2
+  }
+}

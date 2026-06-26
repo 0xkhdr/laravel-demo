@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "sessionId": "1c5b600ea3af1be9bfb6117ccf9216ac",
+  "spec": "ui-design-unification",
+  "owner": "brain-cli",
+  "status": "running",
+  "policy": {
+    "approvalPolicy": "session",
+    "maxWorkers": 4,
+    "maxRetries": 2,
+    "sessionTimeoutSeconds": 7200,
+    "hostReportedCostLimitUSD": 0
+  },
+  "createdAt": "2026-06-26T13:21:16.499201699Z",
+  "updatedAt": "2026-06-26T13:21:16.499201699Z",
+  "expiresAt": "2026-06-26T15:21:16.499201699Z",
+  "lastSequence": 0
+}

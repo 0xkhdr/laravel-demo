@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/design-system.css') }}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('profile.show') }}">{{ config('app.name') }}</a>
+    <nav class="section" style="background-color: var(--color-surface); border-bottom: 1px solid var(--color-border);">
+        <div style="display: flex; align-items: center; padding: var(--space-4); max-width: 1200px; margin: 0 auto;">
+            <a href="{{ route('profile.show') }}" style="font-size: var(--type-h3); font-weight: var(--font-weight-bold); color: var(--color-text-primary); text-decoration: none;">{{ config('app.name') }}</a>
         </div>
     </nav>
 
@@ -17,6 +17,5 @@
         @yield('content')
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

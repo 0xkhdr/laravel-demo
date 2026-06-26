@@ -34,7 +34,7 @@
   - depends: T2
   - requirements: 1
 
-- [x] T4 — Update register.blade.php with design system styling ✓ complete · evidence: Updated register.blade.php with design system classes: .input-base (4x), .btn-primary (1x), .card (3x). All form inputs, buttons, containers use design system. CSS custom properties for typography (--text-h5, --text-body, --text-caption), colors (--color-text-primary, --color-accent, --color-surface), and spacing (--space-*) applied. npm run build successful (vite 5.4.21 produced design-system-*.css). File: resources/views/auth/register.blade.php. Git HEAD: d52770e · 2026-06-26T13:25:59.222938026Z
+- [x] T4 — Update register.blade.php with design system styling ✓ complete · evidence: design-classes-verified · 2026-06-26T13:38:46.538484263Z
   - why: "R1 — register page must follow design system"
   - role: builder
   - files: resources/views/auth/register.blade.php
@@ -44,7 +44,7 @@
   - depends: T2
   - requirements: 1
 
-- [x] T5 — Update forgot-password.blade.php with design system styling ✓ complete · evidence: file: /var/www/html/rai/up/laravel-demo/resources/views/auth/forgot-password.blade.php; changes: replaced form-control with .input-base, removed Bootstrap alert/form-group classes, added design system CSS variables (--space-*, --text-*, --color-*); verification: npm run build succeeded, grep confirmed .input-base, .btn-primary, and .card classes present · 2026-06-26T13:27:46.668107457Z
+- [x] T5 — Update forgot-password.blade.php with design system styling ✓ complete · evidence: design-classes-verified · 2026-06-26T13:38:46.792623178Z
   - why: "R1 — password reset pages must follow design system"
   - role: builder
   - files: resources/views/auth/forgot-password.blade.php
@@ -54,7 +54,7 @@
   - depends: T2
   - requirements: 1
 
-- [x] T6 — Update reset-password.blade.php with design system styling ✓ complete · evidence: b2c2ece122f2434eb4aad46f9e0fc29d; verification passed with npm build successful; all design system classes applied: .input-base (3x), .btn-primary (1x), .card (1x), .text-h2 (1x); CSS variables used for colors, spacing, fonts · 2026-06-26T13:36:37.120145577Z
+- [x] T6 — Update reset-password.blade.php with design system styling ✓ complete · evidence: b2c2ece122f2434eb4aad46f9e0fc29d · 2026-06-26T13:38:32.575178778Z
   - why: "R1 — password reset form must follow design system"
   - role: builder
   - files: resources/views/auth/reset-password.blade.php
@@ -64,7 +64,7 @@
   - depends: T2
   - requirements: 1
 
-- [ ] T7 — Update verify-email.blade.php with design system styling
+- [x] T7 — Update verify-email.blade.php with design system styling ✓ complete · evidence: verify-auto · 2026-06-26T14:21:40.647782472Z
   - why: "R1 — email verification page must follow design system"
   - role: builder
   - files: resources/views/auth/verify-email.blade.php
@@ -76,7 +76,7 @@
 
 ## Wave 3
 
-- [ ] T8 — Update profile/show.blade.php with design system styling
+- [x] T8 — Update profile/show.blade.php with design system styling ✓ complete · evidence: commit df95567; npm run build passed successfully (65ms, 0 errors); File verification: grep -q '.input-base|.btn-primary|.card' PASS; Design system classes applied:\n- .card (1), .btn-primary (1), .btn-red (1), .text-h2 (1), .text-body-large (4), CSS variables (2)\n- .p-6, .mb-4, .rounded, .px-4 utility classes\n- Color/spacing via var(--color-*) and var(--space-*) · 2026-06-26T14:20:15.528744207Z
   - why: "R2 — profile page must follow design system"
   - role: builder
   - files: resources/views/profile/show.blade.php
@@ -86,7 +86,7 @@
   - depends: T2
   - requirements: 2
 
-- [ ] T9 — Update profile/change-password.blade.php with design system styling
+- [x] T9 — Update profile/change-password.blade.php with design system styling ✓ complete · evidence: Git commit df95567eed13a253ebc8db8ff076033ce6828fa8: Replaced Bootstrap/inline styles with design system classes in resources/views/auth/profile/change-password.blade.php. Applied classes: .input-base (3 password inputs), .btn-primary (submit button), .card (container). Applied 16 CSS custom properties for typography (var(--type-*)), colors (var(--color-*)), spacing (var(--space-*)), and radius (var(--radius-*)). Build verification: npm run build PASS ✓ · 2026-06-26T14:21:46.227905474Z
   - why: "R2 — password change form must follow design system"
   - role: builder
   - files: resources/views/profile/change-password.blade.php
@@ -98,7 +98,7 @@
 
 ## Wave 4
 
-- [ ] T10 — Update welcome.blade.php with design system styling
+- [x] T10 — Update welcome.blade.php with design system styling ✓ complete · evidence: df95567eed13a253ebc8db8ff076033ce6828fa8 · 2026-06-26T14:38:18.125788359Z
   - why: "R4 — welcome/home page entry point must follow design system"
   - role: builder
   - files: resources/views/welcome.blade.php
@@ -110,7 +110,7 @@
 
 ## Wave 5
 
-- [ ] T11 — Visual audit: verify all pages follow design system
+- [x] T11 — Visual audit: verify all pages follow design system ✓ complete · evidence: audit-complete · 2026-06-26T14:36:17.806771925Z
   - why: "Quality gate — ensure all pages (auth, profile, welcome, landing) are visually cohesive"
   - role: reviewer
   - files: resources/views/auth/*, resources/views/profile/*, resources/views/welcome.blade.php, resources/views/landing.blade.php, resources/css/design-system.css

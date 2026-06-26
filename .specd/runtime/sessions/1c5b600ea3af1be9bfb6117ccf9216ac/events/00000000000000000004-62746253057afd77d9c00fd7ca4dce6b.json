@@ -1,20 +1,20 @@
 {
   "version": "1",
-  "messageId": "4613f1450583c207d80d1df8fd185d4a",
-  "sessionId": "e3ff2b9a5acd7ff88dc0b42d8f79a919",
-  "sequence": 3,
-  "createdAt": "2026-06-26T12:24:25.291243382Z",
-  "expiresAt": "2026-06-26T13:24:25.291243382Z",
+  "messageId": "62746253057afd77d9c00fd7ca4dce6b",
+  "sessionId": "1c5b600ea3af1be9bfb6117ccf9216ac",
+  "sequence": 4,
+  "createdAt": "2026-06-26T14:28:12.406783006Z",
+  "expiresAt": "2026-06-26T15:28:12.406783006Z",
   "type": "mission",
   "from": "brain",
-  "to": "pinky-t13-a1",
-  "spec": "auth-user-mgmt",
-  "task": "T13",
+  "to": "pinky-t10-a1",
+  "spec": "ui-design-unification",
+  "task": "T10",
   "attempt": 1,
   "payload": {
-    "dispatchDigest": "9913a8eb1c166d034a2f80d9604ef3b49856026e2f879855b68f7d21a46ee9b7",
+    "dispatchDigest": "d08f86eed5f4b8356569f76543c850e05f0d1e227fa9f9b2f17949936bdce132",
     "role": "builder",
-    "contextCommand": "specd context auth-user-mgmt",
+    "contextCommand": "specd context ui-design-unification",
     "contextManifest": {
       "version": 1,
       "softTokenCeiling": 12000,
@@ -50,7 +50,7 @@
         {
           "order": 4,
           "kind": "spec-context",
-          "command": "specd context auth-user-mgmt",
+          "command": "specd context ui-design-unification",
           "mode": "run-command",
           "required": true,
           "tokenHint": 1800,
@@ -59,7 +59,7 @@
         {
           "order": 5,
           "kind": "scope-file",
-          "path": "app/Http/Controllers/Auth/ProfileController.php",
+          "path": "resources/views/welcome.blade.php",
           "mode": "read-targeted",
           "required": true,
           "tokenHint": 1200,
@@ -68,42 +68,42 @@
         {
           "order": 6,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/requirements.md",
+          "path": ".specd/specs/ui-design-unification/requirements.md",
           "mode": "read-targeted",
           "required": false,
-          "tokenHint": 383,
+          "tokenHint": 100,
           "rationale": "only the requirements this task covers"
         },
         {
           "order": 7,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/design.md",
+          "path": ".specd/specs/ui-design-unification/design.md",
           "mode": "reference-if-needed",
           "required": false,
-          "tokenHint": 3326,
+          "tokenHint": 1043,
           "rationale": "source of truth; expand only if required by contract or context command"
         },
         {
           "order": 8,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/tasks.md",
+          "path": ".specd/specs/ui-design-unification/tasks.md",
           "mode": "read-targeted",
           "required": false,
-          "tokenHint": 179,
+          "tokenHint": 237,
           "rationale": "the task's row only, not the whole task list"
         }
       ],
       "estimatedTokens": 6600,
       "budget": 13500
     },
-    "contract": "Methods: show(), changePassword(ChangePasswordRequest). Show: render profile with user data, email verification status, last login. ChangePassword: verify current password, hash new password, update user, log audit, keep session alive, redirect with success. Do NOT allow email change in this task (future scope).",
+    "contract": "Update welcome page to reference landing.blade.php design patterns OR apply design system classes directly. Use .hero for hero section (if present), .section for content sections, .btn-primary/.btn-secondary for CTAs, typography scale, spacing scale, --color-* tokens. Can repurpose landing.blade.php structure or create minimal welcome that matches brand.",
     "files": [
-      "app/Http/Controllers/Auth/ProfileController.php"
+      "resources/views/welcome.blade.php"
     ],
-    "acceptance": "Controller exists, both methods work, audit is logged",
-    "verifyCommand": "php artisan test tests/Feature/ProfileControllerTest.php",
+    "acceptance": "Welcome page renders with design system styling. Hero section (if any) uses black background, white text, red accents. Overall look matches landing page.",
+    "verifyCommand": "npm run build \u0026\u0026 php artisan serve \u0026 sleep 2 \u0026\u0026 curl -s http://localhost:8000 | grep -c \"btn-primary\\|btn-secondary\\|hero\" || echo \"minimal-ok\"",
     "dependencies": [
-      "T9"
+      "T2"
     ],
     "authority": {
       "readOnly": false,
@@ -118,11 +118,11 @@
   "decision": {
     "version": 1,
     "action": "dispatch",
-    "spec": "auth-user-mgmt",
-    "taskId": "T13",
+    "spec": "ui-design-unification",
+    "taskId": "T10",
     "attempt": 1,
     "reason": "dispatch next runnable task",
-    "idempotencyKey": "e3ff2b9a5acd7ff88dc0b42d8f79a919:39:dispatch:T13:1",
+    "idempotencyKey": "1c5b600ea3af1be9bfb6117ccf9216ac:32:dispatch:T10:1",
     "escalation": {
       "code": "none",
       "message": ""

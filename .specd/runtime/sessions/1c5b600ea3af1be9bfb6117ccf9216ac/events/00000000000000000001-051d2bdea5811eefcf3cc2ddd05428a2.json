@@ -1,20 +1,20 @@
 {
   "version": "1",
-  "messageId": "656ee875b8867231ac1a429ce2ebdcd6",
-  "sessionId": "8dbeb249e8e449ea5658bd167adab167",
-  "sequence": 2,
-  "createdAt": "2026-06-26T11:27:29.98609906Z",
-  "expiresAt": "2026-06-26T12:27:29.98609906Z",
+  "messageId": "051d2bdea5811eefcf3cc2ddd05428a2",
+  "sessionId": "1c5b600ea3af1be9bfb6117ccf9216ac",
+  "sequence": 1,
+  "createdAt": "2026-06-26T13:21:16.504005554Z",
+  "expiresAt": "2026-06-26T14:21:16.504005554Z",
   "type": "mission",
   "from": "brain",
-  "to": "pinky-t1-a1",
-  "spec": "auth-user-mgmt",
-  "task": "T1",
+  "to": "pinky-t3-a1",
+  "spec": "ui-design-unification",
+  "task": "T3",
   "attempt": 1,
   "payload": {
-    "dispatchDigest": "ab173f7752ebed94b225d01a44401dbe55673d4f299d2caf6016667cda6d1ea0",
+    "dispatchDigest": "de909838ea63f7bbd6f7b9b69a01f6944cb96e8b07d5ad495fadf6118456b4ef",
     "role": "builder",
-    "contextCommand": "specd context auth-user-mgmt",
+    "contextCommand": "specd context ui-design-unification",
     "contextManifest": {
       "version": 1,
       "softTokenCeiling": 12000,
@@ -50,7 +50,7 @@
         {
           "order": 4,
           "kind": "spec-context",
-          "command": "specd context auth-user-mgmt",
+          "command": "specd context ui-design-unification",
           "mode": "run-command",
           "required": true,
           "tokenHint": 1800,
@@ -59,7 +59,7 @@
         {
           "order": 5,
           "kind": "scope-file",
-          "path": "database/migrations/YYYY_MM_DD_HHMMSS_create_email_verification_tokens_table.php",
+          "path": "resources/views/auth/login.blade.php",
           "mode": "read-targeted",
           "required": true,
           "tokenHint": 1200,
@@ -68,41 +68,43 @@
         {
           "order": 6,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/requirements.md",
+          "path": ".specd/specs/ui-design-unification/requirements.md",
           "mode": "read-targeted",
           "required": false,
-          "tokenHint": 191,
+          "tokenHint": 206,
           "rationale": "only the requirements this task covers"
         },
         {
           "order": 7,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/design.md",
+          "path": ".specd/specs/ui-design-unification/design.md",
           "mode": "reference-if-needed",
           "required": false,
-          "tokenHint": 3326,
+          "tokenHint": 1043,
           "rationale": "source of truth; expand only if required by contract or context command"
         },
         {
           "order": 8,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/tasks.md",
+          "path": ".specd/specs/ui-design-unification/tasks.md",
           "mode": "read-targeted",
           "required": false,
-          "tokenHint": 157,
+          "tokenHint": 252,
           "rationale": "the task's row only, not the whole task list"
         }
       ],
       "estimatedTokens": 6600,
       "budget": 13500
     },
-    "contract": "Create table with (email PRIMARY, token, created_at, expires_at). Do NOT add user_id foreign key (tokens are email-based, not user_id-based). Use nullable created_at for null guard.",
+    "contract": "Update login.blade.php to use design system classes and colors. Apply .btn-primary to submit button, .input-base to email/password inputs. Use typography scale (--text-h2 or --text-h3 for page title, --text-body for descriptions). Apply --space-* for form gaps. Black/white color scheme with red accents on buttons. Keep layout and structure intact; only update class names and inline styles to reference CSS variables.",
     "files": [
-      "database/migrations/YYYY_MM_DD_HHMMSS_create_email_verification_tokens_table.php"
+      "resources/views/auth/login.blade.php"
     ],
-    "acceptance": "Migration file exists, can be run/rolled back via artisan migrate",
-    "verifyCommand": "php artisan migrate \u0026\u0026 php artisan migrate:rollback \u0026\u0026 php artisan migrate",
-    "dependencies": [],
+    "acceptance": "Login form renders with black background or white, depending on page context. Inputs have bottom borders only. Button is black with white text. Typography matches design system scale.",
+    "verifyCommand": "npm run build \u0026\u0026 php artisan serve \u0026 sleep 2 \u0026\u0026 curl -s http://localhost:8000/login | grep -c \"btn-primary\"",
+    "dependencies": [
+      "T2"
+    ],
     "authority": {
       "readOnly": false,
       "allowedActions": [
@@ -116,11 +118,11 @@
   "decision": {
     "version": 1,
     "action": "dispatch",
-    "spec": "auth-user-mgmt",
-    "taskId": "T1",
+    "spec": "ui-design-unification",
+    "taskId": "T3",
     "attempt": 1,
     "reason": "dispatch next runnable task",
-    "idempotencyKey": "8dbeb249e8e449ea5658bd167adab167:7:dispatch:T1:1",
+    "idempotencyKey": "1c5b600ea3af1be9bfb6117ccf9216ac:17:dispatch:T3:1",
     "escalation": {
       "code": "none",
       "message": ""

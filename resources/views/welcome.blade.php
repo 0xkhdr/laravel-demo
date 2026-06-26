@@ -4,18 +4,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name') }}</title>
-    <style>
-        body { font-family: sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #f8fafc; }
-        .card { background: white; padding: 2rem 3rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.1); text-align: center; }
-        h1 { color: #1a1a1a; margin-bottom: .5rem; }
-        p { color: #666; margin: 0; }
-        a { color: #6366f1; text-decoration: none; }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/design-system.css') }}">
+    @vite(['resources/css/design-system.css', 'resources/js/nav.js', 'resources/js/menu.js'])
 </head>
 <body>
-    <div class="card">
-        <h1>{{ config('app.name') }}</h1>
-        <p>API is running. See <a href="/api/users">/api/users</a> or <a href="/horizon">Horizon</a>.</p>
-    </div>
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1 class="text-hero">{{ config('app.name') }}</h1>
+            <p class="text-body-large">Welcome to our platform. Explore features and start building today.</p>
+            <div class="hero-actions">
+                <a href="/api/users" class="btn btn-primary" role="button">API Documentation</a>
+                <a href="/horizon" class="btn btn-secondary" role="button">View Horizon</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-container">
+            <div class="card">
+                <h2 class="section-title">Platform Features</h2>
+                <p class="text-body-large">Build and scale with our design system. Explore our API and monitoring tools.</p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

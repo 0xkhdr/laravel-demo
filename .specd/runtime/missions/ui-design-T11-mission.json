@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "sessionId": "1c5b600ea3af1be9bfb6117ccf9216ac",
+  "workerId": "pinky-reviewer-t11",
+  "attempt": 0,
+  "spec": "ui-design-unification",
+  "task": "T11",
+  "title": "Visual audit: verify all pages follow design system",
+  "role": "reviewer",
+  "contract": "Review all pages updated in T1-T10 to verify design system compliance. All pages must load without console errors. All form inputs use .input-base class. All primary buttons use .btn-primary. All secondary buttons use .btn-secondary. Cards use .card class. Typography is semantic (h1-h6, p, span with classes). Colors use CSS variables (var(--color-*)). Spacing uses CSS variables (var(--space-*)). Dark theme toggle works (if implemented). Responsive design maintained.",
+  "files": [
+    "resources/views/landing.blade.php",
+    "resources/views/auth/login.blade.php",
+    "resources/views/auth/register.blade.php",
+    "resources/views/auth/forgot-password.blade.php",
+    "resources/views/auth/reset-password.blade.php",
+    "resources/views/auth/verify-email.blade.php",
+    "resources/views/auth/profile/show.blade.php",
+    "resources/views/auth/profile/change-password.blade.php"
+  ],
+  "verify": "npm run build && grep -q '.input-base\\|.btn-primary\\|.btn-secondary\\|.card' resources/views/auth/login.blade.php && echo 'Design system classes found'",
+  "contextManifest": {
+    "required": [
+      {
+        "path": ".specd/roles/reviewer.md",
+        "mode": "read-full"
+      },
+      {
+        "path": ".specd/skills/specd-pinky/SKILL.md",
+        "mode": "read-full"
+      },
+      {
+        "path": ".specd/specs/ui-design-unification/tasks.md",
+        "mode": "read-targeted"
+      }
+    ],
+    "optional": [
+      {
+        "path": ".specd/specs/ui-design-unification/requirements.md",
+        "mode": "read-targeted"
+      },
+      {
+        "path": ".specd/specs/ui-design-unification/design.md",
+        "mode": "reference-if-needed"
+      }
+    ]
+  },
+  "budget": 15000,
+  "estimatedTokens": 6000,
+  "leaseSeconds": 600,
+  "maxRetries": 1
+}

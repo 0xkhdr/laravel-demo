@@ -1,0 +1,7 @@
+{"time":"2026-06-26T16:09:57.144419934+03:00","level":"INFO","msg":"brain event","event":"dispatch","session":"916ce61f173d5bde881d172f39959cad","worker":"t1-a1","task":"T1"}
+{"time":"2026-06-26T16:09:57.194651689+03:00","level":"INFO","msg":"brain event","event":"complete","session":"916ce61f173d5bde881d172f39959cad","worker":"t1-a1","task":"T1","dur_ms":49,"exit":2}
+{"time":"2026-06-26T16:09:57.194726302+03:00","level":"INFO","msg":"brain event","event":"reclaim","session":"916ce61f173d5bde881d172f39959cad","worker":"t1-a1","task":"T1"}
+{"time":"2026-06-26T16:09:57.213035589+03:00","level":"INFO","msg":"brain event","event":"dispatch","session":"916ce61f173d5bde881d172f39959cad","worker":"t1-a2","task":"T1"}
+{"time":"2026-06-26T16:09:57.27610227+03:00","level":"INFO","msg":"brain event","event":"complete","session":"916ce61f173d5bde881d172f39959cad","worker":"t1-a2","task":"T1","dur_ms":62,"exit":2}
+{"time":"2026-06-26T16:09:57.276227805+03:00","level":"INFO","msg":"brain event","event":"reclaim","session":"916ce61f173d5bde881d172f39959cad","worker":"t1-a2","task":"T1"}
+{"time":"2026-06-26T16:09:57.290183328+03:00","level":"WARN","msg":"brain event","event":"escalate","session":"916ce61f173d5bde881d172f39959cad","worker":"","task":""}

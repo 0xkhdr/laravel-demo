@@ -1,20 +1,20 @@
 {
   "version": "1",
-  "messageId": "f26fab9758931057d412155b5a350b52",
-  "sessionId": "e3ff2b9a5acd7ff88dc0b42d8f79a919",
-  "sequence": 2,
-  "createdAt": "2026-06-26T12:22:07.47718524Z",
-  "expiresAt": "2026-06-26T13:22:07.47718524Z",
+  "messageId": "821bae0869b8730370f254ae7e2e461b",
+  "sessionId": "1c5b600ea3af1be9bfb6117ccf9216ac",
+  "sequence": 3,
+  "createdAt": "2026-06-26T14:19:44.393585245Z",
+  "expiresAt": "2026-06-26T15:19:44.393585245Z",
   "type": "mission",
   "from": "brain",
-  "to": "pinky-t12-a1",
-  "spec": "auth-user-mgmt",
-  "task": "T12",
-  "attempt": 1,
+  "to": "pinky-t7-a2",
+  "spec": "ui-design-unification",
+  "task": "T7",
+  "attempt": 2,
   "payload": {
-    "dispatchDigest": "7a94b5237f5697aa0b562a6869976db8a4f7a8ae28d4922abec6be80fd23daec",
+    "dispatchDigest": "ac121b7a65f0fb4465d38cd087ad2e3572dec9366ed45dd180b8239a1e0a3a8c",
     "role": "builder",
-    "contextCommand": "specd context auth-user-mgmt",
+    "contextCommand": "specd context ui-design-unification",
     "contextManifest": {
       "version": 1,
       "softTokenCeiling": 12000,
@@ -50,7 +50,7 @@
         {
           "order": 4,
           "kind": "spec-context",
-          "command": "specd context auth-user-mgmt",
+          "command": "specd context ui-design-unification",
           "mode": "run-command",
           "required": true,
           "tokenHint": 1800,
@@ -59,7 +59,7 @@
         {
           "order": 5,
           "kind": "scope-file",
-          "path": "app/Http/Controllers/Auth/PasswordResetController.php",
+          "path": "resources/views/auth/verify-email.blade.php",
           "mode": "read-targeted",
           "required": true,
           "tokenHint": 1200,
@@ -68,43 +68,42 @@
         {
           "order": 6,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/requirements.md",
+          "path": ".specd/specs/ui-design-unification/requirements.md",
           "mode": "read-targeted",
           "required": false,
-          "tokenHint": 267,
+          "tokenHint": 206,
           "rationale": "only the requirements this task covers"
         },
         {
           "order": 7,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/design.md",
+          "path": ".specd/specs/ui-design-unification/design.md",
           "mode": "reference-if-needed",
           "required": false,
-          "tokenHint": 3326,
+          "tokenHint": 1043,
           "rationale": "source of truth; expand only if required by contract or context command"
         },
         {
           "order": 8,
           "kind": "source-artifact",
-          "path": ".specd/specs/auth-user-mgmt/tasks.md",
+          "path": ".specd/specs/ui-design-unification/tasks.md",
           "mode": "read-targeted",
           "required": false,
-          "tokenHint": 229,
+          "tokenHint": 162,
           "rationale": "the task's row only, not the whole task list"
         }
       ],
       "estimatedTokens": 6600,
       "budget": 13500
     },
-    "contract": "Methods: showForgotForm(), forgotPassword(Request), showResetForm($email, $token), resetPassword(ResetPasswordRequest). ForgotPassword: do NOT leak email existence (show success for all inputs), generate reset token, dispatch notification if email exists. ResetPassword: validate token + email, validate new password, update hash, revoke all sessions (call User::revokeAllSessions()), consume token, log audit, redirect to login. Do NOT log in user after reset.",
+    "contract": "Apply typography scale (--text-h2 for title), .btn-primary for action buttons, --space-* for spacing. Keep messaging clear.",
     "files": [
-      "app/Http/Controllers/Auth/PasswordResetController.php"
+      "resources/views/auth/verify-email.blade.php"
     ],
-    "acceptance": "Controller exists, handles both forgot and reset flows, no email-existence leak",
-    "verifyCommand": "php artisan test tests/Feature/PasswordResetControllerTest.php",
+    "acceptance": "Page renders with design system styling. Buttons and text follow design system scale.",
+    "verifyCommand": "npm run build \u0026\u0026 php artisan serve \u0026 sleep 2 \u0026\u0026 curl -s http://localhost:8000/email/verify | grep -c \"btn-primary\" || echo \"requires-auth\"",
     "dependencies": [
-      "T6",
-      "T8"
+      "T2"
     ],
     "authority": {
       "readOnly": false,
@@ -119,11 +118,11 @@
   "decision": {
     "version": 1,
     "action": "dispatch",
-    "spec": "auth-user-mgmt",
-    "taskId": "T12",
-    "attempt": 1,
+    "spec": "ui-design-unification",
+    "taskId": "T7",
+    "attempt": 2,
     "reason": "dispatch next runnable task",
-    "idempotencyKey": "e3ff2b9a5acd7ff88dc0b42d8f79a919:37:dispatch:T12:1",
+    "idempotencyKey": "1c5b600ea3af1be9bfb6117ccf9216ac:27:dispatch:T7:2",
     "escalation": {
       "code": "none",
       "message": ""

@@ -23,7 +23,7 @@
   },
   "orchestration": {
     "enabled": true,
-    "approvalPolicy": "planning",
+    "approvalPolicy": "session",
     "workerMode": "host",
     "maxWorkers": 4,
     "maxRetries": 2,

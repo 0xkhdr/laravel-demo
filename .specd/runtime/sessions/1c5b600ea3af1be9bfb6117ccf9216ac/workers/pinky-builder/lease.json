@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "sessionId": "1c5b600ea3af1be9bfb6117ccf9216ac",
+  "workerId": "pinky-builder",
+  "spec": "ui-design-unification",
+  "task": "T3",
+  "attempt": 1,
+  "status": "active",
+  "acquiredAt": "2026-06-26T13:21:57.485458554Z",
+  "heartbeatAt": "2026-06-26T13:21:57.485458554Z",
+  "leaseUntil": "2026-06-26T13:23:57.485458554Z",
+  "messageExpiresAt": "2026-06-26T14:21:51.492726633Z"
+}
