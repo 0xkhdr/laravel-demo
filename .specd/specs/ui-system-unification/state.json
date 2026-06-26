@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 5,
+  "revision": 6,
+  "spec": "ui-system-unification",
+  "title": "Unified UI System",
+  "status": "executing",
+  "phase": "execute",
+  "gate": "none",
+  "turn": 0,
+  "createdAt": "2026-06-26T23:25:16.886666269Z",
+  "updatedAt": "2026-06-26T23:43:12.239148916Z",
+  "tasks": {
+    "T1": {
+      "id": "T1",
+      "title": "Audit the landing reference and system analysis",
+      "role": "investigator",
+      "wave": 1,
+      "depends": [],
+      "requirements": [
+        1,
+        2,
+        3
+      ],
+      "status": "pending"
+    },
+    "T2": {
+      "id": "T2",
+      "title": "Update steering docs for the canonical UI system",
+      "role": "builder",
+      "wave": 1,
+      "depends": [
+        "T1"
+      ],
+      "requirements": [
+        7
+      ],
+      "status": "pending"
+    },
+    "T3": {
+      "id": "T3",
+      "title": "Build or align the shared shell and navigation",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        1,
+        4
+      ],
+      "status": "pending"
+    },
+    "T4": {
+      "id": "T4",
+      "title": "Define shared tokens and primitives",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T3"
+      ],
+      "requirements": [
+        2,
+        3,
+        5
+      ],
+      "status": "pending"
+    },
+    "T5": {
+      "id": "T5",
+      "title": "Refactor the landing page onto the shared system",
+      "role": "builder",
+      "wave": 3,
+      "depends": [
+        "T4"
+      ],
+      "requirements": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "pending"
+    },
+    "T6": {
+      "id": "T6",
+      "title": "Apply the shared system to current and future page templates",
+      "role": "builder",
+      "wave": 3,
+      "depends": [
+        "T4"
+      ],
+      "requirements": [
+        1,
+        2,
+        6
+      ],
+      "status": "pending"
+    },
+    "T7": {
+      "id": "T7",
+      "title": "Verify responsiveness, accessibility, and consistency",
+      "role": "verifier",
+      "wave": 4,
+      "depends": [
+        "T5",
+        "T6"
+      ],
+      "requirements": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "status": "pending"
+    }
+  },
+  "blockers": [],
+  "executionMode": "orchestrated",
+  "modeOrigin": "user"
+}

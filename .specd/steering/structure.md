@@ -1,51 +1,23 @@
-# Structure — Repo layout & module boundaries
+# Structure Steering
 
-Portfolio platform. Laravel 13 with landing page, article publishing, package directory. See: app/, routes/, .specd/steering/product.md
+## Source Of Truth
+- `resources/views/landing.blade.php` is the reference page for shell, section rhythm, and page composition.
+- `nothing-tech-design-system.md` is the reference analysis for palette, typography, spacing, motion, and tone.
+- Shared UI decisions should be expressed centrally, then consumed by pages.
 
-## Layout
+## File Placement Rules
+- Put the base page shell in shared layout files, not inside individual page templates.
+- Put reusable UI fragments in Blade components or shared partials.
+- Put design tokens and shared visual primitives in the design-system stylesheet, not inline on pages.
+- Keep page-specific content in page templates; keep presentation rules in shared files.
 
-- **app/** — Source code
-  - **Models/** — Article, Package, Project models
-  - **Http/Controllers/** — Request handlers
-    - **Web/** — Landing page, article/package views
-    - **Api/** — JSON endpoints for articles, packages
-  - **Providers/** — Service providers
-- **routes/** — Route definitions
-  - **web.php** — Public pages (/, /articles, /articles/{slug}, /packages, /projects)
-  - **api.php** — JSON APIs (/api/articles, /api/packages)
-- **resources/views/** — Landing page, article layout, package showcase
-- **database/migrations/** — Articles, packages, projects tables
-- **storage/** — Article markdown files, images
-- **public/** — Static assets
-- **tests/** — Feature & unit tests
+## Composition Rules
+- New pages should extend the same layout and inherit the same spacing and width constraints.
+- Section wrappers, headings, button treatments, cards, and form surfaces should be built from reusable primitives.
+- Avoid duplicated markup for navigation, mobile menus, or repeated content blocks.
 
-## Pages / Web Routes
-
-- **GET /** — Landing page (hero, featured projects, recent articles)
-- **GET /articles** — Article listing
-- **GET /articles/{slug}** — Article detail (rendered markdown)
-- **GET /packages** — Package directory
-- **GET /projects** — Projects showcase
-
-## API Routes
-
-- **GET /api/articles** — List articles (JSON)
-- **GET /api/articles/{slug}** — Article detail (JSON)
-- **GET /api/packages** — List packages (JSON)
-
-## Module boundaries
-
-- Web routes serve rendered Blade views
-- API routes return JSON for frontends/clients
-- Models (Article, Package, Project) encapsulate data/relationships
-- Controllers route requests to models/views
-- Markdown storage: raw files in storage/, parsed on read
-
-## Naming
-
-- **Routes**: kebab-case (get /articles, /articles/my-post-title)
-- **Models**: PascalCase (Article, Package, Project)
-- **Controllers**: PascalCase + Controller (ArticleController, PackageController)
-- **Methods**: RESTful (index, show for GET; store for POST)
-- **Files**: snake_case for blade templates (article_detail.blade.php)
-- **Slugs**: kebab-case, auto-generated from title or explicit
+## Anti-Patterns
+- No per-page color palettes.
+- No one-off spacing scales.
+- No isolated button or card styles that bypass the shared system.
+- No layout decisions hidden inside arbitrary page templates.
