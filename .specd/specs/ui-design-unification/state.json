@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 5,
+  "revision": 6,
+  "spec": "ui-design-unification",
+  "title": "Unify UI with Design System",
+  "status": "executing",
+  "phase": "execute",
+  "gate": "none",
+  "turn": 0,
+  "createdAt": "2026-06-26T12:55:42.086937685Z",
+  "updatedAt": "2026-06-26T13:00:34.668869549Z",
+  "tasks": {
+    "T1": {
+      "id": "T1",
+      "title": "Create design-system.css with tokens and component classes",
+      "role": "builder",
+      "wave": 1,
+      "depends": [],
+      "requirements": [
+        3
+      ],
+      "status": "pending"
+    },
+    "T10": {
+      "id": "T10",
+      "title": "Update welcome.blade.php with design system styling",
+      "role": "builder",
+      "wave": 4,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        4
+      ],
+      "status": "pending"
+    },
+    "T11": {
+      "id": "T11",
+      "title": "Visual audit: verify all pages follow design system",
+      "role": "reviewer",
+      "wave": 5,
+      "depends": [
+        "T3",
+        "T4",
+        "T5",
+        "T6",
+        "T7",
+        "T8",
+        "T9",
+        "T10"
+      ],
+      "requirements": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "pending"
+    },
+    "T2": {
+      "id": "T2",
+      "title": "Include design-system.css in app.blade.php layout",
+      "role": "builder",
+      "wave": 1,
+      "depends": [
+        "T1"
+      ],
+      "requirements": [
+        3
+      ],
+      "status": "pending"
+    },
+    "T3": {
+      "id": "T3",
+      "title": "Update login.blade.php with design system styling",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        1
+      ],
+      "status": "pending"
+    },
+    "T4": {
+      "id": "T4",
+      "title": "Update register.blade.php with design system styling",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        1
+      ],
+      "status": "pending"
+    },
+    "T5": {
+      "id": "T5",
+      "title": "Update forgot-password.blade.php with design system styling",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        1
+      ],
+      "status": "pending"
+    },
+    "T6": {
+      "id": "T6",
+      "title": "Update reset-password.blade.php with design system styling",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        1
+      ],
+      "status": "pending"
+    },
+    "T7": {
+      "id": "T7",
+      "title": "Update verify-email.blade.php with design system styling",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        1
+      ],
+      "status": "pending"
+    },
+    "T8": {
+      "id": "T8",
+      "title": "Update profile/show.blade.php with design system styling",
+      "role": "builder",
+      "wave": 3,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        2
+      ],
+      "status": "pending"
+    },
+    "T9": {
+      "id": "T9",
+      "title": "Update profile/change-password.blade.php with design system styling",
+      "role": "builder",
+      "wave": 3,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        2
+      ],
+      "status": "pending"
+    }
+  },
+  "blockers": [],
+  "executionMode": "orchestrated",
+  "modeOrigin": "user"
+}
