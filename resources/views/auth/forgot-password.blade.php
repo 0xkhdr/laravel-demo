@@ -38,7 +38,7 @@
             </form>
 
             <div class="mt-3">
-                Remember your password? <a href="{{ route('login') }}">Login here</a>
+                Remember your password? <a href="{{ route('auth.login') }}">Login here</a>
             </div>
         </div>
     </div>

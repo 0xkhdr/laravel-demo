@@ -44,7 +44,7 @@
             </form>
 
             <div class="mt-3">
-                <a href="{{ route('login') }}">Back to login</a>
+                <a href="{{ route('auth.login') }}">Back to login</a>
             </div>
         </div>
     </div>

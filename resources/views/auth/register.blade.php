@@ -53,7 +53,7 @@
             </form>
 
             <div class="mt-3">
-                Already have an account? <a href="{{ route('login') }}">Login here</a>
+                Already have an account? <a href="{{ route('auth.login') }}">Login here</a>
             </div>
         </div>
     </div>

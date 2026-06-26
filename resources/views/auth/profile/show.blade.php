@@ -33,8 +33,11 @@
             </div>
 
             <div class="mt-4">
-                <a href="{{ route('auth.change-password') }}" class="btn btn-primary">Change Password</a>
-                <a href="{{ route('auth.logout') }}" class="btn btn-danger">Logout</a>
+                <a href="{{ route('change-password') }}" class="btn btn-primary">Change Password</a>
+                <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
             </div>
         </div>
     </div>

@@ -8,13 +8,13 @@ use App\Http\Controllers\Auth\ProfileController;
 
 // Registration routes (guest only)
 Route::middleware('guest')->group(function () {
-    Route::get('/auth/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::get('/auth/register', [AuthController::class, 'showRegisterForm'])->name('auth.register');
     Route::post('/auth/register', [AuthController::class, 'register']);
 });
 
 // Login routes (guest only, with throttle on login)
 Route::middleware('guest')->group(function () {
-    Route::get('/auth/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::get('/auth/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
     Route::post('/auth/login', [AuthController::class, 'login'])
         ->middleware('throttle:5,1'); // 5 attempts per minute
 });
@@ -36,10 +36,10 @@ Route::post('/auth/verify/resend', [VerificationController::class, 'resend'])
 // Password reset routes (guest only)
 Route::middleware('guest')->group(function () {
     Route::get('/auth/forgot-password', [PasswordResetController::class, 'showForgotForm'])
-        ->name('forgot-password');
+        ->name('auth.forgot-password');
     Route::post('/auth/forgot-password', [PasswordResetController::class, 'forgotPassword']);
     Route::get('/auth/reset-password', [PasswordResetController::class, 'showResetForm'])
-        ->name('reset-password');
+        ->name('auth.reset-password');
     Route::post('/auth/reset-password', [PasswordResetController::class, 'resetPassword']);
 });
 
@@ -49,5 +49,6 @@ Route::middleware('auth')->group(function () {
         ->name('profile.show');
     Route::get('/dashboard/change-password', [ProfileController::class, 'showChangePasswordForm'])
         ->name('change-password');
-    Route::post('/dashboard/change-password', [ProfileController::class, 'changePassword']);
+    Route::post('/dashboard/change-password', [ProfileController::class, 'changePassword'])
+        ->name('change-password.update');
 });

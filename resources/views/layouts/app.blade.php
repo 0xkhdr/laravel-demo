@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('dashboard') }}">{{ config('app.name') }}</a>
+            <a class="navbar-brand" href="{{ route('profile.show') }}">{{ config('app.name') }}</a>
         </div>
     </nav>
 

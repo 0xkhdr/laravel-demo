@@ -80,7 +80,7 @@ class AuthController extends Controller
         $user = Auth::user();
         AuditLogger::login($user, $request->ip());
 
-        return redirect()->intended(route('dashboard'))
+        return redirect()->intended(route('profile.show'))
             ->with('success', 'Login successful.');
     }
 

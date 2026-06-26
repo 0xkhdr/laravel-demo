@@ -35,7 +35,7 @@ class VerifyEmailNotification extends Notification
         // Generate verification token using the User model's method
         $verificationToken = $notifiable->generateEmailVerificationToken();
 
-        $verificationUrl = route('auth.verify', [
+        $verificationUrl = route('verify', [
             'email' => $notifiable->email,
             'token' => $verificationToken,
         ]);

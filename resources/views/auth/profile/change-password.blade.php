@@ -21,7 +21,7 @@
                 <div class="alert alert-success">{{ session('status') }}</div>
             @endif
 
-            <form method="POST" action="{{ route('auth.update-password') }}">
+            <form method="POST" action="{{ route('change-password.update') }}">
                 @csrf
 
                 <div class="form-group">
@@ -46,7 +46,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update Password</button>
-                <a href="{{ route('auth.profile') }}" class="btn btn-secondary">Back to Profile</a>
+                <a href="{{ route('profile.show') }}" class="btn btn-secondary">Back to Profile</a>
             </form>
         </div>
     </div>

@@ -1,0 +1,19 @@
+{
+  "resources/css/design-system.css": {
+    "file": "assets/design-system-AncAuyHy.css",
+    "src": "resources/css/design-system.css",
+    "isEntry": true
+  },
+  "resources/js/menu.js": {
+    "file": "assets/menu-CZRBYEHs.js",
+    "name": "menu",
+    "src": "resources/js/menu.js",
+    "isEntry": true
+  },
+  "resources/js/nav.js": {
+    "file": "assets/nav-Vu00GdXp.js",
+    "name": "nav",
+    "src": "resources/js/nav.js",
+    "isEntry": true
+  }
+}
