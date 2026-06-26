@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }}</title>
-    <link rel="stylesheet" href="{{ asset('css/design-system.css') }}">
+    @vite(['resources/css/design-system.css', 'resources/js/nav.js', 'resources/js/menu.js'])
 </head>
 <body>
     <nav class="section" style="background-color: var(--color-surface); border-bottom: 1px solid var(--color-border);">
