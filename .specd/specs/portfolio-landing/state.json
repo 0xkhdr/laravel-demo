@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 5,
+  "revision": 3,
+  "spec": "portfolio-landing",
+  "title": "Portfolio Landing Page using Nothing.tech Design System",
+  "status": "design",
+  "phase": "plan",
+  "gate": "none",
+  "turn": 0,
+  "createdAt": "2026-06-26T10:03:27.749579671Z",
+  "updatedAt": "2026-06-26T10:07:14.198540963Z",
+  "tasks": {
+    "T1": {
+      "id": "T1",
+      "title": "Create LandingController and route",
+      "role": "builder",
+      "wave": 1,
+      "depends": [],
+      "requirements": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "status": "pending"
+    },
+    "T10": {
+      "id": "T10",
+      "title": "Verify accessibility (WCAG AA, semantic HTML, keyboard navigation, screen reader)",
+      "role": "verifier",
+      "wave": 3,
+      "depends": [
+        "T8"
+      ],
+      "requirements": [
+        10
+      ],
+      "status": "pending"
+    },
+    "T11": {
+      "id": "T11",
+      "title": "Verify responsive design breakpoints and performance (Lighthouse \u003e85, CLS \u003c0.1, FCP \u003c2s)",
+      "role": "verifier",
+      "wave": 3,
+      "depends": [
+        "T9",
+        "T10"
+      ],
+      "requirements": [
+        9,
+        10
+      ],
+      "status": "pending"
+    },
+    "T12": {
+      "id": "T12",
+      "title": "Final integration test: render full landing page, verify all sections, all tokens, no errors",
+      "role": "verifier",
+      "wave": 3,
+      "depends": [
+        "T11"
+      ],
+      "requirements": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "status": "pending"
+    },
+    "T2": {
+      "id": "T2",
+      "title": "Create landing.blade.php view skeleton",
+      "role": "builder",
+      "wave": 1,
+      "depends": [
+        "T1"
+      ],
+      "requirements": [
+        1,
+        2,
+        8
+      ],
+      "status": "pending"
+    },
+    "T3": {
+      "id": "T3",
+      "title": "Implement Hero section (full-viewport, black bg, NDot headline, CTA)",
+      "role": "builder",
+      "wave": 1,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        1
+      ],
+      "status": "pending"
+    },
+    "T4": {
+      "id": "T4",
+      "title": "Implement Navigation bar (fixed, scroll detection, adaptive color)",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T3"
+      ],
+      "requirements": [
+        2
+      ],
+      "status": "pending"
+    },
+    "T5": {
+      "id": "T5",
+      "title": "Implement Featured projects grid (responsive, 2→1 columns, hover scale)",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        3
+      ],
+      "status": "pending"
+    },
+    "T6": {
+      "id": "T6",
+      "title": "Implement Recent articles grid (responsive, 3→1 columns, black bg, red \"View All\" link)",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        4
+      ],
+      "status": "pending"
+    },
+    "T7": {
+      "id": "T7",
+      "title": "Implement Packages preview grid (3–4 feature cards with icons, \"Explore All\" button)",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        5
+      ],
+      "status": "pending"
+    },
+    "T8": {
+      "id": "T8",
+      "title": "Implement CTA sections and footer",
+      "role": "builder",
+      "wave": 2,
+      "depends": [
+        "T2"
+      ],
+      "requirements": [
+        6,
+        7
+      ],
+      "status": "pending"
+    },
+    "T9": {
+      "id": "T9",
+      "title": "Implement responsive design (mobile-first, hamburger menu on \u003c1024px)",
+      "role": "builder",
+      "wave": 3,
+      "depends": [
+        "T4",
+        "T5",
+        "T6",
+        "T7"
+      ],
+      "requirements": [
+        9
+      ],
+      "status": "pending"
+    }
+  },
+  "blockers": []
+}
