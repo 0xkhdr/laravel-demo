@@ -5,25 +5,36 @@
 @section('content')
 <div class="container">
     <div class="card">
-        <div class="card-header">User Profile</div>
-        <div class="card-body">
+        <div class="p-6">
+            <h1 class="text-h2 mb-4">User Profile</h1>
+
             @if (session('status'))
-                <div class="alert alert-success">{{ session('status') }}</div>
+                <div class="bg-primary text-white p-4 rounded mb-4">
+                    {{ session('status') }}
+                </div>
             @endif
 
             <div class="profile-info">
-                <p><strong>Name:</strong> {{ $user->name }}</p>
-                <p><strong>Email:</strong> {{ $user->email }}</p>
                 <p>
-                    <strong>Email Verified:</strong>
+                    <strong class="text-body-large">Name:</strong> {{ $user->name }}
+                </p>
+                <p>
+                    <strong class="text-body-large">Email:</strong> {{ $user->email }}
+                </p>
+                <p>
+                    <strong class="text-body-large">Email Verified:</strong>
                     @if ($user->email_verified_at)
-                        <span class="badge badge-success">Yes ({{ $user->email_verified_at->format('M d, Y H:i') }})</span>
+                        <span class="rounded px-4" style="background-color: var(--color-primary); color: white; padding: var(--space-2) var(--space-4); display: inline-block;">
+                            Yes ({{ $user->email_verified_at->format('M d, Y H:i') }})
+                        </span>
                     @else
-                        <span class="badge badge-warning">No</span>
+                        <span class="rounded px-4" style="background-color: var(--color-gray-400); color: white; padding: var(--space-2) var(--space-4); display: inline-block;">
+                            No
+                        </span>
                     @endif
                 </p>
                 <p>
-                    <strong>Last Login:</strong>
+                    <strong class="text-body-large">Last Login:</strong>
                     @if ($user->last_login)
                         {{ $user->last_login->format('M d, Y H:i') }}
                     @else
@@ -31,15 +42,15 @@
                     @endif
                 </p>
             </div>
-
-            <div class="mt-4">
-                <a href="{{ route('change-password') }}" class="btn btn-primary">Change Password</a>
-                <form method="POST" action="{{ route('logout') }}" style="display:inline;">
-                    @csrf
-                    <button type="submit" class="btn btn-danger">Logout</button>
-                </form>
-            </div>
         </div>
+    </div>
+
+    <div class="mt-6">
+        <a href="{{ route('change-password') }}" class="btn btn-primary">Change Password</a>
+        <form method="POST" action="{{ route('logout') }}" style="display: inline-block;">
+            @csrf
+            <button type="submit" class="btn btn-red">Logout</button>
+        </form>
     </div>
 </div>
 @endsection
