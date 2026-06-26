@@ -1,0 +1,28 @@
+{
+  "version": "1",
+  "messageId": "e36123e18ce771d3e21603aeffacf19e",
+  "sessionId": "cbf5b055110dd893e6d9208c79b020f9",
+  "sequence": 2,
+  "createdAt": "2026-06-20T23:30:55.800819202Z",
+  "expiresAt": "2026-06-21T00:30:55.800819202Z",
+  "type": "evidence",
+  "from": "pinky-pinky-t1-a1",
+  "to": "brain",
+  "spec": "personal-blog-mvp",
+  "task": "T1",
+  "attempt": 1,
+  "payload": {
+    "verificationRef": "ac4e120863aad4bcaf1242008a2dee35",
+    "summary": "Added article model, migration, factory, seed data, portfolio config, and passing Article tests.",
+    "changedFiles": [
+      "app/Models/Article.php",
+      "config/portfolio.php",
+      "database/factories/ArticleFactory.php",
+      "database/migrations/2026_06_21_000000_create_articles_table.php",
+      "database/seeders/ArticleSeeder.php",
+      "database/seeders/DatabaseSeeder.php",
+      "tests/Feature/ArticleTest.php"
+    ],
+    "gitHead": "373d196c58b2bd5f1c774c29bfbe9aa756d8a7d0"
+  }
+}

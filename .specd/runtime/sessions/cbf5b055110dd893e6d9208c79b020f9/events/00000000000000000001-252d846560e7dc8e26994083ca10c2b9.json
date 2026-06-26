@@ -1,0 +1,177 @@
+{
+  "version": "1",
+  "messageId": "252d846560e7dc8e26994083ca10c2b9",
+  "sessionId": "cbf5b055110dd893e6d9208c79b020f9",
+  "sequence": 1,
+  "createdAt": "2026-06-20T23:28:28.696098066Z",
+  "expiresAt": "2026-06-21T00:28:28.696098066Z",
+  "type": "mission",
+  "from": "brain",
+  "to": "pinky-t1-a1",
+  "spec": "personal-blog-mvp",
+  "task": "T1",
+  "attempt": 1,
+  "payload": {
+    "dispatchDigest": "ffff4a7c178e5986973c86f5e122af18f63520d6d68059e5e382c507dfbbe1d9",
+    "role": "builder",
+    "contextCommand": "specd context personal-blog-mvp",
+    "contextManifest": {
+      "version": 1,
+      "softTokenCeiling": 12000,
+      "strategy": "Load required items in order. Keep optional/reference items collapsed unless needed. Stop expanding optional items before the soft ceiling; never skip required role, skill, context, or scoped files.",
+      "items": [
+        {
+          "order": 1,
+          "kind": "role",
+          "path": ".specd/roles/builder.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 800,
+          "rationale": "role authority and constraints"
+        },
+        {
+          "order": 2,
+          "kind": "skill",
+          "path": ".specd/skills/specd-pinky/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "Pinky lease/report lifecycle"
+        },
+        {
+          "order": 3,
+          "kind": "phase-skill",
+          "path": ".specd/skills/specd-execute/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1600,
+          "rationale": "phase-scoped workflow; do not load unrelated stage guidance"
+        },
+        {
+          "order": 4,
+          "kind": "spec-context",
+          "command": "specd context personal-blog-mvp",
+          "mode": "run-command",
+          "required": true,
+          "tokenHint": 1800,
+          "rationale": "phase briefing, load list, blockers, approvals"
+        },
+        {
+          "order": 5,
+          "kind": "scope-file",
+          "path": "app/Models/Article.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 6,
+          "kind": "scope-file",
+          "path": "config/portfolio.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 7,
+          "kind": "scope-file",
+          "path": "database/factories/ArticleFactory.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 8,
+          "kind": "scope-file",
+          "path": "database/migrations/2026_06_21_000000_create_articles_table.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 9,
+          "kind": "scope-file",
+          "path": "database/seeders/ArticleSeeder.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 10,
+          "kind": "scope-file",
+          "path": "database/seeders/DatabaseSeeder.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 11,
+          "kind": "source-artifact",
+          "path": ".specd/specs/personal-blog-mvp/requirements.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 1200,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        },
+        {
+          "order": 12,
+          "kind": "source-artifact",
+          "path": ".specd/specs/personal-blog-mvp/design.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 1200,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        },
+        {
+          "order": 13,
+          "kind": "source-artifact",
+          "path": ".specd/specs/personal-blog-mvp/tasks.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 1200,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        }
+      ]
+    },
+    "contract": "create the article persistence layer, published/latest scopes, demo content, and profile config; do not add auth or admin features",
+    "files": [
+      "app/Models/Article.php",
+      "config/portfolio.php",
+      "database/factories/ArticleFactory.php",
+      "database/migrations/2026_06_21_000000_create_articles_table.php",
+      "database/seeders/ArticleSeeder.php",
+      "database/seeders/DatabaseSeeder.php"
+    ],
+    "acceptance": "articles can be seeded with title, slug, excerpt, body, and publication state, and query helpers return published items newest first",
+    "verifyCommand": "php artisan test --filter Article",
+    "dependencies": [],
+    "authority": {
+      "readOnly": false,
+      "allowedActions": [
+        "read",
+        "edit",
+        "verify",
+        "report"
+      ]
+    }
+  },
+  "decision": {
+    "version": 1,
+    "action": "dispatch",
+    "spec": "personal-blog-mvp",
+    "taskId": "T1",
+    "attempt": 1,
+    "reason": "dispatch next runnable task",
+    "idempotencyKey": "cbf5b055110dd893e6d9208c79b020f9:5:dispatch:T1:1",
+    "escalation": {
+      "code": "none",
+      "message": ""
+    }
+  }
+}

@@ -1,7 +1,7 @@
 # Tasks — Personal Blog MVP
 
 ## Wave 1
-- [ ] T1 — add article schema, config, and seed data
+- [x] T1 — add article schema, config, and seed data ✓ complete · evidence: php artisan test --filter Article PASS · 2026-06-20T23:30:39.290756017Z
   - why: supports requirements 2, 3, and 5 by giving the site an article source and owner profile data
   - role: builder
   - files: config/portfolio.php, app/Models/Article.php, database/migrations/2026_06_21_000000_create_articles_table.php, database/factories/ArticleFactory.php, database/seeders/ArticleSeeder.php, database/seeders/DatabaseSeeder.php
@@ -12,7 +12,7 @@
   - requirements: 2, 3, 5
 
 ## Wave 2
-- [ ] T2 — add the public article API
+- [x] T2 — add the public article API ✓ complete · evidence: specd verify evidenceRef 1efa6b8642872b1f506c4bb0b6d2a2a8; php artisan test --filter Api PASS · 2026-06-20T23:32:42.523275262Z
   - why: supports requirement 3 by exposing read-only JSON for the blog content
   - role: builder
   - files: routes/api.php, app/Http/Controllers/Api/ArticleController.php, app/Http/Resources/ArticleResource.php, app/Http/Resources/ArticleCollection.php
@@ -22,7 +22,7 @@
   - depends: T1
   - requirements: 3, 5
 
-- [ ] T3 — add the public web pages
+- [x] T3 — add the public web pages ✓ complete · evidence: specd verify evidenceRef aee5cee935c36b21974ef0ff4840de3f; php artisan test --filter Web PASS · 2026-06-20T23:34:22.546254308Z
   - why: supports requirements 1, 2, and 4 by presenting the homepage and article reading flow
   - role: builder
   - files: routes/web.php, app/Http/Controllers/Web/HomeController.php, app/Http/Controllers/Web/ArticleController.php, resources/views/layouts/app.blade.php, resources/views/pages/home.blade.php, resources/views/pages/articles/index.blade.php, resources/views/pages/articles/show.blade.php
@@ -33,7 +33,7 @@
   - requirements: 1, 2, 4
 
 ## Wave 3
-- [ ] T4 — implement Nothing.tech styling and motion rules
+- [x] T4 — implement Nothing.tech styling and motion rules ✓ complete · evidence: specd verify evidenceRef 1e986daf94836ba0eafba196934ff2ed; php artisan test --filter Theme PASS · 2026-06-20T23:37:31.382993679Z
   - why: supports requirements 1 and 4 by turning the public pages into the requested visual system
   - role: builder
   - files: package.json, vite.config.js, tailwind.config.js, postcss.config.js, resources/css/app.css, resources/js/app.js, resources/views/components/hero.blade.php, resources/views/components/section-header.blade.php, resources/views/components/article-card.blade.php, resources/views/components/footer.blade.php
@@ -44,7 +44,7 @@
   - requirements: 1, 4
 
 ## Wave 4
-- [ ] T5 — add feature tests for the MVP surfaces
+- [x] T5 — add feature tests for the MVP surfaces ✓ complete · evidence: specd verify evidenceRef 5914a24ba5115da8992b1653d298d570; php artisan test --filter 'HomePageTest|ArticlePagesTest|ArticleApiTest|SeededContentTest' PASS · 2026-06-20T23:37:53.193915064Z
   - why: supports requirements 1 through 5 by proving the homepage, article pages, API, and seeded content work together
   - role: builder
   - files: tests/Feature/Web/HomePageTest.php, tests/Feature/Web/ArticlePagesTest.php, tests/Feature/Api/ArticleApiTest.php, tests/Feature/Content/SeededContentTest.php
@@ -55,7 +55,7 @@
   - requirements: 1, 2, 3, 4, 5
 
 ## Wave 5
-- [ ] T6 — verify the full suite
+- [x] T6 — verify the full suite ✓ complete · evidence: specd verify evidenceRef 8672cbfa18802623eed535256e7d10cf; php artisan test PASS · 2026-06-20T23:38:10.085928355Z
   - why: supports requirements 1 through 5 by proving the complete MVP does not regress existing behavior
   - role: verifier
   - files: tests/Feature, tests/Unit

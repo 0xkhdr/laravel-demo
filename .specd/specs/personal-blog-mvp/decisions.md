@@ -10,3 +10,9 @@ to append. Entries are numbered monotonically and never edited. Format:
 **Consequences:** <trade-offs, what it rules out>
 **Supersedes:** <ADR-id or —>
 -->
+
+## ADR-001 — Restore the missing legacy /api/users controller so the existing baseline tests continue to pass during the API task and full-suite verification. · 2026-06-20
+**Context:** TODO
+**Decision:** Restore the missing legacy /api/users controller so the existing baseline tests continue to pass during the API task and full-suite verification.
+**Consequences:** TODO
+**Supersedes:** —

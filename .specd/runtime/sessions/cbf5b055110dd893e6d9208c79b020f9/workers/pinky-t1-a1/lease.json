@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "sessionId": "cbf5b055110dd893e6d9208c79b020f9",
+  "workerId": "pinky-t1-a1",
+  "spec": "personal-blog-mvp",
+  "task": "T1",
+  "attempt": 1,
+  "status": "released",
+  "acquiredAt": "2026-06-20T23:29:15.033077414Z",
+  "heartbeatAt": "2026-06-20T23:30:30.934988116Z",
+  "leaseUntil": "2026-06-20T23:32:30.934988116Z",
+  "messageExpiresAt": "2026-06-21T00:29:13.155425064Z",
+  "releasedAt": "2026-06-20T23:30:58.097706938Z"
+}

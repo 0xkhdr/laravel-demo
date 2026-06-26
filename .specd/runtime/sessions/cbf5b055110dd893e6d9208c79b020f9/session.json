@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "sessionId": "cbf5b055110dd893e6d9208c79b020f9",
+  "spec": "personal-blog-mvp",
+  "owner": "brain-cli",
+  "status": "running",
+  "policy": {
+    "approvalPolicy": "session",
+    "maxWorkers": 4,
+    "maxRetries": 2,
+    "sessionTimeoutSeconds": 7200,
+    "hostReportedCostLimitUSD": 0
+  },
+  "createdAt": "2026-06-20T23:28:28.690762594Z",
+  "updatedAt": "2026-06-20T23:28:28.690762594Z",
+  "expiresAt": "2026-06-21T01:28:28.690762594Z",
+  "lastSequence": 0
+}
