@@ -1,16 +1,18 @@
 {
   "version": 1,
   "sessionId": "8dbeb249e8e449ea5658bd167adab167",
+  "workerId": "pinky-t10-a1",
+  "attempt": 0,
   "spec": "auth-user-mgmt",
-  "task": "T2",
-  "title": "Create audit_logs migration",
+  "task": "T10",
+  "title": "Create middleware: Guest, Auth, ThrottleAuth",
   "role": "builder",
-  "workerId": "builder-1",
-  "contract": "Create table with (id, user_id nullable, action, ip_address, user_agent nullable, created_at). Index on user_id and created_at for query performance.",
+  "contract": "GuestMiddleware: Redirect authenticated users away from auth pages (register, login, forgot-password). ThrottleAuthMiddleware: Track failed login attempts by IP, lock IP after 5 failures in 1 min (60s cooldown). Do NOT use Laravel's built-in throttle (it's rate-limit, not auth-specific). Do NOT block by email (only by IP per design).",
   "files": [
-    "database/migrations/2026_06_26_142511_create_audit_logs_table.php"
+    "app/Http/Middleware/GuestMiddleware.php",
+    "app/Http/Middleware/ThrottleAuthMiddleware.php"
   ],
-  "verify": "php artisan migrate && php artisan migrate:rollback && php artisan migrate",
+  "verify": "php artisan test tests/Feature/MiddlewareTest.php",
   "contextManifest": {
     "required": [
       {

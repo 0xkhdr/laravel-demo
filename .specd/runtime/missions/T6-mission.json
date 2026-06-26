@@ -4,17 +4,14 @@
   "workerId": "builder-1",
   "attempt": 1,
   "spec": "auth-user-mgmt",
-  "task": "T7",
-  "title": "Create validation form requests",
+  "task": "T6",
+  "title": "Create PasswordResetNotification",
   "role": "builder",
-  "contract": "Create 4 form request classes in app/Http/Requests/: 1. RegisterRequest.php: name required, email unique, password min 8 confirmed 2. LoginRequest.php: email required, password required 3. ResetPasswordRequest.php: password min 8 confirmed, not same as current 4. ChangePasswordRequest.php: current_password verified, password min 8 confirmed, password != current. Each class extends FormRequest. Implement rules() method with validation rules and messages() method with user-friendly error messages. Do NOT authorize in these classes (handle in controller).",
+  "contract": "Similar to T5. Generate reset token, create signed URL (/auth/reset?email=X&token=Y), embed in email. Do NOT authenticate. Do NOT revoke tokens in notification (do in controller).",
   "files": [
-    "app/Http/Requests/RegisterRequest.php",
-    "app/Http/Requests/LoginRequest.php",
-    "app/Http/Requests/ResetPasswordRequest.php",
-    "app/Http/Requests/ChangePasswordRequest.php"
+    "app/Notifications/PasswordResetNotification.php"
   ],
-  "verify": "php artisan test tests/Unit/ValidationRequestsTest.php",
+  "verify": "php artisan test tests/Unit/PasswordResetNotificationTest.php",
   "contextManifest": {
     "required": [
       {

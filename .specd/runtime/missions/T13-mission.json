@@ -2,19 +2,16 @@
   "version": 1,
   "sessionId": "8dbeb249e8e449ea5658bd167adab167",
   "workerId": "builder-1",
-  "attempt": 1,
+  "attempt": 0,
   "spec": "auth-user-mgmt",
-  "task": "T7",
-  "title": "Create validation form requests",
+  "task": "T13",
+  "title": "Create ProfileController",
   "role": "builder",
-  "contract": "Create 4 form request classes in app/Http/Requests/: 1. RegisterRequest.php: name required, email unique, password min 8 confirmed 2. LoginRequest.php: email required, password required 3. ResetPasswordRequest.php: password min 8 confirmed, not same as current 4. ChangePasswordRequest.php: current_password verified, password min 8 confirmed, password != current. Each class extends FormRequest. Implement rules() method with validation rules and messages() method with user-friendly error messages. Do NOT authorize in these classes (handle in controller).",
+  "contract": "Methods: show(), changePassword(ChangePasswordRequest). Show: render profile with user data, email verification status, last login. ChangePassword: verify current password, hash new password, update user, log audit, keep session alive, redirect with success. Do NOT allow email change in this task (future scope).",
   "files": [
-    "app/Http/Requests/RegisterRequest.php",
-    "app/Http/Requests/LoginRequest.php",
-    "app/Http/Requests/ResetPasswordRequest.php",
-    "app/Http/Requests/ChangePasswordRequest.php"
+    "app/Http/Controllers/Auth/ProfileController.php"
   ],
-  "verify": "php artisan test tests/Unit/ValidationRequestsTest.php",
+  "verify": "php artisan test tests/Feature/ProfileControllerTest.php",
   "contextManifest": {
     "required": [
       {

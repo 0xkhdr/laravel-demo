@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "sessionId": "e3ff2b9a5acd7ff88dc0b42d8f79a919",
+  "spec": "auth-user-mgmt",
+  "owner": "brain-cli",
+  "status": "running",
+  "policy": {
+    "approvalPolicy": "session",
+    "maxWorkers": 4,
+    "maxRetries": 2,
+    "sessionTimeoutSeconds": 3600,
+    "hostReportedCostLimitUSD": 0
+  },
+  "createdAt": "2026-06-26T11:45:51.871003735Z",
+  "updatedAt": "2026-06-26T11:45:51.871003735Z",
+  "expiresAt": "2026-06-26T12:45:51.871003735Z",
+  "lastSequence": 0
+}

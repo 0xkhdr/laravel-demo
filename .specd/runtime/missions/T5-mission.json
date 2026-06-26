@@ -1,16 +1,17 @@
 {
   "version": 1,
   "sessionId": "8dbeb249e8e449ea5658bd167adab167",
-  "spec": "auth-user-mgmt",
-  "task": "T2",
-  "title": "Create audit_logs migration",
-  "role": "builder",
   "workerId": "builder-1",
-  "contract": "Create table with (id, user_id nullable, action, ip_address, user_agent nullable, created_at). Index on user_id and created_at for query performance.",
+  "attempt": 1,
+  "spec": "auth-user-mgmt",
+  "task": "T5",
+  "title": "Create VerifyEmailNotification",
+  "role": "builder",
+  "contract": "Notification class with toMail() method. Generate verification token, create signed URL (/auth/verify?email=X&token=Y), embed in email. Do NOT send email immediately (queue it from controller). Do NOT authenticate user in token logic.",
   "files": [
-    "database/migrations/2026_06_26_142511_create_audit_logs_table.php"
+    "app/Notifications/VerifyEmailNotification.php"
   ],
-  "verify": "php artisan migrate && php artisan migrate:rollback && php artisan migrate",
+  "verify": "php artisan test tests/Unit/VerifyEmailNotificationTest.php",
   "contextManifest": {
     "required": [
       {
@@ -34,10 +35,6 @@
       {
         "path": ".specd/specs/auth-user-mgmt/requirements.md",
         "mode": "read-targeted"
-      },
-      {
-        "path": ".specd/specs/auth-user-mgmt/design.md",
-        "mode": "reference-if-needed"
       }
     ]
   },

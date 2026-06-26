@@ -1,0 +1,132 @@
+{
+  "version": "1",
+  "messageId": "5cb90131dfdd43f2fdb93ed4a61248e2",
+  "sessionId": "e3ff2b9a5acd7ff88dc0b42d8f79a919",
+  "sequence": 1,
+  "createdAt": "2026-06-26T11:45:51.888018157Z",
+  "expiresAt": "2026-06-26T12:45:51.888018157Z",
+  "type": "mission",
+  "from": "brain",
+  "to": "pinky-t11-a1",
+  "spec": "auth-user-mgmt",
+  "task": "T11",
+  "attempt": 1,
+  "payload": {
+    "dispatchDigest": "60ff03641b40b68183a1e3b2ce832a70e54255a5d7a8a15c42ad4e98959f83af",
+    "role": "builder",
+    "contextCommand": "specd context auth-user-mgmt",
+    "contextManifest": {
+      "version": 1,
+      "softTokenCeiling": 12000,
+      "strategy": "Load required items in order. Keep optional/reference items collapsed unless needed. Stop expanding optional items before the soft ceiling; never skip required role, skill, context, or scoped files.",
+      "items": [
+        {
+          "order": 1,
+          "kind": "role",
+          "path": ".specd/roles/builder.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 800,
+          "rationale": "role authority and constraints"
+        },
+        {
+          "order": 2,
+          "kind": "skill",
+          "path": ".specd/skills/specd-pinky/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "Pinky lease/report lifecycle"
+        },
+        {
+          "order": 3,
+          "kind": "phase-skill",
+          "path": ".specd/skills/specd-execute/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1600,
+          "rationale": "phase-scoped workflow; do not load unrelated stage guidance"
+        },
+        {
+          "order": 4,
+          "kind": "spec-context",
+          "command": "specd context auth-user-mgmt",
+          "mode": "run-command",
+          "required": true,
+          "tokenHint": 1800,
+          "rationale": "phase briefing, load list, blockers, approvals"
+        },
+        {
+          "order": 5,
+          "kind": "scope-file",
+          "path": "app/Http/Controllers/Auth/VerificationController.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 6,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/requirements.md",
+          "mode": "read-targeted",
+          "required": false,
+          "tokenHint": 191,
+          "rationale": "only the requirements this task covers"
+        },
+        {
+          "order": 7,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/design.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 3326,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        },
+        {
+          "order": 8,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/tasks.md",
+          "mode": "read-targeted",
+          "required": false,
+          "tokenHint": 195,
+          "rationale": "the task's row only, not the whole task list"
+        }
+      ],
+      "estimatedTokens": 6600,
+      "budget": 13500
+    },
+    "contract": "Methods: showVerifyEmailPage(), verify(VerifyEmailRequest), resend(). Verify: extract email + token, find token in email_verification_tokens, check expiry, mark user.email_verified_at, consume token, redirect to login. Resend: rate-limit to 1/min, generate new token, dispatch notification. Do NOT auto-login user after verify. Do NOT allow unverified emails to log in (check in AuthController, not here).",
+    "files": [
+      "app/Http/Controllers/Auth/VerificationController.php"
+    ],
+    "acceptance": "Controller exists, can handle verify and resend flows",
+    "verifyCommand": "php artisan test tests/Feature/VerificationControllerTest.php",
+    "dependencies": [
+      "T5",
+      "T8"
+    ],
+    "authority": {
+      "readOnly": false,
+      "allowedActions": [
+        "read",
+        "edit",
+        "verify",
+        "report"
+      ]
+    }
+  },
+  "decision": {
+    "version": 1,
+    "action": "dispatch",
+    "spec": "auth-user-mgmt",
+    "taskId": "T11",
+    "attempt": 1,
+    "reason": "dispatch next runnable task",
+    "idempotencyKey": "e3ff2b9a5acd7ff88dc0b42d8f79a919:35:dispatch:T11:1",
+    "escalation": {
+      "code": "none",
+      "message": ""
+    }
+  }
+}

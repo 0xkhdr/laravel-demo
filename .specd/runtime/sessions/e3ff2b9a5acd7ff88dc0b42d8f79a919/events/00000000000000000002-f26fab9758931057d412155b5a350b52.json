@@ -1,0 +1,132 @@
+{
+  "version": "1",
+  "messageId": "f26fab9758931057d412155b5a350b52",
+  "sessionId": "e3ff2b9a5acd7ff88dc0b42d8f79a919",
+  "sequence": 2,
+  "createdAt": "2026-06-26T12:22:07.47718524Z",
+  "expiresAt": "2026-06-26T13:22:07.47718524Z",
+  "type": "mission",
+  "from": "brain",
+  "to": "pinky-t12-a1",
+  "spec": "auth-user-mgmt",
+  "task": "T12",
+  "attempt": 1,
+  "payload": {
+    "dispatchDigest": "7a94b5237f5697aa0b562a6869976db8a4f7a8ae28d4922abec6be80fd23daec",
+    "role": "builder",
+    "contextCommand": "specd context auth-user-mgmt",
+    "contextManifest": {
+      "version": 1,
+      "softTokenCeiling": 12000,
+      "strategy": "Load required items in order. Keep optional/reference items collapsed unless needed. Stop expanding optional items before the soft ceiling; never skip required role, skill, context, or scoped files.",
+      "items": [
+        {
+          "order": 1,
+          "kind": "role",
+          "path": ".specd/roles/builder.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 800,
+          "rationale": "role authority and constraints"
+        },
+        {
+          "order": 2,
+          "kind": "skill",
+          "path": ".specd/skills/specd-pinky/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "Pinky lease/report lifecycle"
+        },
+        {
+          "order": 3,
+          "kind": "phase-skill",
+          "path": ".specd/skills/specd-execute/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1600,
+          "rationale": "phase-scoped workflow; do not load unrelated stage guidance"
+        },
+        {
+          "order": 4,
+          "kind": "spec-context",
+          "command": "specd context auth-user-mgmt",
+          "mode": "run-command",
+          "required": true,
+          "tokenHint": 1800,
+          "rationale": "phase briefing, load list, blockers, approvals"
+        },
+        {
+          "order": 5,
+          "kind": "scope-file",
+          "path": "app/Http/Controllers/Auth/PasswordResetController.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 6,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/requirements.md",
+          "mode": "read-targeted",
+          "required": false,
+          "tokenHint": 267,
+          "rationale": "only the requirements this task covers"
+        },
+        {
+          "order": 7,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/design.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 3326,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        },
+        {
+          "order": 8,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/tasks.md",
+          "mode": "read-targeted",
+          "required": false,
+          "tokenHint": 229,
+          "rationale": "the task's row only, not the whole task list"
+        }
+      ],
+      "estimatedTokens": 6600,
+      "budget": 13500
+    },
+    "contract": "Methods: showForgotForm(), forgotPassword(Request), showResetForm($email, $token), resetPassword(ResetPasswordRequest). ForgotPassword: do NOT leak email existence (show success for all inputs), generate reset token, dispatch notification if email exists. ResetPassword: validate token + email, validate new password, update hash, revoke all sessions (call User::revokeAllSessions()), consume token, log audit, redirect to login. Do NOT log in user after reset.",
+    "files": [
+      "app/Http/Controllers/Auth/PasswordResetController.php"
+    ],
+    "acceptance": "Controller exists, handles both forgot and reset flows, no email-existence leak",
+    "verifyCommand": "php artisan test tests/Feature/PasswordResetControllerTest.php",
+    "dependencies": [
+      "T6",
+      "T8"
+    ],
+    "authority": {
+      "readOnly": false,
+      "allowedActions": [
+        "read",
+        "edit",
+        "verify",
+        "report"
+      ]
+    }
+  },
+  "decision": {
+    "version": 1,
+    "action": "dispatch",
+    "spec": "auth-user-mgmt",
+    "taskId": "T12",
+    "attempt": 1,
+    "reason": "dispatch next runnable task",
+    "idempotencyKey": "e3ff2b9a5acd7ff88dc0b42d8f79a919:37:dispatch:T12:1",
+    "escalation": {
+      "code": "none",
+      "message": ""
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "version": "1",
+  "messageId": "656ee875b8867231ac1a429ce2ebdcd6",
+  "sessionId": "8dbeb249e8e449ea5658bd167adab167",
+  "sequence": 2,
+  "createdAt": "2026-06-26T11:27:29.98609906Z",
+  "expiresAt": "2026-06-26T12:27:29.98609906Z",
+  "type": "mission",
+  "from": "brain",
+  "to": "pinky-t1-a1",
+  "spec": "auth-user-mgmt",
+  "task": "T1",
+  "attempt": 1,
+  "payload": {
+    "dispatchDigest": "ab173f7752ebed94b225d01a44401dbe55673d4f299d2caf6016667cda6d1ea0",
+    "role": "builder",
+    "contextCommand": "specd context auth-user-mgmt",
+    "contextManifest": {
+      "version": 1,
+      "softTokenCeiling": 12000,
+      "strategy": "Load required items in order. Keep optional/reference items collapsed unless needed. Stop expanding optional items before the soft ceiling; never skip required role, skill, context, or scoped files.",
+      "items": [
+        {
+          "order": 1,
+          "kind": "role",
+          "path": ".specd/roles/builder.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 800,
+          "rationale": "role authority and constraints"
+        },
+        {
+          "order": 2,
+          "kind": "skill",
+          "path": ".specd/skills/specd-pinky/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "Pinky lease/report lifecycle"
+        },
+        {
+          "order": 3,
+          "kind": "phase-skill",
+          "path": ".specd/skills/specd-execute/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1600,
+          "rationale": "phase-scoped workflow; do not load unrelated stage guidance"
+        },
+        {
+          "order": 4,
+          "kind": "spec-context",
+          "command": "specd context auth-user-mgmt",
+          "mode": "run-command",
+          "required": true,
+          "tokenHint": 1800,
+          "rationale": "phase briefing, load list, blockers, approvals"
+        },
+        {
+          "order": 5,
+          "kind": "scope-file",
+          "path": "database/migrations/YYYY_MM_DD_HHMMSS_create_email_verification_tokens_table.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 6,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/requirements.md",
+          "mode": "read-targeted",
+          "required": false,
+          "tokenHint": 191,
+          "rationale": "only the requirements this task covers"
+        },
+        {
+          "order": 7,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/design.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 3326,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        },
+        {
+          "order": 8,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/tasks.md",
+          "mode": "read-targeted",
+          "required": false,
+          "tokenHint": 157,
+          "rationale": "the task's row only, not the whole task list"
+        }
+      ],
+      "estimatedTokens": 6600,
+      "budget": 13500
+    },
+    "contract": "Create table with (email PRIMARY, token, created_at, expires_at). Do NOT add user_id foreign key (tokens are email-based, not user_id-based). Use nullable created_at for null guard.",
+    "files": [
+      "database/migrations/YYYY_MM_DD_HHMMSS_create_email_verification_tokens_table.php"
+    ],
+    "acceptance": "Migration file exists, can be run/rolled back via artisan migrate",
+    "verifyCommand": "php artisan migrate \u0026\u0026 php artisan migrate:rollback \u0026\u0026 php artisan migrate",
+    "dependencies": [],
+    "authority": {
+      "readOnly": false,
+      "allowedActions": [
+        "read",
+        "edit",
+        "verify",
+        "report"
+      ]
+    }
+  },
+  "decision": {
+    "version": 1,
+    "action": "dispatch",
+    "spec": "auth-user-mgmt",
+    "taskId": "T1",
+    "attempt": 1,
+    "reason": "dispatch next runnable task",
+    "idempotencyKey": "8dbeb249e8e449ea5658bd167adab167:7:dispatch:T1:1",
+    "escalation": {
+      "code": "none",
+      "message": ""
+    }
+  }
+}

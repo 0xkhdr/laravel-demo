@@ -3,7 +3,7 @@
   "sessionId": "8dbeb249e8e449ea5658bd167adab167",
   "spec": "auth-user-mgmt",
   "owner": "brain-cli",
-  "status": "running",
+  "status": "failed",
   "policy": {
     "approvalPolicy": "manual",
     "maxWorkers": 3,
@@ -12,7 +12,7 @@
     "hostReportedCostLimitUSD": 0
   },
   "createdAt": "2026-06-26T11:09:25.120670303Z",
-  "updatedAt": "2026-06-26T11:09:25.120670303Z",
+  "updatedAt": "2026-06-26T11:34:07.214509199Z",
   "expiresAt": "2026-06-26T11:29:25.120670303Z",
-  "lastSequence": 0
+  "lastSequence": 2
 }

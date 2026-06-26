@@ -1,0 +1,131 @@
+{
+  "version": "1",
+  "messageId": "4613f1450583c207d80d1df8fd185d4a",
+  "sessionId": "e3ff2b9a5acd7ff88dc0b42d8f79a919",
+  "sequence": 3,
+  "createdAt": "2026-06-26T12:24:25.291243382Z",
+  "expiresAt": "2026-06-26T13:24:25.291243382Z",
+  "type": "mission",
+  "from": "brain",
+  "to": "pinky-t13-a1",
+  "spec": "auth-user-mgmt",
+  "task": "T13",
+  "attempt": 1,
+  "payload": {
+    "dispatchDigest": "9913a8eb1c166d034a2f80d9604ef3b49856026e2f879855b68f7d21a46ee9b7",
+    "role": "builder",
+    "contextCommand": "specd context auth-user-mgmt",
+    "contextManifest": {
+      "version": 1,
+      "softTokenCeiling": 12000,
+      "strategy": "Load required items in order. Keep optional/reference items collapsed unless needed. Stop expanding optional items before the soft ceiling; never skip required role, skill, context, or scoped files.",
+      "items": [
+        {
+          "order": 1,
+          "kind": "role",
+          "path": ".specd/roles/builder.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 800,
+          "rationale": "role authority and constraints"
+        },
+        {
+          "order": 2,
+          "kind": "skill",
+          "path": ".specd/skills/specd-pinky/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "Pinky lease/report lifecycle"
+        },
+        {
+          "order": 3,
+          "kind": "phase-skill",
+          "path": ".specd/skills/specd-execute/SKILL.md",
+          "mode": "read-full",
+          "required": true,
+          "tokenHint": 1600,
+          "rationale": "phase-scoped workflow; do not load unrelated stage guidance"
+        },
+        {
+          "order": 4,
+          "kind": "spec-context",
+          "command": "specd context auth-user-mgmt",
+          "mode": "run-command",
+          "required": true,
+          "tokenHint": 1800,
+          "rationale": "phase briefing, load list, blockers, approvals"
+        },
+        {
+          "order": 5,
+          "kind": "scope-file",
+          "path": "app/Http/Controllers/Auth/ProfileController.php",
+          "mode": "read-targeted",
+          "required": true,
+          "tokenHint": 1200,
+          "rationale": "mission-declared file in scope"
+        },
+        {
+          "order": 6,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/requirements.md",
+          "mode": "read-targeted",
+          "required": false,
+          "tokenHint": 383,
+          "rationale": "only the requirements this task covers"
+        },
+        {
+          "order": 7,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/design.md",
+          "mode": "reference-if-needed",
+          "required": false,
+          "tokenHint": 3326,
+          "rationale": "source of truth; expand only if required by contract or context command"
+        },
+        {
+          "order": 8,
+          "kind": "source-artifact",
+          "path": ".specd/specs/auth-user-mgmt/tasks.md",
+          "mode": "read-targeted",
+          "required": false,
+          "tokenHint": 179,
+          "rationale": "the task's row only, not the whole task list"
+        }
+      ],
+      "estimatedTokens": 6600,
+      "budget": 13500
+    },
+    "contract": "Methods: show(), changePassword(ChangePasswordRequest). Show: render profile with user data, email verification status, last login. ChangePassword: verify current password, hash new password, update user, log audit, keep session alive, redirect with success. Do NOT allow email change in this task (future scope).",
+    "files": [
+      "app/Http/Controllers/Auth/ProfileController.php"
+    ],
+    "acceptance": "Controller exists, both methods work, audit is logged",
+    "verifyCommand": "php artisan test tests/Feature/ProfileControllerTest.php",
+    "dependencies": [
+      "T9"
+    ],
+    "authority": {
+      "readOnly": false,
+      "allowedActions": [
+        "read",
+        "edit",
+        "verify",
+        "report"
+      ]
+    }
+  },
+  "decision": {
+    "version": 1,
+    "action": "dispatch",
+    "spec": "auth-user-mgmt",
+    "taskId": "T13",
+    "attempt": 1,
+    "reason": "dispatch next runnable task",
+    "idempotencyKey": "e3ff2b9a5acd7ff88dc0b42d8f79a919:39:dispatch:T13:1",
+    "escalation": {
+      "code": "none",
+      "message": ""
+    }
+  }
+}
