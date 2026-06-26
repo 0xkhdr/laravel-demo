@@ -1,14 +1,14 @@
 {
   "schemaVersion": 5,
-  "revision": 3,
+  "revision": 33,
   "spec": "portfolio-landing",
   "title": "Portfolio Landing Page using Nothing.tech Design System",
-  "status": "design",
-  "phase": "plan",
+  "status": "complete",
+  "phase": "reflect",
   "gate": "none",
   "turn": 0,
   "createdAt": "2026-06-26T10:03:27.749579671Z",
-  "updatedAt": "2026-06-26T10:07:14.198540963Z",
+  "updatedAt": "2026-06-26T10:30:19.89501721Z",
   "tasks": {
     "T1": {
       "id": "T1",
@@ -24,7 +24,37 @@
         5,
         6
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:12:40.26945404Z",
+      "finishedAt": "2026-06-26T10:12:40.26945404Z",
+      "evidence": "verified: `bash verify-t1.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:12:37.114479721Z)",
+      "verification": {
+        "command": "bash verify-t1.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 234,
+        "ranAt": "2026-06-26T10:12:37.114479721Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 239,
+        "retries": 4
+      }
     },
     "T10": {
       "id": "T10",
@@ -37,7 +67,48 @@
       "requirements": [
         10
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:22:56.240093569Z",
+      "finishedAt": "2026-06-26T10:22:56.240093569Z",
+      "evidence": "verified: `bash verify-t10.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:22:56.214501167Z)",
+      "verification": {
+        "command": "bash verify-t10.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 9,
+        "ranAt": "2026-06-26T10:22:56.214501167Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/js/menu.js",
+          "resources/js/nav.js",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh",
+          "verify-t10.sh",
+          "verify-t2.sh",
+          "verify-t3.sh",
+          "verify-t4.sh",
+          "verify-t5.sh",
+          "verify-t6.sh",
+          "verify-t7.sh",
+          "verify-t8.sh",
+          "verify-t9.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 15,
+        "retries": 2
+      }
     },
     "T11": {
       "id": "T11",
@@ -52,7 +123,49 @@
         9,
         10
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:28:25.020764033Z",
+      "finishedAt": "2026-06-26T10:28:25.020764033Z",
+      "evidence": "verified: `bash verify-t11.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:28:25.00342834Z)",
+      "verification": {
+        "command": "bash verify-t11.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 6,
+        "ranAt": "2026-06-26T10:28:25.00342834Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/js/menu.js",
+          "resources/js/nav.js",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh",
+          "verify-t10.sh",
+          "verify-t11.sh",
+          "verify-t2.sh",
+          "verify-t3.sh",
+          "verify-t4.sh",
+          "verify-t5.sh",
+          "verify-t6.sh",
+          "verify-t7.sh",
+          "verify-t8.sh",
+          "verify-t9.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 10,
+        "retries": 1
+      }
     },
     "T12": {
       "id": "T12",
@@ -74,7 +187,50 @@
         9,
         10
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:29:43.666841313Z",
+      "finishedAt": "2026-06-26T10:29:43.666841313Z",
+      "evidence": "verified: `bash verify-t12.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:29:43.631562203Z)",
+      "verification": {
+        "command": "bash verify-t12.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "FAIL\n",
+        "stderrTail": "",
+        "durationMs": 11,
+        "ranAt": "2026-06-26T10:29:43.631562203Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/js/menu.js",
+          "resources/js/nav.js",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh",
+          "verify-t10.sh",
+          "verify-t11.sh",
+          "verify-t12.sh",
+          "verify-t2.sh",
+          "verify-t3.sh",
+          "verify-t4.sh",
+          "verify-t5.sh",
+          "verify-t6.sh",
+          "verify-t7.sh",
+          "verify-t8.sh",
+          "verify-t9.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 16,
+        "retries": 1
+      }
     },
     "T2": {
       "id": "T2",
@@ -89,7 +245,38 @@
         2,
         8
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:14:17.437596491Z",
+      "finishedAt": "2026-06-26T10:14:17.437596491Z",
+      "evidence": "verified: `bash verify-t2.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:14:14.202884824Z)",
+      "verification": {
+        "command": "bash verify-t2.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 5,
+        "ranAt": "2026-06-26T10:14:14.202884824Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh",
+          "verify-t2.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 10,
+        "retries": 1
+      }
     },
     "T3": {
       "id": "T3",
@@ -102,7 +289,39 @@
       "requirements": [
         1
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:15:59.318977237Z",
+      "finishedAt": "2026-06-26T10:15:59.318977237Z",
+      "evidence": "verified: `bash verify-t3.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:15:56.177458608Z)",
+      "verification": {
+        "command": "bash verify-t3.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 6,
+        "ranAt": "2026-06-26T10:15:56.177458608Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh",
+          "verify-t2.sh",
+          "verify-t3.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 12,
+        "retries": 2
+      }
     },
     "T4": {
       "id": "T4",
@@ -115,7 +334,41 @@
       "requirements": [
         2
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:17:01.823509801Z",
+      "finishedAt": "2026-06-26T10:17:01.823509801Z",
+      "evidence": "verified: `bash verify-t4.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:16:58.175062385Z)",
+      "verification": {
+        "command": "bash verify-t4.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 7,
+        "ranAt": "2026-06-26T10:16:58.175062385Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/js/nav.js",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh",
+          "verify-t2.sh",
+          "verify-t3.sh",
+          "verify-t4.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 12,
+        "retries": 1
+      }
     },
     "T5": {
       "id": "T5",
@@ -128,7 +381,42 @@
       "requirements": [
         3
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:17:45.855838252Z",
+      "finishedAt": "2026-06-26T10:17:45.855838252Z",
+      "evidence": "verified: `bash verify-t5.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:17:45.836949082Z)",
+      "verification": {
+        "command": "bash verify-t5.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 7,
+        "ranAt": "2026-06-26T10:17:45.836949082Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/js/nav.js",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh",
+          "verify-t2.sh",
+          "verify-t3.sh",
+          "verify-t4.sh",
+          "verify-t5.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 12,
+        "retries": 1
+      }
     },
     "T6": {
       "id": "T6",
@@ -141,7 +429,43 @@
       "requirements": [
         4
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:18:30.394019745Z",
+      "finishedAt": "2026-06-26T10:18:30.394019745Z",
+      "evidence": "verified: `bash verify-t6.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:18:30.376333447Z)",
+      "verification": {
+        "command": "bash verify-t6.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 6,
+        "ranAt": "2026-06-26T10:18:30.376333447Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/js/nav.js",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh",
+          "verify-t2.sh",
+          "verify-t3.sh",
+          "verify-t4.sh",
+          "verify-t5.sh",
+          "verify-t6.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 11,
+        "retries": 1
+      }
     },
     "T7": {
       "id": "T7",
@@ -154,7 +478,44 @@
       "requirements": [
         5
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:19:01.955215192Z",
+      "finishedAt": "2026-06-26T10:19:01.955215192Z",
+      "evidence": "verified: `bash verify-t7.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:19:01.936336914Z)",
+      "verification": {
+        "command": "bash verify-t7.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 6,
+        "ranAt": "2026-06-26T10:19:01.936336914Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/js/nav.js",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh",
+          "verify-t2.sh",
+          "verify-t3.sh",
+          "verify-t4.sh",
+          "verify-t5.sh",
+          "verify-t6.sh",
+          "verify-t7.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 12,
+        "retries": 1
+      }
     },
     "T8": {
       "id": "T8",
@@ -168,7 +529,45 @@
         6,
         7
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:19:47.493042391Z",
+      "finishedAt": "2026-06-26T10:19:47.493042391Z",
+      "evidence": "verified: `bash verify-t8.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:19:47.473758798Z)",
+      "verification": {
+        "command": "bash verify-t8.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 7,
+        "ranAt": "2026-06-26T10:19:47.473758798Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/js/nav.js",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh",
+          "verify-t2.sh",
+          "verify-t3.sh",
+          "verify-t4.sh",
+          "verify-t5.sh",
+          "verify-t6.sh",
+          "verify-t7.sh",
+          "verify-t8.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 13,
+        "retries": 1
+      }
     },
     "T9": {
       "id": "T9",
@@ -184,7 +583,47 @@
       "requirements": [
         9
       ],
-      "status": "pending"
+      "status": "complete",
+      "startedAt": "2026-06-26T10:21:07.192669632Z",
+      "finishedAt": "2026-06-26T10:21:07.192669632Z",
+      "evidence": "verified: `bash verify-t9.sh` → exit 0 @ cdf250fb33152c910033188ee1a8f0f73901ce6a (2026-06-26T10:21:07.165469908Z)",
+      "verification": {
+        "command": "bash verify-t9.sh",
+        "exitCode": 0,
+        "verified": true,
+        "timedOut": false,
+        "stdoutTail": "",
+        "stderrTail": "",
+        "durationMs": 9,
+        "ranAt": "2026-06-26T10:21:07.165469908Z",
+        "gitHead": "cdf250fb33152c910033188ee1a8f0f73901ce6a",
+        "changedFiles": [
+          ".specd/specs/portfolio-landing/.lock",
+          ".specd/specs/portfolio-landing/state.json",
+          ".specd/specs/portfolio-landing/tasks.md",
+          "app/Http/Controllers/Web/LandingController.php",
+          "resources/css/design-system.css",
+          "resources/js/menu.js",
+          "resources/js/nav.js",
+          "resources/views/landing.blade.php",
+          "routes/api.php",
+          "routes/web.php",
+          "verify-t1.sh",
+          "verify-t2.sh",
+          "verify-t3.sh",
+          "verify-t4.sh",
+          "verify-t5.sh",
+          "verify-t6.sh",
+          "verify-t7.sh",
+          "verify-t8.sh",
+          "verify-t9.sh"
+        ],
+        "coverage": "unavailable"
+      },
+      "telemetry": {
+        "verifyDurationMs": 15,
+        "retries": 1
+      }
     }
   },
   "blockers": []
