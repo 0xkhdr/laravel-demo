@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "sessionId": "8dbeb249e8e449ea5658bd167adab167",
+  "workerId": "builder-1",
+  "attempt": 1,
+  "spec": "auth-user-mgmt",
+  "task": "T8",
+  "title": "Create auth routes file",
+  "role": "builder",
+  "contract": "Create routes/auth.php with GET/POST for register, login, logout, verify, forgot-password, reset-password, profile, change-password. Apply middleware (guest, auth, throttle) appropriately. Do NOT implement logic in routes (use controllers). Import from routes/web.php.",
+  "files": [
+    "routes/auth.php"
+  ],
+  "verify": "php artisan route:list | grep auth",
+  "contextManifest": {
+    "required": [
+      {
+        "path": ".specd/roles/builder.md",
+        "mode": "read-full"
+      },
+      {
+        "path": ".specd/skills/specd-pinky/SKILL.md",
+        "mode": "read-full"
+      },
+      {
+        "path": ".specd/skills/specd-execute/SKILL.md",
+        "mode": "read-full"
+      },
+      {
+        "path": ".specd/specs/auth-user-mgmt/tasks.md",
+        "mode": "read-targeted"
+      }
+    ],
+    "optional": [
+      {
+        "path": ".specd/specs/auth-user-mgmt/requirements.md",
+        "mode": "read-targeted"
+      },
+      {
+        "path": ".specd/specs/auth-user-mgmt/design.md",
+        "mode": "reference-if-needed"
+      }
+    ]
+  },
+  "budget": 13500,
+  "estimatedTokens": 4800,
+  "leaseSeconds": 300,
+  "maxRetries": 2
+}
