@@ -67,7 +67,7 @@ class VerificationController extends Controller
             ->where('email', $email)
             ->delete();
 
-        return redirect()->route('login')
+        return redirect()->route('auth.login')
             ->with('success', 'Email verified successfully. You can now log in.');
     }
 

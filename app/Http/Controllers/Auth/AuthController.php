@@ -109,7 +109,7 @@ class AuthController extends Controller
         // Regenerate token to prevent CSRF
         request()->session()->regenerateToken();
 
-        return redirect()->route('login')
+        return redirect()->route('auth.login')
             ->with('success', 'Logged out successfully.');
     }
 }

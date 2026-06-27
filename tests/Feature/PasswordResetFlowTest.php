@@ -29,7 +29,7 @@ class PasswordResetFlowTest extends TestCase
 			'email' => 'john@example.com',
 		]);
 
-		$response->assertRedirect(route('login'));
+        $response->assertRedirect(route('auth.login'));
 		Notification::assertQueued(\App\Notifications\PasswordResetNotification::class);
 		$this->assertDatabaseHas('password_reset_tokens', ['email' => 'john@example.com']);
 	}
@@ -42,7 +42,7 @@ class PasswordResetFlowTest extends TestCase
 			'email' => 'nonexistent@example.com',
 		]);
 
-		$response->assertRedirect(route('login'));
+        $response->assertRedirect(route('auth.login'));
 		$response->assertSessionHas('status', 'If an account exists for that email, a password reset link has been sent.');
 		Notification::assertNotQueued(\App\Notifications\PasswordResetNotification::class);
 	}
@@ -66,7 +66,7 @@ class PasswordResetFlowTest extends TestCase
 
 		$response = $this->get(route('auth.show-reset-form', ['email' => 'john@example.com', 'token' => $token]));
 
-		$response->assertRedirect(route('login'));
+		$response->assertRedirect(route('auth.login'));
 		$response->assertSessionHas('error', 'This password reset link is invalid or has expired.');
 	}
 
@@ -100,7 +100,7 @@ class PasswordResetFlowTest extends TestCase
 
 		// Attempt reuse
 		$response = $this->get(route('auth.show-reset-form', ['email' => 'john@example.com', 'token' => $token]));
-		$response->assertRedirect(route('login'));
+		$response->assertRedirect(route('auth.login'));
 	}
 
 	public function test_complete_password_reset_flow()
@@ -138,7 +138,7 @@ class PasswordResetFlowTest extends TestCase
 			'password_confirmation' => 'NewPassword123!',
 		]);
 
-		$resetResponse->assertRedirect(route('login'));
+		$resetResponse->assertRedirect(route('auth.login'));
 
 		// Verify password changed
 		$user->refresh();

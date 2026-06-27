@@ -35,7 +35,7 @@ class PasswordResetController extends Controller
 			$user->notify(new PasswordResetNotification($token, $email));
 		}
 
-		return redirect()->route('login')->with('status', 'If an account exists for that email, a password reset link has been sent.');
+		return redirect()->route('auth.login')->with('status', 'If an account exists for that email, a password reset link has been sent.');
 	}
 
 	public function showResetForm($email, $token)
@@ -45,7 +45,7 @@ class PasswordResetController extends Controller
 			->first();
 
 		if (!$tokenRecord || !Hash::check($token, $tokenRecord->token) || now()->isAfter($tokenRecord->expires_at)) {
-			return redirect()->route('login')->with('error', 'This password reset link is invalid or has expired.');
+			return redirect()->route('auth.login')->with('error', 'This password reset link is invalid or has expired.');
 		}
 
 		return view('auth.reset-password', ['email' => $email, 'token' => $token]);
@@ -77,6 +77,6 @@ class PasswordResetController extends Controller
 
 		DB::table('password_reset_tokens')->where('email', $email)->delete();
 
-		return redirect()->route('login')->with('status', 'Password reset successful. Please log in with your new password.');
+		return redirect()->route('auth.login')->with('status', 'Password reset successful. Please log in with your new password.');
 	}
 }

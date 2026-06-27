@@ -94,21 +94,23 @@ it('notification has required components', function () {
 });
 
 // Helper method to render mail message (simplified version)
-function renderMailMessage($mailMessage): string
-{
-    $content = $mailMessage->subject ?? '';
+if (! function_exists('renderMailMessage')) {
+    function renderMailMessage($mailMessage): string
+    {
+        $content = $mailMessage->subject ?? '';
 
-    if (isset($mailMessage->introLines)) {
-        foreach ($mailMessage->introLines as $line) {
-            $content .= ' ' . $line;
+        if (isset($mailMessage->introLines)) {
+            foreach ($mailMessage->introLines as $line) {
+                $content .= ' ' . $line;
+            }
         }
-    }
 
-    if (isset($mailMessage->outroLines)) {
-        foreach ($mailMessage->outroLines as $line) {
-            $content .= ' ' . $line;
+        if (isset($mailMessage->outroLines)) {
+            foreach ($mailMessage->outroLines as $line) {
+                $content .= ' ' . $line;
+            }
         }
-    }
 
-    return $content;
+        return $content;
+    }
 }

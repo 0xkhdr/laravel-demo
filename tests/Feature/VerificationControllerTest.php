@@ -127,7 +127,7 @@ class VerificationControllerTest extends TestCase
         ]));
 
         // Check that the response redirects to login
-        $response->assertRedirect(route('login'));
+        $response->assertRedirect(route('auth.login'));
 
         // Verify that the user's email is now marked as verified
         $user->refresh();
@@ -315,7 +315,7 @@ class VerificationControllerTest extends TestCase
         ]);
 
         // Try to login without verifying email
-        $response = $this->post(route('login'), [
+        $response = $this->post(route('auth.login'), [
             'email' => $user->email,
             'password' => 'password123',
         ]);
@@ -336,7 +336,7 @@ class VerificationControllerTest extends TestCase
         ]);
 
         // Try to login with verified email
-        $response = $this->post(route('login'), [
+        $response = $this->post(route('auth.login'), [
             'email' => $user->email,
             'password' => 'password123',
         ]);

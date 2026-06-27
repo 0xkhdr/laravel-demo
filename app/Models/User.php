@@ -49,7 +49,7 @@ class User extends Authenticatable
      */
     public function generateEmailVerificationToken(): string
     {
-        $token = Str::random(40);
+        $token = $this->defaultEmailVerificationToken();
         $expiresAt = now()->addHours(24);
 
         DB::table('email_verification_tokens')->updateOrInsert(
@@ -58,6 +58,20 @@ class User extends Authenticatable
         );
 
         return $token;
+    }
+
+    private function defaultEmailVerificationToken(): string
+    {
+        if (! in_array(config('app.env'), ['local', 'development'], true)) {
+            return Str::random(40);
+        }
+
+        $placeholder = (string) config(
+            'auth.email_verification_code_placeholder',
+            'DEV-VERIFY-EMAIL-CODE-PLACEHOLDER0000000'
+        );
+
+        return str_pad(substr($placeholder, 0, 40), 40, '0');
     }
 
     /**

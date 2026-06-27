@@ -22,9 +22,9 @@ class SessionFlowTest extends TestCase
 		$this->actingAs($user);
 		$this->assertAuthenticatedAs($user);
 
-		$response = $this->post(route('auth.logout'));
+		$response = $this->post(route('logout'));
 
-		$response->assertRedirect(route('login'));
+		$response->assertRedirect(route('auth.login'));
 		$this->assertGuest();
 	}
 
@@ -38,10 +38,10 @@ class SessionFlowTest extends TestCase
 		]);
 
 		$this->actingAs($user);
-		$this->post(route('auth.logout'));
+		$this->post(route('logout'));
 
-		$response = $this->get(route('auth.profile'));
-		$response->assertRedirect(route('login'));
+		$response = $this->get(route('profile.show'));
+		$response->assertRedirect(route('auth.login'));
 	}
 
 	public function test_remember_me_token_revoked_after_logout()
@@ -61,7 +61,7 @@ class SessionFlowTest extends TestCase
 
 		$this->assertAuthenticatedAs($user);
 
-		$this->post(route('auth.logout'));
+		$this->post(route('logout'));
 		$this->assertGuest();
 	}
 
@@ -76,7 +76,7 @@ class SessionFlowTest extends TestCase
 
 		$this->actingAs($user);
 
-		$response = $this->post(route('auth.logout'), [], ['X-CSRF-TOKEN' => 'invalid']);
+		$response = $this->post(route('logout'), [], ['X-CSRF-TOKEN' => 'invalid']);
 
 		$response->assertStatus(419);
 	}

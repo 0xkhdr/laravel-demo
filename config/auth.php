@@ -32,4 +32,9 @@ return [
     ],
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
+
+    'email_verification_code_placeholder' => env(
+        'AUTH_EMAIL_VERIFICATION_CODE_PLACEHOLDER',
+        'DEV-VERIFY-EMAIL-CODE-PLACEHOLDER0000000'
+    ),
 ];

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 // Verify that all required methods exist in the User model
 it('has verifyEmail method', function () {
@@ -90,9 +91,10 @@ it('generateEmailVerificationToken creates tokens in email_verification_tokens t
     $methodStart = strpos($content, 'public function generateEmailVerificationToken');
     expect($methodStart)->toBeGreaterThan(0);
 
-    $methodContent = substr($content, $methodStart, 500);
+    $methodContent = substr($content, $methodStart, 900);
     expect($methodContent)->toContain('email_verification_tokens')
-        ->and($methodContent)->toContain('Str::random');
+        ->and($methodContent)->toContain('defaultEmailVerificationToken')
+        ->and($methodContent)->toContain('email_verification_code_placeholder');
 });
 
 it('generatePasswordResetToken creates tokens in password_reset_tokens table', function () {
@@ -121,4 +123,31 @@ it('revokeAllSessions deletes from sessions table', function () {
     $methodContent = substr($content, $methodStart, 300);
     expect($methodContent)->toContain('sessions')
         ->and($methodContent)->toContain('delete');
+});
+
+it('uses the default email verification code placeholder in development', function () {
+    $placeholder = str_pad('DEV-VERIFY-EMAIL-CODE-PLACEHOLDER', 40, '0');
+
+    config()->set('app.env', 'local');
+    config()->set('auth.email_verification_code_placeholder', $placeholder);
+
+    DB::shouldReceive('table')
+        ->once()
+        ->with('email_verification_tokens')
+        ->andReturnSelf();
+
+    DB::shouldReceive('updateOrInsert')
+        ->once()
+        ->with(
+            ['email' => 'dev@example.com'],
+            \Mockery::on(function (array $values) use ($placeholder) {
+                return $values['token'] === $placeholder
+                    && isset($values['created_at'], $values['expires_at']);
+            })
+        )
+        ->andReturnTrue();
+
+    $user = new User(['email' => 'dev@example.com']);
+
+    expect($user->generateEmailVerificationToken())->toBe($placeholder);
 });

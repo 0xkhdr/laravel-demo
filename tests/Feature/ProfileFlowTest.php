@@ -20,7 +20,7 @@ class ProfileFlowTest extends TestCase
 			'email_verified_at' => now(),
 		]);
 
-		$response = $this->actingAs($user)->get(route('auth.profile'));
+		$response = $this->actingAs($user)->get(route('profile.show'));
 
 		$response->assertOk();
 		$response->assertSee('John Doe');
@@ -42,7 +42,7 @@ class ProfileFlowTest extends TestCase
 			'password_confirmation' => 'NewPassword123!',
 		]);
 
-		$response->assertRedirect(route('auth.profile'));
+		$response->assertRedirect(route('profile.show'));
 		$response->assertSessionHas('status');
 
 		$user->refresh();
@@ -89,8 +89,8 @@ class ProfileFlowTest extends TestCase
 
 	public function test_unauthenticated_user_redirects_to_login()
 	{
-		$response = $this->get(route('auth.profile'));
+		$response = $this->get(route('profile.show'));
 
-		$response->assertRedirect(route('login'));
+		$response->assertRedirect(route('auth.login'));
 	}
 }
