@@ -3,163 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Landing</title>
-    <link rel="stylesheet" href="{{ asset('css/design-system.css') }}">
+    <meta name="description" content="Unified portfolio shell with projects, articles, and packages rendered on a shared design system.">
+    <title>{{ config('app.name', 'Laravel Demo') }}</title>
     @vite(['resources/css/design-system.css', 'resources/js/nav.js', 'resources/js/menu.js'])
 </head>
-<body>
-    <header>
-        <!-- Navigation will go here -->
-    </header>
+@php
+    $placeholderImage = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22 viewBox=%220 0 800 600%22%3E%3Crect width=%22800%22 height=%22600%22 fill=%22%23f3f4f6%22/%3E%3Cpath d=%22M0 0L800 600%22 stroke=%22%23e5e7eb%22 stroke-width=%2232%22/%3E%3Cpath d=%22M800 0L0 600%22 stroke=%22%23e5e7eb%22 stroke-width=%2232%22/%3E%3C/svg%3E';
+@endphp
+<body class="page-shell">
+    <header class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="#overview" class="navbar-logo">{{ config('app.name', 'Portfolio') }}</a>
 
-    <nav class="navbar" id="navbar">
-        <div class="navbar-container">
-            <div class="navbar-logo">Portfolio</div>
-            <div class="navbar-links" id="navbar-links">
+            <nav class="navbar-links" aria-label="Primary">
+                <a href="#overview" class="navbar-link">Overview</a>
                 <a href="#projects" class="navbar-link">Projects</a>
                 <a href="#articles" class="navbar-link">Articles</a>
                 <a href="#packages" class="navbar-link">Packages</a>
-                <a href="#cta" class="navbar-link">Contact</a>
-            </div>
-            <button class="hamburger" id="hamburger">
+                <a href="#contact" class="navbar-link">Contact</a>
+            </nav>
+
+            <button class="hamburger" id="hamburger" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
-    </nav>
+    </header>
 
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="mobile-menu-header">
-            <h2>Menu</h2>
-            <button class="close-button" id="close-menu">×</button>
-        </div>
-        <div class="mobile-menu-links">
-            <a href="#projects" class="mobile-menu-link">Projects</a>
-            <a href="#articles" class="mobile-menu-link">Articles</a>
-            <a href="#packages" class="mobile-menu-link">Packages</a>
-            <a href="#cta" class="mobile-menu-link">Contact</a>
-        </div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <button class="mobile-menu-close" id="close-menu" type="button" aria-label="Close menu">&times;</button>
+        <a href="#overview" class="mobile-menu-link">Overview</a>
+        <a href="#projects" class="mobile-menu-link">Projects</a>
+        <a href="#articles" class="mobile-menu-link">Articles</a>
+        <a href="#packages" class="mobile-menu-link">Packages</a>
+        <a href="#contact" class="mobile-menu-link">Contact</a>
     </div>
 
     <main>
-        <section id="hero" class="hero">
-            <div class="hero-content">
-                <h1 class="text-hero">Your Portfolio Showcase</h1>
-                <p class="text-body-large">Create stunning landing pages with Nothing.tech design system</p>
-                <a href="#projects" class="btn btn-primary" aria-label="Go to featured projects section">Explore Projects</a>
-            </div>
-            <div class="scroll-indicator">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
-        </section>
+        <section id="overview" class="section hero-shell">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">Unified UI system</p>
+                    <h1 class="hero-title">One visual language for the portfolio shell.</h1>
+                    <p class="hero-description">
+                        A compact, token-driven interface for projects, writing, and packages.
+                        The page keeps one rhythm across layout, cards, navigation, and motion.
+                    </p>
 
-        <section id="projects" class="projects-section">
-            <div class="section-container">
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="projects-grid">
-                    @forelse($featuredProjects as $project)
-                        <article class="project-card">
-                            <div class="project-image">
-                                <img src="{{ $project->image ?? 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22%3E%3Crect fill=%22%23f3f4f6%22 width=%22400%22 height=%22300%22/%3E%3C/svg%3E' }}"
-                                     alt="Screenshot of {{ $project->title ?? 'Featured Project' }}" aspect-ratio="4/3">
-                            </div>
-                            <div class="project-content">
-                                <h4 class="project-title">{{ $project->title ?? 'Project Title' }}</h4>
-                                <p class="project-description">{{ $project->description ?? 'Project description' }}</p>
-                                <a href="#" class="project-link">View Project →</a>
-                            </div>
-                        </article>
-                    @empty
-                        <p>No projects yet</p>
-                    @endforelse
-                </div>
-            </div>
-        </section>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary">Explore work</a>
+                        <a href="{{ route('profile.show') }}" class="btn btn-outline">Open profile</a>
+                    </div>
 
-        <section id="articles" class="articles-section">
-            <div class="section-container">
-                <h2 class="section-title">Recent Articles</h2>
-                <div class="articles-grid">
-                    @forelse($recentArticles as $article)
-                        <article class="article-card">
-                            <h5 class="article-title">{{ $article->title ?? 'Article Title' }}</h5>
-                            <p class="article-date">{{ $article->published_at ?? date('M d, Y') }}</p>
-                            <p class="article-excerpt">{{ $article->excerpt ?? 'Article excerpt goes here' }}</p>
-                        </article>
-                    @empty
-                        <p>No articles yet</p>
-                    @endforelse
-                </div>
-                <div class="articles-footer">
-                    <a href="#" class="view-all-link">View All Articles →</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="packages" class="packages-section">
-            <div class="section-container">
-                <h2 class="section-title">Featured Packages</h2>
-                <div class="packages-grid">
-                    @forelse($featuredPackages as $package)
-                        <div class="package-card">
-                            <div class="package-icon">
-                                <svg width="48" height="48" viewBox="0 0 48 48" fill="currentColor">
-                                    <rect width="48" height="48" rx="4" fill="var(--color-gray-200)"/>
-                                </svg>
-                            </div>
-                            <h4 class="package-title">{{ $package->name ?? 'Package' }}</h4>
-                            <p class="package-description">{{ $package->description ?? 'Package description' }}</p>
+                    <dl class="stats-grid" aria-label="Summary metrics">
+                        <div class="stat-card">
+                            <dt>Featured projects</dt>
+                            <dd>{{ is_countable($featuredProjects) ? count($featuredProjects) : 0 }}</dd>
                         </div>
-                    @empty
-                        <p>No packages yet</p>
-                    @endforelse
+                        <div class="stat-card">
+                            <dt>Recent articles</dt>
+                            <dd>{{ is_countable($recentArticles) ? count($recentArticles) : 0 }}</dd>
+                        </div>
+                        <div class="stat-card">
+                            <dt>Shared system</dt>
+                            <dd>1 stack</dd>
+                        </div>
+                    </dl>
                 </div>
-                <div class="packages-footer">
-                    <a href="#" class="btn btn-outline">Explore All Packages</a>
-                </div>
+
+                <aside class="hero-aside" aria-label="Design system highlights">
+                    <div class="hero-preview">
+                        <p class="hero-preview-label">System notes</p>
+                        <ul class="hero-notes">
+                            <li>Monochrome shell with red accent.</li>
+                            <li>Cards share the same spacing rhythm.</li>
+                            <li>Mobile menu uses the same navigation links.</li>
+                            <li>Reduced-motion users keep the full layout.</li>
+                        </ul>
+                    </div>
+                </aside>
             </div>
         </section>
 
-        <section id="cta" class="cta-section cta-black">
-            <div class="section-container">
-                <h2 class="section-title">Ready to Get Started?</h2>
-                <p class="cta-text">Build amazing things with our design system</p>
+        <section id="projects" class="section section-block">
+            <x-section-heading
+                eyebrow="Featured work"
+                title="Projects share the same card, spacing, and button language."
+                description="The grid below keeps project content readable while the chrome stays consistent with the rest of the page."
+            />
+
+            <div class="content-grid content-grid--projects">
+                @forelse($featuredProjects as $project)
+                    <article class="content-card content-card--project">
+                        <div class="content-card__media">
+                            <img
+                                src="{{ $project->image ?? $placeholderImage }}"
+                                alt="Screenshot of {{ $project->title ?? 'Featured Project' }}"
+                                class="content-card__image"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <div class="content-card__body">
+                            <p class="content-card__eyebrow">Project</p>
+                            <h3 class="content-card__title">{{ $project->title ?? 'Project Title' }}</h3>
+                            <p class="content-card__description">{{ $project->description ?? 'Project description' }}</p>
+                            <a
+                                href="{{ data_get($project, 'url') ?: data_get($project, 'link') ?: route('profile.show') }}"
+                                class="content-card__link"
+                            >
+                                View project
+                            </a>
+                        </div>
+                    </article>
+                @empty
+                    <div class="empty-state">
+                        <p class="empty-state__title">No projects yet.</p>
+                        <p class="empty-state__copy">Add featured projects to populate this section.</p>
+                    </div>
+                @endforelse
+            </div>
+        </section>
+
+        <section id="articles" class="section section-block">
+            <x-section-heading
+                eyebrow="Writing"
+                title="Articles use the same surface and hierarchy as the project cards."
+                description="Short metadata, crisp titles, and a single action keep the article list aligned with the rest of the shell."
+            />
+
+            <div class="content-grid content-grid--articles">
+                @forelse($recentArticles as $article)
+                    <article class="content-card content-card--article">
+                        <div class="content-card__body">
+                            <p class="content-card__eyebrow">
+                                {{ $article->published_at ? \Illuminate\Support\Carbon::parse($article->published_at)->format('M d, Y') : 'Recent article' }}
+                            </p>
+                            <h3 class="content-card__title">{{ $article->title ?? 'Article Title' }}</h3>
+                            <p class="content-card__description">{{ $article->excerpt ?? 'Article excerpt goes here' }}</p>
+                            <a href="{{ data_get($article, 'url') ?: route('profile.show') }}" class="content-card__link">
+                                Read article
+                            </a>
+                        </div>
+                    </article>
+                @empty
+                    <div class="empty-state">
+                        <p class="empty-state__title">No articles yet.</p>
+                        <p class="empty-state__copy">Publish a post to surface it here.</p>
+                    </div>
+                @endforelse
+            </div>
+        </section>
+
+        <section id="packages" class="section section-block">
+            <x-section-heading
+                eyebrow="Packages"
+                title="Package cards stay visually aligned with the rest of the content system."
+                description="Icons, titles, and descriptions use the same spacing and type scale as the other sections."
+            />
+
+            <div class="content-grid content-grid--packages">
+                @forelse($featuredPackages as $package)
+                    <article class="content-card content-card--package">
+                        <div class="content-card__badge" aria-hidden="true">
+                            <span></span>
+                        </div>
+                        <div class="content-card__body">
+                            <p class="content-card__eyebrow">Package</p>
+                            <h3 class="content-card__title">{{ $package->name ?? 'Package' }}</h3>
+                            <p class="content-card__description">{{ $package->description ?? 'Package description' }}</p>
+                            <a href="{{ data_get($package, 'url') ?: route('profile.show') }}" class="content-card__link">
+                                Explore package
+                            </a>
+                        </div>
+                    </article>
+                @empty
+                    <div class="empty-state">
+                        <p class="empty-state__title">No packages yet.</p>
+                        <p class="empty-state__copy">Seed the catalog to fill this grid.</p>
+                    </div>
+                @endforelse
+            </div>
+        </section>
+
+        <section id="contact" class="section section-block">
+            <div class="cta-panel">
+                <div>
+                    <p class="eyebrow">Contact</p>
+                    <h2 class="cta-title">Need the same system across more views?</h2>
+                    <p class="cta-copy">
+                        The shell is now unified around one token set, one card language, and one navigation pattern.
+                    </p>
+                </div>
                 <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary">Get Started</a>
-                    <a href="#" class="btn btn-outline">Learn More</a>
+                    <a href="{{ route('profile.show') }}" class="btn btn-primary">Open profile</a>
+                    <a href="#overview" class="btn btn-outline">Back to top</a>
                 </div>
             </div>
         </section>
     </main>
-
-    <footer class="footer">
-        <div class="section-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Links</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Projects</a></li>
-                        <li><a href="#">Articles</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Social</h4>
-                    <ul class="social-links">
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">GitHub</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <p>&copy; 2026 Portfolio. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
