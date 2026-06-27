@@ -1,10 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card" style="padding: var(--space-6);">
+<div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: var(--space-6);">
+    <div class="card" style="width: 100%; max-width: 400px; padding: var(--space-6);">
                 <div style="margin-bottom: var(--space-6);">
                     <h2 style="font-size: var(--type-h2); color: var(--color-primary);">{{ __('Verify Email') }}</h2>
                 </div>
@@ -44,7 +42,5 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
 </div>
 @endsection
