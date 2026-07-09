@@ -1,0 +1,24 @@
+{
+  "revision": 3,
+  "step": 3,
+  "leases": [
+    {
+      "task_id": "T1",
+      "worker_id": "brain",
+      "expires_at": "2026-07-09T05:55:02.41294912+03:00",
+      "retries": 0
+    },
+    {
+      "task_id": "T1",
+      "worker_id": "brain",
+      "expires_at": "2026-07-09T05:55:16.732453157+03:00",
+      "retries": 0
+    },
+    {
+      "task_id": "T1",
+      "worker_id": "brain",
+      "expires_at": "2026-07-09T05:55:36.225200853+03:00",
+      "retries": 0
+    }
+  ]
+}
