@@ -11,13 +11,13 @@
 
         <!-- Desktop Navigation Links -->
         <div class="nav__links nav__links--desktop">
-            <x-nav-link href="/#about" :class="['nav__link', $active === 'about' ? 'nav__link--active' : '']">
+            <x-nav-link href="/#about" class="nav__link {{ $active === 'about' ? 'nav__link--active' : '' }}">
                 About
             </x-nav-link>
-            <x-nav-link href="/#projects" :class="['nav__link', $active === 'projects' ? 'nav__link--active' : '']">
+            <x-nav-link href="/#projects" class="nav__link {{ $active === 'projects' ? 'nav__link--active' : '' }}">
                 Projects
             </x-nav-link>
-            <x-nav-link href="/#contact" :class="['nav__link', $active === 'contact' ? 'nav__link--active' : '']">
+            <x-nav-link href="/#contact" class="nav__link {{ $active === 'contact' ? 'nav__link--active' : '' }}">
                 Contact
             </x-nav-link>
         </div>
@@ -39,13 +39,13 @@
 
     <!-- Mobile Navigation Links -->
     <div class="nav__links nav__links--mobile" id="mobile-nav" aria-hidden="true">
-        <x-nav-link href="/#about" :class="['nav__link nav__link--mobile', $active === 'about' ? 'nav__link--active' : '']">
+        <x-nav-link href="/#about" class="nav__link nav__link--mobile {{ $active === 'about' ? 'nav__link--active' : '' }}">
             About
         </x-nav-link>
-        <x-nav-link href="/#projects" :class="['nav__link nav__link--mobile', $active === 'projects' ? 'nav__link--active' : '']">
+        <x-nav-link href="/#projects" class="nav__link nav__link--mobile {{ $active === 'projects' ? 'nav__link--active' : '' }}">
             Projects
         </x-nav-link>
-        <x-nav-link href="/#contact" :class="['nav__link nav__link--mobile', $active === 'contact' ? 'nav__link--active' : '']">
+        <x-nav-link href="/#contact" class="nav__link nav__link--mobile {{ $active === 'contact' ? 'nav__link--active' : '' }}">
             Contact
         </x-nav-link>
     </div>
