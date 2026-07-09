@@ -1,29 +1,35 @@
-<!-- specd:managed:steering/workflow.md:v1 begin -->
-# Steering: Workflow
+# Workflow
 
-The spec lifecycle. Advance is forward-only and human-approvable; each transition
-leaves an on-disk record.
+## Working Loop
+1. Read the relevant code and tests first.
+2. Make the smallest change that satisfies the behavior.
+3. Run the most specific verification possible.
+4. Expand to broader checks only if the task needs it.
 
-## Phases
-0. **Intake** — capture intent. `specd new <slug>` scaffolds `requirements.md`,
-   `design.md`, `tasks.md`, and `state.json` at revision 0.
-1. **Requirements** — author EARS-shaped requirements (`When <trigger>, the system
-   shall <response>`). Testable, no ambiguity.
-2. **Design** — name module boundaries, on-disk contracts, and preserved invariants
-   in `design.md`. The design gate must pass before tasks execute.
-3. **Tasks** — decompose into an atomic DAG in `tasks.md`. Each task carries
-   `role / files / depends-on / verify / acceptance`.
-4. **Execute** — work the current frontier: only tasks whose dependencies are met.
-   Touch only a task's declared `files:`. One task at a time.
-5. **Verify** — `specd verify` records evidence (exit code + HEAD). Mark the task
-   complete only on a pass.
+## Specd Discipline
+When working under specd, keep the flow forward-only:
+- inspect the current on-disk state
+- implement the task in scope
+- verify the result
+- record evidence before calling the task complete
 
-## Rules
-- Advance status only along the forward-only planning map. No backward or skipping
-  transitions.
-- `approve` refuses to transition if the phase's readiness gates do not pass, and
-  reports the failing gates.
-- Record deviations from the spec via `specd decision` before finishing a task.
-- Durable facts learned during work go to `memory.md` via `specd memory`, not into
-  the spec prose.
-<!-- specd:managed:steering/workflow.md:v1 end -->
+## Repository Workflow
+- Keep edits scoped to the behavior being changed
+- Update tests alongside implementation changes
+- Use factories and seeders for deterministic test data
+- Prefer existing Makefile targets over ad hoc command strings when possible
+
+## Quality Gates
+Use these checks as the default order:
+- targeted test for the changed behavior
+- `make test`
+- `vendor/bin/pint` if formatting is affected
+
+## Known Workflow Hazard
+`routes/api.php` currently references a `UserController` that does not exist.
+If a task touches that route, resolve the missing implementation explicitly
+instead of assuming the controller is elsewhere.
+
+## Command Hygiene
+Follow the repository shell conventions and avoid destructive git commands unless
+explicitly requested.
