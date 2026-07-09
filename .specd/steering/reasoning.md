@@ -1,34 +1,30 @@
-# Reasoning
+<!-- specd:managed:steering/reasoning.md:v1 begin -->
+# Steering: Reasoning
 
-## Default Approach
-Prefer the smallest change that makes the behavior correct and testable.
+How the harness thinks. These rules bind every role and every phase. They are
+deterministic: nothing here depends on an LLM's judgement at decision time.
 
-When making a decision:
-- verify the existing code before assuming intent
-- follow Laravel conventions unless the repo already does something different
-- preserve the current folder layout unless there is a clear reason to change it
+## Context discipline
+- Prefer small, cited context over broad session history. Read the task's declared
+  `files:`, its spec, and its role — not the whole tree.
+- Cite exact `file:line` for every claim of fact. Speculation is labelled as such.
+- Load a steering file only when the current phase needs it.
 
-## Evidence Over Guessing
-Use the repository as the source of truth:
-- routes define intended entry points
-- tests define expected behavior
-- models, factories, and seeders define data shape
-- Docker and Makefile define local execution
+## Evidence gate (non-negotiable)
+- No task is complete without a passing verify record: exit code + git HEAD, written
+  by `specd verify`. A role's assertion of "done" is not evidence.
+- Read-only roles (scout, validator, auditor) never fabricate a pass. They report
+  what they observed; a failing check is reported, never edited away.
+- A read-only task still completes through evidence: give it a verify line it can pass
+  (e.g. `printf ok`) so `specd verify` records a real pass. There is no flag that
+  bypasses the evidence gate.
 
-If a file is missing or a route references a missing class, treat that as a real
-implementation gap, not as something to paper over in prose.
+## Determinism
+- Gates, DAG computation, and reports are pure functions of on-disk state. No LLM call
+  sits in the harness's decision path.
+- When state is corrupt or ambiguous, fail loud with a gate error — never coerce.
 
-## Change Strategy
-Work in the narrowest possible scope:
-- prefer targeted edits over refactors
-- keep public behavior stable unless the task explicitly changes it
-- add or update tests with the behavior change
-
-## Verification Mindset
-Do not rely on reasoning alone.
-When behavior changes, verify with the smallest useful test slice first, then run
-broader checks if needed.
-
-## Failure Handling
-If a check fails, use the exact failure output to guide the fix.
-Do not retry blindly or make speculative changes that widen the diff.
+## Blocked means stop
+- If blocked, retry ONCE, then report `blocked` with the exact blocker. Do not
+  improvise around a failing gate.
+<!-- specd:managed:steering/reasoning.md:v1 end -->

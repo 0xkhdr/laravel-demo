@@ -1,23 +1,16 @@
-# Memory
+<!-- specd:managed:steering/memory.md:v1 begin -->
+# Steering: Memory
 
-## Stable Repo Facts
-- This is a Laravel demo app.
-- The project is Docker-first for local development.
-- The current visible app surfaces are `/` and `/api/users`.
-- User data is seeded and factory-backed.
+Durable, promoted project facts learned from verified changes. This is the steering
+flywheel: patterns proven in real work graduate here so future tasks inherit them.
 
-## Persistent Working Rules
-- Prefix shell commands with `rtk` when using the shell.
-- Read the existing code before editing.
-- Keep changes minimal and test-backed.
-- Do not assume missing classes or files exist elsewhere.
+## Rules
+- Append only after a change is verified. One fact per entry.
+- Promote a pattern here once it has held across repeated tasks — not on first sight.
+- Record durable facts (a convention, a gotcha, a decision's consequence), not
+  conversation-local detail.
+- Append with `specd memory add`.
 
-## Current Implementation Notes
-- `routes/api.php` references `App\Http\Controllers\Api\UserController`.
-- That controller is not present in the repository at the moment.
-- Feature tests cover paginated user-list behavior.
-- Unit tests cover the user model and factory expectations.
-
-## Future-Agent Reminder
-If you are changing API behavior, check the route, controller, model, factory,
-and tests together before editing.
+## Promoted patterns
+<!-- specd appends verified, promoted facts below this line -->
+<!-- specd:managed:steering/memory.md:v1 end -->
