@@ -1,0 +1,63 @@
+/* Section Header Component */
+/* Supports title, subtitle, description with alignment control */
+
+.section-header {
+    margin: 0 auto;
+}
+
+.section-header--center {
+    text-align: center;
+}
+
+.section-header--left {
+    text-align: left;
+}
+
+/* Subtitle: small caps, letter-spacing 0.15em, accent color */
+.section-header__subtitle {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-color, #7c3aed);
+    margin-bottom: 1rem;
+}
+
+/* Title: text-3xl–4xl responsive, tight line-height 1.0–1.15 */
+.section-header__title {
+    font-size: clamp(1.875rem, 5vw, 2.25rem); /* text-3xl–4xl range */
+    font-weight: 700;
+    line-height: 1.1; /* 1.0–1.15 tight range */
+    margin-bottom: 1rem;
+    margin-top: 0;
+    letter-spacing: -0.02em;
+}
+
+/* Description: gray text #888888, line-height 1.6 */
+.section-header__description {
+    font-size: 1rem;
+    color: #888888;
+    line-height: 1.6;
+    max-width: 60ch;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+/* Space between elements when centered */
+.section-header--center .section-header__description {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Dark mode: invert grays, keep accent */
+@media (prefers-color-scheme: dark) {
+    .section-header__description {
+        color: #b0b0b0; /* inverted from #888888 */
+    }
+}
+
+/* Spacing utility class space-6 */
+.section-header.space-6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}

@@ -1,0 +1,215 @@
+/* Navigation component */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 100;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] .nav {
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom-color: var(--color-border);
+}
+
+/* Scrolled state: applies backdrop-filter blur(20px) and rgba(255,255,255,0.8) */
+.nav--scrolled {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] .nav--scrolled {
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.nav__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 var(--space-6);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.nav__logo {
+    flex-shrink: 0;
+}
+
+.nav__brand {
+    display: inline-block;
+    font-family: "Space Mono", monospace;
+    font-size: var(--text-16);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .nav__brand {
+    color: var(--color-text-primary);
+}
+
+.nav__brand:hover {
+    color: var(--color-accent);
+}
+
+/* Desktop navigation links */
+.nav__links--desktop {
+    display: flex;
+    gap: var(--space-6);
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav__links--mobile {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    padding: var(--space-4);
+    gap: var(--space-2);
+}
+
+[data-theme="dark"] .nav__links--mobile {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom-color: var(--color-border);
+}
+
+.nav__links--mobile-open {
+    display: flex !important;
+}
+
+.nav__link {
+    font-size: var(--text-12);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: var(--space-2) 0;
+}
+
+.nav__link:hover {
+    color: var(--color-accent);
+}
+
+.nav__link--active {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.nav__link--mobile {
+    padding: var(--space-3) var(--space-2);
+    display: block;
+}
+
+/* Actions: theme toggle and mobile menu button */
+.nav__actions {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+}
+
+.nav__theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    font-size: 18px;
+}
+
+.nav__theme-toggle:hover {
+    border-color: var(--color-accent);
+    background: rgba(0, 255, 0, 0.1);
+}
+
+.nav__menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: transform 0.3s ease;
+}
+
+.nav__menu-toggle:hover {
+    transform: scale(1.05);
+}
+
+.nav__hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-text-primary);
+    transition: all 0.3s ease;
+}
+
+/* Mobile responsive: show hamburger menu on small screens */
+@media (max-width: 768px) {
+    .nav__links--desktop {
+        display: none;
+    }
+
+    .nav__menu-toggle {
+        display: flex;
+    }
+
+    .nav__container {
+        padding: 0 var(--space-4);
+    }
+
+    .nav__brand {
+        font-size: var(--text-14);
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    .nav {
+        height: 56px;
+    }
+
+    .nav__container {
+        height: 56px;
+        padding: 0 var(--space-3);
+    }
+
+    .nav__brand {
+        font-size: 12px;
+    }
+
+    .nav__theme-toggle {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .nav__hamburger-line {
+        width: 20px;
+        height: 2px;
+    }
+}

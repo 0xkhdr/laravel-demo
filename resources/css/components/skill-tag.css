@@ -1,0 +1,74 @@
+/* Skill Tag Component */
+/* Inline pill badge for skills/tags with variants and sizes */
+
+.skill-tag {
+    display: inline-block;
+    padding: 0.5rem 0.25rem;
+    margin: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: var(--border-1) solid var(--color-border);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Size variants */
+.skill-tag--sm {
+    padding: 0.25rem 0.25rem;
+    font-size: 0.65rem;
+}
+
+.skill-tag--md {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.75rem;
+}
+
+.skill-tag--lg {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Default variant: outlined with accent border and text */
+.skill-tag--default {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background-color: transparent;
+}
+
+.skill-tag--default:hover {
+    background-color: var(--color-accent);
+    color: var(--color-text-primary);
+}
+
+/* Outline variant: solid background */
+.skill-tag--outline {
+    color: var(--color-text-primary);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.skill-tag--outline:hover {
+    background-color: var(--color-text-primary);
+    color: var(--color-accent);
+    border-color: var(--color-text-primary);
+}
+
+/* Dark mode: invert backgrounds, keep accent */
+@media (prefers-color-scheme: dark) {
+    .skill-tag--default {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+    }
+
+    .skill-tag--default:hover {
+        background-color: var(--color-accent);
+        color: var(--color-background-dark);
+    }
+}
+
+/* Pill shape (rounded-full alternative) */
+.skill-tag.pill {
+    border-radius: 9999px;
+}

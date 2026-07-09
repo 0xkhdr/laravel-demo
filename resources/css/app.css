@@ -689,6 +689,28 @@ h6 {
     }
 }
 
+/* Scroll animation keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll animation styles for reveal elements */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.reveal.visible {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.25, 0.9, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;

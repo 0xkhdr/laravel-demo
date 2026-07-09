@@ -1,0 +1,166 @@
+/* Terminal/Code Block Component */
+
+.terminal {
+    background-color: #000000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Terminal header with title and copy button */
+.terminal__header {
+    background-color: #1a1a1a;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.terminal__title {
+    color: #888888;
+    font-size: 0.875rem;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+/* Terminal body and code styling */
+.terminal__body {
+    overflow-x: auto;
+    padding: 1rem;
+}
+
+.terminal__pre {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #00FF00;
+    font-family: 'JetBrains Mono', monospace;
+    white-space: pre;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.terminal__code {
+    display: block;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    color: #00FF00;
+}
+
+/* Syntax highlighting */
+.terminal__code .keyword {
+    color: #00FF00;
+    font-weight: bold;
+}
+
+.terminal__code .string {
+    color: #00FF00;
+}
+
+.terminal__code .comment {
+    color: #888888;
+}
+
+/* Copy button */
+.terminal__copy-btn {
+    background: none;
+    border: 1px solid #00FF00;
+    color: #00FF00;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-family: 'JetBrains Mono', monospace;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.terminal__copy-btn:hover {
+    background-color: #00FF00;
+    color: #000000;
+}
+
+.terminal__copy-btn:active {
+    transform: scale(0.95);
+}
+
+.terminal__copy-text {
+    display: inline-block;
+}
+
+/* Toast notification */
+.terminal__toast {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: #00FF00;
+    color: #000000;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.terminal__toast--visible {
+    opacity: 1;
+}
+
+.terminal__toast-text {
+    display: block;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .terminal {
+        width: 100%;
+        max-width: 100%;
+        margin: 1rem 0;
+    }
+
+    .terminal__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .terminal__copy-btn {
+        align-self: flex-end;
+    }
+
+    .terminal__pre {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .terminal__body {
+        padding: 0.75rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (min-width: 1024px) {
+    .terminal {
+        max-width: 100%;
+        margin: 1.5rem 0;
+    }
+
+    .terminal__pre {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .terminal__body {
+        padding: 1.5rem;
+    }
+}

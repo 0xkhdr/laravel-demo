@@ -10,9 +10,11 @@
     </head>
     <body>
         <a class="skip-link" href="#content">Skip to content</a>
-        <div class="page">
+        <div class="page" role="application" aria-label="Portfolio website">
             <div class="page__inner">
-                @yield('content')
+                <main id="content">
+                    @yield('content')
+                </main>
             </div>
         </div>
     </body>
