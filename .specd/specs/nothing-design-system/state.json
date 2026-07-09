@@ -1,0 +1,269 @@
+{
+  "slug": "nothing-design-system",
+  "phase": "discovery",
+  "created_at": "2026-07-09T00:00:00Z",
+  "updated_at": "2026-07-09T00:00:00Z",
+  "summary": "Implement Nothing.tech design system in Laravel portfolio. 20 tasks across 4 phases: Foundation, Components, Sections, Polish.",
+  "phases": {
+    "discovery": {
+      "order": 1,
+      "status": "current",
+      "description": "Spec review and validation by user",
+      "gates": ["User approves spec and task breakdown"]
+    },
+    "phase_1_foundation": {
+      "order": 2,
+      "status": "pending",
+      "description": "CSS custom properties, Tailwind config, fonts",
+      "task_ids": ["1.1", "1.2"],
+      "gates": ["Task 1.2 passes verify (fonts deployed, Tailwind configured)"]
+    },
+    "phase_2_components": {
+      "order": 3,
+      "status": "pending",
+      "description": "Navigation, Hero, Cards, Buttons, Terminal, Tags",
+      "task_ids": ["2.1", "2.2", "2.3", "2.4", "2.5", "2.6", "2.7"],
+      "gates": ["All component Blade files created and properly styled"]
+    },
+    "phase_3_sections": {
+      "order": 4,
+      "status": "pending",
+      "description": "Hero, About, Experience, Projects, Skills, Contact sections",
+      "task_ids": ["3.1", "3.2", "3.3", "3.4", "3.5", "3.6"],
+      "gates": ["All sections render and compose components correctly"]
+    },
+    "phase_4_polish": {
+      "order": 5,
+      "status": "pending",
+      "description": "Dark mode, animations, responsive, a11y, performance",
+      "task_ids": ["4.1", "4.2", "4.3", "4.4", "4.5"],
+      "gates": [
+        "Lighthouse 95+ all metrics",
+        "WCAG 2.1 AA pass",
+        "Responsive tested on 320px–2560px"
+      ]
+    }
+  },
+  "tasks": {
+    "1.1": {
+      "title": "CSS Custom Properties & Global Styles",
+      "phase": "phase_1_foundation",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/css/app.css"],
+      "verify_command": "grep -c \"color-accent\\|color-text-primary\\|space-4\" resources/css/app.css",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "1.2": {
+      "title": "Tailwind Config & Font Setup",
+      "phase": "phase_1_foundation",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["tailwind.config.js", "public/fonts/", "resources/css/app.css"],
+      "verify_command": "ls public/fonts/*.woff2 && grep -c \"@font-face\" resources/css/app.css",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "2.1": {
+      "title": "Navigation Component",
+      "phase": "phase_2_components",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/components/nav.blade.php", "resources/js/theme-toggle.js"],
+      "verify_command": "grep -c \"backdrop-filter\\|fixed\\|data-theme\" resources/views/components/nav.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "2.2": {
+      "title": "Hero Component",
+      "phase": "phase_2_components",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/components/hero.blade.php"],
+      "verify_command": "grep -c \"100vh\\|text-5xl\\|Space Mono\" resources/views/components/hero.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "2.3": {
+      "title": "Section Header Component",
+      "phase": "phase_2_components",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/components/section-header.blade.php"],
+      "verify_command": "grep -c \"uppercase\\|letter-spacing\\|1px solid\" resources/views/components/section-header.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "2.4": {
+      "title": "Project Card Component",
+      "phase": "phase_2_components",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/components/project-card.blade.php"],
+      "verify_command": "grep -c \"border.*1px\\|translateY\\|project-card\" resources/views/components/project-card.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "2.5": {
+      "title": "Button Component (Variants)",
+      "phase": "phase_2_components",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/components/btn.blade.php"],
+      "verify_command": "grep -c \"btn\\|@apply\\|letter-spacing\" resources/views/components/btn.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "2.6": {
+      "title": "Terminal/Code Block Component",
+      "phase": "phase_2_components",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/components/terminal.blade.php"],
+      "verify_command": "grep -c \"#000000\\|#00FF00\\|terminal\" resources/views/components/terminal.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "2.7": {
+      "title": "Skill Tag Component",
+      "phase": "phase_2_components",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/components/skill-tag.blade.php"],
+      "verify_command": "grep -c \"skill-tag\\|inline-block\\|border\" resources/views/components/skill-tag.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "3.1": {
+      "title": "Hero Section Page",
+      "phase": "phase_3_sections",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/sections/hero.blade.php"],
+      "verify_command": "grep -c \"hero\\|Backend Engineer\" resources/views/sections/hero.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "3.2": {
+      "title": "About Section",
+      "phase": "phase_3_sections",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/sections/about.blade.php"],
+      "verify_command": "grep -c \"data-theme.*dark\\|about\" resources/views/sections/about.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "3.3": {
+      "title": "Experience Section",
+      "phase": "phase_3_sections",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/sections/experience.blade.php"],
+      "verify_command": "grep -c \"timeline\\|experience\\|vertical\" resources/views/sections/experience.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "3.4": {
+      "title": "Projects Section",
+      "phase": "phase_3_sections",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/sections/projects.blade.php"],
+      "verify_command": "grep -c \"grid\\|2fr\\|project-card\" resources/views/sections/projects.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "3.5": {
+      "title": "Skills Section",
+      "phase": "phase_3_sections",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/sections/skills.blade.php"],
+      "verify_command": "grep -c \"skill-tag\\|Languages\\|Frameworks\" resources/views/sections/skills.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "3.6": {
+      "title": "Contact Section",
+      "phase": "phase_3_sections",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/views/sections/contact.blade.php"],
+      "verify_command": "grep -c \"contact\\|Let's build\\|email\" resources/views/sections/contact.blade.php",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "4.1": {
+      "title": "Dark Mode Toggle Implementation",
+      "phase": "phase_4_polish",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/js/theme-toggle.js", "resources/views/components/nav.blade.php"],
+      "verify_command": "grep -c \"localStorage\\|data-theme\\|toggle\" resources/js/theme-toggle.js",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "4.2": {
+      "title": "Scroll Animations",
+      "phase": "phase_4_polish",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["resources/js/animations.js", "resources/css/app.css"],
+      "verify_command": "grep -c \"IntersectionObserver\\|prefers-reduced-motion\" resources/js/animations.js",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "4.3": {
+      "title": "Responsive Design",
+      "phase": "phase_4_polish",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["tailwind.config.js", "resources/css/app.css"],
+      "verify_command": "grep -c \"@media\\|md:\\|lg:\\|clamp\" resources/css/app.css",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "4.4": {
+      "title": "Accessibility Audit & Fixes",
+      "phase": "phase_4_polish",
+      "role": "auditor",
+      "status": "not_started",
+      "files": ["resources/views/", "resources/css/app.css", "resources/js/"],
+      "verify_command": "echo 'Manual audit: axe DevTools, screen reader test, heading hierarchy check'",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    },
+    "4.5": {
+      "title": "Performance Optimization",
+      "phase": "phase_4_polish",
+      "role": "craftsman",
+      "status": "not_started",
+      "files": ["vite.config.js", "tailwind.config.js"],
+      "verify_command": "echo 'Lighthouse audit: target 95+ Performance, Accessibility, Best Practices, SEO'",
+      "assigned_to": null,
+      "completed_by": null,
+      "evidence": null
+    }
+  }
+}

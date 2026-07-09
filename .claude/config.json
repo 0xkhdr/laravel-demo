@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "specd": {
+      "command": "specd",
+      "args": ["mcp"],
+      "alwaysAllow": []
+    }
+  }
+}
