@@ -1,0 +1,198 @@
+/* Timeline Component */
+/* Vertical timeline with entries, accent dots, and responsive layout */
+
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+/* Timeline vertical line (desktop only) */
+@media (min-width: 768px) {
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 40px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: var(--accent-color, #00FF00);
+        opacity: 0.2;
+    }
+}
+
+/* Individual timeline entry */
+.timeline-entry {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color, #eeeeee);
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* Timeline entry dot (indicator on the line) */
+@media (min-width: 768px) {
+    .timeline-entry::before {
+        content: '';
+        position: absolute;
+        left: -57px;
+        top: 24px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        border: 3px solid var(--accent-color, #00FF00);
+        z-index: 10;
+        transition: all 0.3s ease;
+    }
+
+    .timeline-entry:hover::before {
+        width: 18px;
+        height: 18px;
+        left: -59px;
+        top: 22px;
+        box-shadow: 0 0 12px rgba(0, 255, 0, 0.3);
+    }
+}
+
+/* Mobile: single column stack, no line/dots */
+@media (max-width: 767px) {
+    .timeline-entry {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Desktop: side-by-side layout with left padding for timeline */
+@media (min-width: 768px) {
+    .timeline-entry {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 1.5rem;
+        margin-left: 60px;
+        padding: 1.5rem;
+    }
+}
+
+/* Period: date range (left column on desktop, top on mobile) */
+.timeline-entry__period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-secondary, #888888);
+    line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+    .timeline-entry__period {
+        text-align: right;
+        padding-top: 0.25rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .timeline-entry__period {
+        order: -1;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border-color, #eeeeee);
+    }
+}
+
+/* Entry body: contains role, company, summary */
+.timeline-entry__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Role: job title */
+.timeline-entry__role {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary, #000000);
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Company: organization name */
+.timeline-entry__company {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary, #888888);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Summary: description text */
+.timeline-entry__summary {
+    font-size: 0.95rem;
+    color: var(--text-primary, #000000);
+    line-height: 1.6;
+    margin: 0.5rem 0 0 0;
+}
+
+/* Hover state: subtle highlight */
+.timeline-entry:hover {
+    border-color: var(--accent-color, #00FF00);
+    border-color: var(--accent-color, #00FF00);
+    opacity: 0.9;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .timeline-entry {
+        background-color: rgba(255, 255, 255, 0.02);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .timeline-entry__period {
+        color: var(--text-secondary, #888888);
+    }
+
+    .timeline-entry__company {
+        color: var(--text-secondary, #888888);
+    }
+
+    .timeline-entry__role,
+    .timeline-entry__summary {
+        color: var(--text-primary, #ffffff);
+    }
+
+    .timeline-entry:hover {
+        border-color: var(--accent-color, #00FF00);
+        background-color: rgba(0, 255, 0, 0.05);
+    }
+}
+
+/* Responsive spacing adjustments */
+@media (min-width: 1024px) {
+    .timeline {
+        padding: 3rem 0;
+        gap: 2.5rem;
+    }
+
+    .timeline-entry {
+        padding: 2rem;
+    }
+}
+
+/* Limit visible entries (show first 3) */
+.timeline-entry:nth-child(n + 4) {
+    display: none;
+}
+
+/* Load more placeholder (can be enabled via JS) */
+.timeline__load-more {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+}

@@ -23,6 +23,7 @@
 
 :root {
     color-scheme: dark;
+    transition: background-color 0.5s ease, color 0.5s ease;
 
     /* Color palette - Nothing design system */
     --color-accent: #00FF00;
@@ -728,3 +729,4 @@ h6 {
 
 /* Component imports */
 @import url("./components/project-card.css");
+@import url("./components/timeline.css");

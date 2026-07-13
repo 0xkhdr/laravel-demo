@@ -1,3 +1,18 @@
+@push('styles')
+<style>
+    #projects .project-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    @media (min-width: 768px) {
+        #projects .project-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
+@endpush
+
 <section class="section" id="projects">
     <x-section-heading
         eyebrow="Projects"
