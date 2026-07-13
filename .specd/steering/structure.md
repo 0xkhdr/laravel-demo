@@ -5,12 +5,29 @@
 > scanning the whole tree. Replace the prompts below.
 
 ## Layout
-- **<dir>/** — <what lives here>
-- **<dir>/** — <what lives here>
+- **app/Http/Controllers/Api/** — API controllers (thin, delegate to models)
+- **app/Http/Resources/** — API resource transformers (response shaping)
+- **app/Models/** — Eloquent models (logic lives here)
+- **app/Providers/** — Service providers (AppServiceProvider only)
+- **config/** — Configuration files (never hardcode values, use env)
+- **database/migrations/** — Ordered migrations (never edit existing ones)
+- **database/factories/** — Model factories for testing/seeding
+- **database/seeders/** — Seeders (DatabaseSeeder calls all others)
+- **routes/api.php** — All /api/* routes (stateless, no CSRF)
+- **routes/web.php** — Web routes (health check only)
+- **tests/Feature/Api/** — HTTP endpoint tests
+- **tests/Unit/** — Pure unit tests (no DB)
+- **docker/php/** — PHP runtime config and Dockerfile
+- **docker/nginx/** — Nginx reverse proxy config
 
 ## Naming & patterns
-- <naming convention a change must follow>
-- <where tests live relative to source>
+- Controllers: `{Resource}Controller` (e.g., `UserController`)
+- Resources: `{Resource}Resource` (e.g., `UserResource`)
+- Models: PascalCase without suffix (e.g., `User`)
+- Jobs: `Process{Job}` (e.g., `ProcessEmail`)
+- Tests: `{Feature}Test` in Feature/ or Unit/ directories, mirror app/ structure
+- Migrations: timestamp_create_{table}_table or timestamp_add_{column}_to_{table}
+- Tests use SQLite in-memory (set in phpunit.xml), no Docker needed to run
 
 ## Spec authoring format
 - `design.md` decision contract: declare `references:` (the `R<n>` requirements it
