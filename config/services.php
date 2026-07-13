@@ -17,4 +17,9 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+
+    'github' => [
+        'username' => env('GITHUB_USERNAME'),
+        'token' => env('GITHUB_TOKEN'),
+    ],
 ];
