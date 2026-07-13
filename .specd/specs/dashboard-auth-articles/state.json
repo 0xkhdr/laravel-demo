@@ -1,0 +1,26 @@
+{
+  "schema_version": 2,
+  "slug": "dashboard-auth-articles",
+  "mode": "default",
+  "status": "tasks",
+  "phase": "plan",
+  "revision": 2,
+  "records": {
+    "approval:design": {
+      "kind": "approval",
+      "gate": "design",
+      "source_digest": "bbb82a507167f47589d5122a01befe76b0008cc868c82531268cfa0fc65dcb5f",
+      "timestamp": "2026-07-13T19:04:04Z",
+      "git_head": "d85f4883667d5e23c329f869ebe63493581242f6",
+      "actor": "xkhdr"
+    },
+    "approval:tasks": {
+      "kind": "approval",
+      "gate": "tasks",
+      "approved_revision": 1,
+      "timestamp": "2026-07-13T19:05:05Z",
+      "git_head": "d85f4883667d5e23c329f869ebe63493581242f6",
+      "actor": "xkhdr"
+    }
+  }
+}
