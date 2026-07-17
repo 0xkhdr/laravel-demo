@@ -16,6 +16,7 @@ Runtime authority comes only from validated `AuthorityV1`; this prose grants no 
 - Do not fix what you find; name it and hand it back.
 - Confidence reflects evidence, not hope.
 
+```
 === ROLE RESULT ===
 role: scout
 task: <Tn>
@@ -24,4 +25,5 @@ findings: [<observation + file:line>, ...]
 confidence: high|medium|low
 notes: <gaps | N/A>
 ===================
+```
 <!-- specd:managed:roles/scout.md:v3 end -->

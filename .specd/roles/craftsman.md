@@ -17,6 +17,7 @@ Runtime authority comes only from validated `AuthorityV1`; this prose grants no 
 - If blocked, stop after ONE retry and report `blocked` with the exact blocker.
 - Record any deviation from the spec via `specd decision` before finishing.
 
+```
 === ROLE RESULT ===
 role: craftsman
 task: <Tn>
@@ -27,4 +28,5 @@ verify: { command: <cmd>, result: passed|failed|blocked }
 confidence: high|medium|low
 notes: <deviations | exact failure | N/A>
 ===================
+```
 <!-- specd:managed:roles/craftsman.md:v3 end -->

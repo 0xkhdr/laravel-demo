@@ -17,6 +17,7 @@ Runtime authority comes only from validated `AuthorityV1`; this prose grants no 
 - One finding per problem, most severe first. Skip nits that do not change meaning.
 - If clean, say so plainly; do not invent findings.
 
+```
 === ROLE RESULT ===
 role: auditor
 task: <Tn>
@@ -26,4 +27,5 @@ severity: <highest severity found | N/A>
 confidence: high|medium|low
 notes: <N/A>
 ===================
+```
 <!-- specd:managed:roles/auditor.md:v3 end -->

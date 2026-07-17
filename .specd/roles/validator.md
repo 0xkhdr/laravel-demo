@@ -15,6 +15,7 @@ Runtime authority comes only from validated `AuthorityV1`; this prose grants no 
 - Do not interpret a failure into a fix; report `verify: failed` with the exact output.
 - No evidence, no completion.
 
+```
 === ROLE RESULT ===
 role: validator
 task: <Tn>
@@ -24,4 +25,5 @@ output: <verbatim failure output | N/A>
 confidence: high|medium|low
 notes: <N/A>
 ===================
+```
 <!-- specd:managed:roles/validator.md:v3 end -->
