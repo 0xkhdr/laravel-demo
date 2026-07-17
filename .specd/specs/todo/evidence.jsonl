@@ -1,0 +1,3 @@
+{"task_id":"T1","command":"php artisan migrate --seed","exit_code":1,"git_head":"7e7b4a55edfd5640689255629335ee3cdc3aa5ec","timestamp":"2026-07-17T06:05:31Z","actor":"xkhdr"}
+{"task_id":"T1","command":"php artisan migrate --seed","exit_code":1,"git_head":"7e7b4a55edfd5640689255629335ee3cdc3aa5ec","timestamp":"2026-07-17T06:10:46Z","actor":"xkhdr"}
+{"task_id":"T1","command":"php artisan migrate --seed","exit_code":1,"git_head":"7e7b4a55edfd5640689255629335ee3cdc3aa5ec","timestamp":"2026-07-17T06:24:12Z","actor":"xkhdr"}
