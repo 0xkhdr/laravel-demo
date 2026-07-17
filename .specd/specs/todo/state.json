@@ -2,7 +2,28 @@
   "schema_version": 2,
   "slug": "todo",
   "mode": "default",
-  "status": "requirements",
-  "phase": "perceive",
-  "revision": 0
+  "status": "tasks",
+  "phase": "plan",
+  "revision": 2,
+  "records": {
+    "approval:design": {
+      "kind": "approval",
+      "text": "design → tasks",
+      "gate": "design",
+      "approved_revision": 1,
+      "source_digest": "8567ce010374e65e74cca1927fc20f9202bef1cd0e04024689a1037c117fd454",
+      "timestamp": "2026-07-17T06:00:46Z",
+      "git_head": "3b749eb7d07a107530389817928acdc7312ad51a",
+      "actor": "xkhdr"
+    },
+    "approval:requirements": {
+      "kind": "approval",
+      "text": "requirements → design",
+      "gate": "requirements",
+      "source_digest": "1446f28cade2d7b8556ed1f0c3b0668ba7a1010cf1429574b3795810c209fe76",
+      "timestamp": "2026-07-17T05:59:25Z",
+      "git_head": "3b749eb7d07a107530389817928acdc7312ad51a",
+      "actor": "xkhdr"
+    }
+  }
 }
