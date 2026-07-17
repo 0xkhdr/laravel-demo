@@ -5,11 +5,13 @@
 > constraints. The harness reads these before proposing changes.
 
 ## Stack
-- **Language / runtime:** <e.g. Go 1.22, stdlib only>
-- **Build / test:** <e.g. `go build ./...`, `go test ./...`>
-- **Dependencies:** <policy — e.g. zero runtime deps>
+- **Language / runtime:** PHP 8.3, Laravel 13
+- **Build / test:** `composer install`, `./vendor/bin/pest` or `make test`
+- **Dependencies:** Composer (Pest, PHPStan, Pint); Docker optional for consistency
 
 ## Invariants (do not break without a recorded decision)
-- <atomic writes / CAS / single static binary / …>
-- <the check that must always pass>
+- All API responses include Content-Type: application/json and explicit status codes
+- Email uniqueness constraint enforced at DB schema layer; duplicate email → 422 Unprocessable Entity
+- Password always hashed on write (never stored plaintext); migrations fully reversible with down()
+- All tests pass before merge: `pest` exit 0, `phpstan` exit 0, `pint --check` exit 0
 <!-- specd:managed:steering/tech.md:v3 end -->
