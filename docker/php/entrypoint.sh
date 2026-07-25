@@ -12,6 +12,10 @@ wait_for() {
     echo "$name is ready."
 }
 
+# Fix storage directory permissions
+chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+
 # Install composer dependencies if vendor is missing (development mode)
 if [ ! -f "vendor/autoload.php" ]; then
     echo "Installing composer dependencies..."
