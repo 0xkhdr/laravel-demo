@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "slug": "nothing-portfolio",
+  "mode": "default",
+  "status": "design",
+  "phase": "analyze",
+  "cycle": 1,
+  "stage": "design",
+  "condition": "active",
+  "revision": 1,
+  "records": {
+    "approval:requirements": {
+      "kind": "approval",
+      "text": "requirements → design",
+      "gate": "requirements",
+      "source_digest": "b8a94a47f74d6cb389a8c86579674b8789ea3a229bfb2f0f41f1724804768d77",
+      "timestamp": "2026-07-25T15:39:24Z",
+      "git_head": "a584609caeb7f2d038e27385cdf8a11dfb3f59d5",
+      "actor": "xkhdr"
+    },
+    "approval_request:approve:requirements:0": {
+      "kind": "approval_request",
+      "id": "approve:requirements",
+      "transition": "requested",
+      "entity_kind": "spec",
+      "entity_id": "nothing-portfolio",
+      "entity_version": "requirements",
+      "pins": {
+        "artifact_digest": "b8a94a47f74d6cb389a8c86579674b8789ea3a229bfb2f0f41f1724804768d77",
+        "plan_digest": "6151afeb1a801d8450f13aeb0b2583cb68e7349eb0f8cdfecbe58607b241d67f",
+        "config_digest": "c2abb960d985bc15bfad200c7768e13d60c6c66b9ebdcb778e7eaf5d0be8537e"
+      },
+      "requester": "xkhdr",
+      "expires_at": "2026-07-25T16:39:24Z",
+      "timestamp": "2026-07-25T15:39:24Z",
+      "git_head": "a584609caeb7f2d038e27385cdf8a11dfb3f59d5",
+      "actor": "xkhdr"
+    },
+    "approval_request:approve:requirements:1": {
+      "kind": "approval_request",
+      "id": "approve:requirements",
+      "transition": "approved",
+      "entity_kind": "spec",
+      "entity_id": "nothing-portfolio",
+      "entity_version": "requirements",
+      "pins": {
+        "artifact_digest": "b8a94a47f74d6cb389a8c86579674b8789ea3a229bfb2f0f41f1724804768d77",
+        "plan_digest": "6151afeb1a801d8450f13aeb0b2583cb68e7349eb0f8cdfecbe58607b241d67f",
+        "config_digest": "c2abb960d985bc15bfad200c7768e13d60c6c66b9ebdcb778e7eaf5d0be8537e"
+      },
+      "requester": "xkhdr",
+      "expires_at": "2026-07-25T16:39:24Z",
+      "timestamp": "2026-07-25T15:39:24Z",
+      "git_head": "a584609caeb7f2d038e27385cdf8a11dfb3f59d5",
+      "actor": "xkhdr"
+    }
+  }
+}

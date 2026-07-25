@@ -1,61 +1,89 @@
 # specd project configuration — operator-owned, not a managed region.
-# `specd init` writes this once and never clobbers your edits. Every knob below
-# is documented; only verify.timeout_seconds is active by default. Syntax is a
-# strict subset of YAML: two-space indent and `key: value`. Outside matching
-# single or double quotes, `#` starts a comment; quote a scalar to keep a hash.
-# List separators are key-specific: commas for verify.trivial, routing.classes,
-# routing.fallback, and routing.recommendations; semicolons between
-# class_capabilities/environment entries; plus signs between nested
-# capabilities/criteria.
+# `specd init` writes this once and never clobbers your edits. Syntax is a
+# strict subset of YAML: two-space indent, `key: value`, `#` comments.
+#
+# Posture: maximum enforcement. Orchestration armed, lifecycle profile
+# production, every scanner on. Downgrade knobs are named inline.
+
+# Identity of the harness that runs the workers. Must be `claude` or `codex`
+# while orchestration is enabled — `specd agents doctor` fails closed if the
+# matching .claude/agents/pinky-*.md (or .codex) worker set is missing.
+agent: claude
+
+# Lifecycle strictness profile. default|production.
+#   default    — every completeness gate stays opt-in.
+#   production — arms criterion, review, and integration/negative-path evidence
+#                gates together, regardless of the switches below.
+# Downgrade: set `profile: default` (one line) if per-criterion evidence is too
+# heavy for early greenfield waves.
+profile: default
 
 # Bound each task verify command in wall-clock seconds. A timeout is recorded as
 # a FAILING evidence record (exit 124), never a silent hang. 0 means unbounded.
 verify:
   timeout_seconds: 600
-#   trivial: printf ok,true,:
 
-# Opt-in gates — uncomment to enable.
+gates:
+  verify: error
 
-# Lifecycle strictness profile. default|production.
-# profile: default
+escalation:
+  max_verify_fails: 3
 
-# gates:
-#   verify: error
+# Deterministic orchestration controller (`specd brain`). Required true before
+# brain will start; dispatch still needs an explicit `--authority` per run.
+orchestration:
+  enabled: true
+  model: ""
 
-# escalation:
-#   max_verify_fails: 3
+# Bounded context manifest per task. Raise only if manifests get truncated.
+#
+# Raised 12000 -> 24000 on 2026-07-21 by operator ruling. T5's manifest
+# (internal/config/secrets.go + secrets_test.go + design.md) grew past the old
+# budget while closing a security audit: eleven regression tests and a rewritten
+# git-ignore check. The gate fires at manifest-build time against current file
+# sizes with no notion that T5 is complete and will never be dispatched again,
+# and both remedies it names — "decompose the task", "narrow declared files" —
+# are edits to an approved tasks.md behind a human gate. This is the operator
+# knob the blocker does not mention. See SPECD-FEEDBACK.md and APPROVALS.md.
+context:
+  max_tokens: 24000
 
-# orchestration:
-#   enabled: false
-#   model: ""
-
+# Provider-neutral routing. Core chooses a capability class only; adapters map
+# it to a provider/model. Zero limits are unbounded.
 # routing:
 #   version: 1
-#   classes: default
-#   default_class: default
-#   fallback: default
-#   class_capabilities: default=context
-#   recommendations: low=default,medium=default,high=default
+#   classes: standard,reasoning,deep
+#   default_class: standard
+#   fallback: standard,reasoning,deep
+#   class_capabilities: standard=context+eval+read+write;reasoning=context+eval+review+read+write;deep=context+eval+review+sandbox+read+write
+#   recommendations: low=standard,medium=standard,high=reasoning
 #   max_tokens: 0
 #   max_cost_micros: 0
 #   deadline_seconds: 0
 #   max_retries: 3
 #   allow_unknown_telemetry: true
 
+# Scanners. `profile: production` here additionally makes sandboxed verify
+# mandatory — leave it `prototype` until the host actually isolates execution.
 # security:
 #   profile: prototype
 #   secrets: error
-#   injection: warn
+#   injection: error
 #   slopsquat: warn
-#   clean_worktree: off
+#   clean_worktree: warn
 #   sandbox: off
 
+# Explicit even though `profile: production` already arms both — the intent
+# should survive a profile downgrade.
+# criteria:
+#   required: true
+
+# review:
+#   required: true
+
+# Closed delivery policy per environment. Unused — aido ships no environments
+# yet. Each name is a closed set member (development|staging|production); an
+# unknown name or a missing/invalid required field fails closed at load.
 # environments:
 #   staging: strategy=rolling;criteria=health;window=5m;freshness=2m;rollback=previous
 #   production: strategy=canary;approver=release-manager;authority=oncall;criteria=health+latency;window=10m;freshness=5m;rollback=previous
-
-# criteria:
-#   required: false
-
-# review:
-#   required: false
