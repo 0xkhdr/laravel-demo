@@ -1,0 +1,22 @@
+.terminal {
+  background: #000000;
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border-inverse);
+  overflow-x: auto;
+  line-height: var(--leading-normal);
+}
+
+.terminal-prompt {
+  color: #00FF00;
+}
+
+.terminal-command {
+  color: #FFFFFF;
+}
+
+.terminal-output {
+  color: #888888;
+}

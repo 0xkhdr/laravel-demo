@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+/* Component styles */
+@import './components/buttons.css';
+@import './components/cards.css';
+@import './components/tags.css';
+@import './components/terminal.css';
+@import './components/reveal.css';
+@import './components/sections.css';
+
+/* Utility styles */
+@import './utilities/typography.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Palette */
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F5F5F5;
+  --color-bg-dark: #000000;
+  --color-bg-dark-alt: #0A0A0A;
+
+  /* Text */
+  --color-text-primary: #000000;
+  --color-text-secondary: #666666;
+  --color-text-muted: #999999;
+  --color-text-inverse: #FFFFFF;
+
+  /* Accent — Nothing Red (used SPARINGLY) */
+  --color-accent: #FF3B30;
+  --color-accent-hover: #E6352B;
+
+  /* Surface */
+  --color-surface: rgba(255, 255, 255, 0.05);
+  --color-surface-glass: rgba(255, 255, 255, 0.08);
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-inverse: rgba(255, 255, 255, 0.12);
+
+  /* Dark mode surfaces */
+  --color-surface-dark: rgba(0, 0, 0, 0.6);
+  --color-surface-glass-dark: rgba(0, 0, 0, 0.4);
+
+  /* Typography */
+  --font-display: 'Space Mono', 'JetBrains Mono', monospace;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Type Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 3rem;
+  --text-4xl: 4.5rem;
+  --text-5xl: 6rem;
+
+  /* Line heights */
+  --leading-tight: 1.0;
+  --leading-snug: 1.15;
+  --leading-normal: 1.4;
+  --leading-relaxed: 1.6;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.1em;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+  --space-20: 12rem;
+  --space-24: 16rem;
+
+  /* Section padding */
+  --section-py: clamp(6rem, 10vh, 12rem);
+  --section-px: clamp(1.5rem, 5vw, 4rem);
+
+  /* Grid gutter */
+  --grid-gap: 1.5rem;
+}
+
+[data-theme="dark"] {
+  --color-bg: #000000;
+  --color-bg-alt: #0A0A0A;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #888888;
+  --color-text-muted: #555555;
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Global border color applied via CSS variables */
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white text-black font-body antialiased;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
+  }
+
+  [data-theme="dark"] body {
+    @apply bg-black text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold leading-snug;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  button {
+    @apply transition-all duration-300;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gap);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center font-display text-xs uppercase tracking-wider px-8 py-4 border border-current transition-all duration-300;
+  }
+
+  .btn:hover {
+    @apply bg-black text-white;
+  }
+
+  [data-theme="dark"] .btn:hover {
+    @apply bg-white text-black;
+  }
+
+  .btn-accent {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .btn-accent:hover {
+    background-color: var(--color-accent);
+    color: white;
+  }
+
+  .reveal {
+    @apply opacity-0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    @apply opacity-100;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal.visible {
+      transition: none;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer utilities {
+  .focus-ring {
+    @apply outline-2 outline-offset-2;
+    outline-color: var(--color-accent);
+  }
+
+  .text-accent {
+    color: var(--color-accent);
+  }
+
+  .border-accent {
+    border-color: var(--color-accent);
+  }
+
+  .bg-surface {
+    background-color: var(--color-surface);
+  }
+
+  [data-theme="dark"] .bg-surface {
+    background-color: var(--color-surface-dark);
+  }
+}

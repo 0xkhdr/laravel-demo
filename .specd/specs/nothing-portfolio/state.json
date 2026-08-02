@@ -2,13 +2,23 @@
   "schema_version": 2,
   "slug": "nothing-portfolio",
   "mode": "default",
-  "status": "design",
-  "phase": "analyze",
+  "status": "executing",
+  "phase": "execute",
   "cycle": 1,
-  "stage": "design",
+  "stage": "executing",
   "condition": "active",
-  "revision": 1,
+  "revision": 18,
   "records": {
+    "approval:design": {
+      "kind": "approval",
+      "text": "design → tasks",
+      "gate": "design",
+      "approved_revision": 1,
+      "source_digest": "0ba80212c63c5ddacd84b1f1774f1a866e786788f2d441406288f9199398d04c",
+      "timestamp": "2026-07-25T15:42:43Z",
+      "git_head": "9ad6370aed6e225e5ee4922162742aa7c4ff23ea",
+      "actor": "xkhdr"
+    },
     "approval:requirements": {
       "kind": "approval",
       "text": "requirements → design",
@@ -16,6 +26,53 @@
       "source_digest": "b8a94a47f74d6cb389a8c86579674b8789ea3a229bfb2f0f41f1724804768d77",
       "timestamp": "2026-07-25T15:39:24Z",
       "git_head": "a584609caeb7f2d038e27385cdf8a11dfb3f59d5",
+      "actor": "xkhdr"
+    },
+    "approval:tasks": {
+      "kind": "approval",
+      "text": "tasks → executing",
+      "gate": "tasks",
+      "approved_revision": 17,
+      "timestamp": "2026-07-25T15:51:41Z",
+      "git_head": "9ad6370aed6e225e5ee4922162742aa7c4ff23ea",
+      "actor": "xkhdr"
+    },
+    "approval_request:approve:design:0": {
+      "kind": "approval_request",
+      "id": "approve:design",
+      "transition": "requested",
+      "entity_kind": "spec",
+      "entity_id": "nothing-portfolio",
+      "entity_version": "design",
+      "pins": {
+        "artifact_digest": "0ba80212c63c5ddacd84b1f1774f1a866e786788f2d441406288f9199398d04c",
+        "state_revision": 1,
+        "plan_digest": "0585fd73c444833b7a1a23a00214ac15d5fb26758e1d369edff090c3b326ddea",
+        "config_digest": "c2abb960d985bc15bfad200c7768e13d60c6c66b9ebdcb778e7eaf5d0be8537e"
+      },
+      "requester": "xkhdr",
+      "expires_at": "2026-07-25T16:42:43Z",
+      "timestamp": "2026-07-25T15:42:43Z",
+      "git_head": "9ad6370aed6e225e5ee4922162742aa7c4ff23ea",
+      "actor": "xkhdr"
+    },
+    "approval_request:approve:design:1": {
+      "kind": "approval_request",
+      "id": "approve:design",
+      "transition": "approved",
+      "entity_kind": "spec",
+      "entity_id": "nothing-portfolio",
+      "entity_version": "design",
+      "pins": {
+        "artifact_digest": "0ba80212c63c5ddacd84b1f1774f1a866e786788f2d441406288f9199398d04c",
+        "state_revision": 1,
+        "plan_digest": "0585fd73c444833b7a1a23a00214ac15d5fb26758e1d369edff090c3b326ddea",
+        "config_digest": "c2abb960d985bc15bfad200c7768e13d60c6c66b9ebdcb778e7eaf5d0be8537e"
+      },
+      "requester": "xkhdr",
+      "expires_at": "2026-07-25T16:42:43Z",
+      "timestamp": "2026-07-25T15:42:43Z",
+      "git_head": "9ad6370aed6e225e5ee4922162742aa7c4ff23ea",
       "actor": "xkhdr"
     },
     "approval_request:approve:requirements:0": {
@@ -53,6 +110,61 @@
       "timestamp": "2026-07-25T15:39:24Z",
       "git_head": "a584609caeb7f2d038e27385cdf8a11dfb3f59d5",
       "actor": "xkhdr"
+    },
+    "approval_request:approve:tasks:0": {
+      "kind": "approval_request",
+      "id": "approve:tasks",
+      "transition": "requested",
+      "entity_kind": "spec",
+      "entity_id": "nothing-portfolio",
+      "entity_version": "tasks",
+      "pins": {
+        "artifact_digest": "none",
+        "state_revision": 17,
+        "plan_digest": "65730c89ff4ef9fb7054afb259beedf7da130f65cabc67bc226f0afe39ba292f",
+        "config_digest": "c2abb960d985bc15bfad200c7768e13d60c6c66b9ebdcb778e7eaf5d0be8537e"
+      },
+      "requester": "xkhdr",
+      "expires_at": "2026-07-25T16:51:41Z",
+      "timestamp": "2026-07-25T15:51:41Z",
+      "git_head": "9ad6370aed6e225e5ee4922162742aa7c4ff23ea",
+      "actor": "xkhdr"
+    },
+    "approval_request:approve:tasks:1": {
+      "kind": "approval_request",
+      "id": "approve:tasks",
+      "transition": "approved",
+      "entity_kind": "spec",
+      "entity_id": "nothing-portfolio",
+      "entity_version": "tasks",
+      "pins": {
+        "artifact_digest": "none",
+        "state_revision": 17,
+        "plan_digest": "65730c89ff4ef9fb7054afb259beedf7da130f65cabc67bc226f0afe39ba292f",
+        "config_digest": "c2abb960d985bc15bfad200c7768e13d60c6c66b9ebdcb778e7eaf5d0be8537e"
+      },
+      "requester": "xkhdr",
+      "expires_at": "2026-07-25T16:51:41Z",
+      "timestamp": "2026-07-25T15:51:41Z",
+      "git_head": "9ad6370aed6e225e5ee4922162742aa7c4ff23ea",
+      "actor": "xkhdr"
     }
+  },
+  "task_status": {
+    "T1": "complete",
+    "T10": "complete",
+    "T11": "complete",
+    "T12": "complete",
+    "T13": "complete",
+    "T14": "complete",
+    "T15": "complete",
+    "T2": "complete",
+    "T3": "complete",
+    "T4": "complete",
+    "T5": "complete",
+    "T6": "complete",
+    "T7": "complete",
+    "T8": "complete",
+    "T9": "complete"
   }
 }

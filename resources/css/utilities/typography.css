@@ -1,0 +1,33 @@
+.text-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}

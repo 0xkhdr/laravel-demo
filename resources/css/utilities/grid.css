@@ -1,0 +1,22 @@
+/* Grid utilities handled by Tailwind CSS grid utilities */
+
+.grid-asymmetric {
+  grid-template-columns: 2fr 1fr;
+}
+
+.grid-reverse {
+  grid-template-columns: 1fr 2fr;
+}
+
+@media (max-width: 768px) {
+  .grid-asymmetric,
+  .grid-reverse {
+    grid-template-columns: 1fr;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--section-px);
+}
