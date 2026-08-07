@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "change": "portfolio-blog",
+  "stage": "approved",
+  "condition": "active",
+  "revision": 3,
+  "approvals": [
+    {
+      "schema_version": 1,
+      "id": "approval:60755649d3f22397:1",
+      "change": "portfolio-blog",
+      "gate": "planning_to_approved",
+      "lifecycle_from": "planning",
+      "lifecycle_to": "approved",
+      "approver": "0xkhdr@gmail.com",
+      "actor_class": "human",
+      "artifacts": [
+        {
+          "path": "design.md",
+          "hash": "4eee8da10d5c97883e484ca3894bcdbc0fb952a041d1e2af7ffd4e104b072807"
+        },
+        {
+          "path": "proposal.md",
+          "hash": "692128365a26c97491022d2bddbffb8b917de1a48164d29fa520c9d9cb789044"
+        },
+        {
+          "path": "specs/portfolio/spec.md",
+          "hash": "089d11e9029946dd14d21db55b6ac514d5490dfbc6d1b3e031995989cffb7397"
+        },
+        {
+          "path": "tasks.md",
+          "hash": "7a00f061e9889b62fbb296b5d755014d3fb4bffd6c3efdd171223e448ba027b6"
+        }
+      ],
+      "aggregate_hash": "60755649d3f22397da44ea58789513f3be1694edce2c725ef383f71f52648dbc",
+      "registry_version": "core-v2",
+      "policy_digest": "ddc8b3ab149139c731d50ab1e80ae554a4d73d469ed683d99ac790b76c966040",
+      "revision_before": 1,
+      "revision_after": 2,
+      "timestamp": "2026-08-07T10:47:11.762672971Z",
+      "reason": "accepted",
+      "assurance": "advisory"
+    }
+  ],
+  "tasks": {
+    "T1": "in_progress"
+  },
+  "createdBy": "7acd6092d8a32192e0c83e1439e8d59e0528040f499026c35cf7df818fe71033",
+  "lastTransition": "829f12bfa1e5970472feb4684c472666a93e5748c825f907dfaf8ca732fe558e",
+  "extensions": {
+    "attempts": {
+      "T1": {
+        "schema_version": 1,
+        "id": "3cb52846a38827c3f088f561e71b6f70826d4ae2fa5e47b1db38b34c662ae7e3",
+        "change": "portfolio-blog",
+        "task": "T1",
+        "baseline_head": "a07430b4c5060cce811872b3b38ed82170a14f11",
+        "revision_before": 2,
+        "revision_after": 3,
+        "contract_hash": "b40818853560386b31abeac89c987c59e06eeb1d8c44f96329edc8823f3f4980",
+        "approval_hash": "60755649d3f22397da44ea58789513f3be1694edce2c725ef383f71f52648dbc",
+        "state_guard_hash": "0abcf6b6f496f8345d7c237174137bece5e312dcc0fa6655e49b5d49c31021af",
+        "declared_files": [
+          "config/portfolio.php"
+        ],
+        "actor": "xkhdr",
+        "assurance": "advisory",
+        "activity_from": "pending",
+        "activity_to": "in_progress"
+      }
+    }
+  }
+}
