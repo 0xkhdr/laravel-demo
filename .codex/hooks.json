@@ -6,10 +6,8 @@
         "matcher": "startup|resume",
         "hooks": [
           {
-            "type": "mcp_tool",
-            "server": "pathframe",
-            "tool": "pathframe_orient",
-            "input": {},
+            "type": "command",
+            "command": "/home/xkhdr/.local/bin/pathframe status --json",
             "timeout": 10,
             "statusMessage": "Loading Pathframe orientation"
           }
