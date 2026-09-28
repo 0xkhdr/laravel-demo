@@ -1,0 +1,7 @@
+schema: pathframe.role/v1
+id: laravel-implementer
+mission: Implement the bounded Laravel route and Pest feature test defined by the delegated task.
+reads: []
+optional_reads: []
+allowed_actions: ["edit", "test"]
+returns: ["summary", "changed_files", "verification", "discoveries", "questions", "risks"]
