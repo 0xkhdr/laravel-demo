@@ -1,0 +1,12 @@
+{
+  "schema": "pathframe.workflow/v1",
+  "events": 4,
+  "state": {
+    "change": "build-nothing-portfolio",
+    "phase": "executing",
+    "plan_identity": "9dd07d7301a31de2e4696deba818b6a607ce02bb30ef9a064b245d2bc2ec8b3b",
+    "plan_mode": "standard",
+    "completed": 0,
+    "total": 0
+  }
+}
