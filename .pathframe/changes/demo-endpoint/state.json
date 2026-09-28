@@ -1,0 +1,12 @@
+{
+  "schema": "pathframe.workflow/v1",
+  "events": 6,
+  "state": {
+    "change": "demo-endpoint",
+    "phase": "ready",
+    "plan_identity": "91928e06b562fde95e840b90df4cf93a89eb48f14c79b36f347aef763fc00754",
+    "plan_mode": "quick",
+    "completed": 0,
+    "total": 0
+  }
+}
