@@ -1,0 +1,12 @@
+{
+  "schema": "pathframe.workflow/v1",
+  "events": 6,
+  "state": {
+    "change": "career-knowledge-representation",
+    "phase": "done",
+    "plan_identity": "be422ff0ec79d5d4758dc8cccab463926b542618f8659499e073603aef30447f",
+    "plan_mode": "quick",
+    "completed": 0,
+    "total": 0
+  }
+}

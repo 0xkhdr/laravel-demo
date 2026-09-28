@@ -1,0 +1,12 @@
+{
+  "schema": "pathframe.workflow/v1",
+  "events": 3,
+  "state": {
+    "change": "generate-career-portfolio",
+    "phase": "ready",
+    "plan_identity": "7d2895a682530f5c3b19becdb09f6f395d54d0d1781507b0179c84197242293c",
+    "plan_mode": "quick",
+    "completed": 0,
+    "total": 0
+  }
+}
