@@ -1,0 +1,18 @@
+# pathframe-generated:pathframe.integration/v1
+[mcp_servers.pathframe]
+command = "/home/xkhdr/.local/bin/pathframe"
+args = ["mcp"]
+cwd = "/var/www/html/rai/up/laravel-demo"
+enabled_tools = [
+  "pathframe_orient",
+  "pathframe_assess_request",
+  "pathframe_create_change",
+  "pathframe_get_template",
+  "pathframe_validate_plan",
+  "pathframe_get_next",
+  "pathframe_prepare_delegation",
+  "pathframe_submit_result",
+  "pathframe_release_delegation",
+  "pathframe_check_brain_edit",
+  "pathframe_recover",
+]
