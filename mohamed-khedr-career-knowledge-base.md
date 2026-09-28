@@ -241,20 +241,7 @@ Related repositories include `frontier-action`, `frontier-repository`, and `fron
 - **Patterns:** Strategy and Driver patterns, pipeline-style sequencing, contracts/interfaces, dependency injection, orchestration, extensibility through generated components.
 - **Status:** public Laravel package; direct implementation evidence.
 
-### 6.3 Caller
-
-- **Repository:** [`0xkhdr/caller`](https://github.com/0xkhdr/caller)
-- **Evidence:** user-validated and repository-verified.
-- **Ownership:** personally conceived, designed, and implemented by Mohamed.
-- **Domain:** outbound HTTP integration architecture for Laravel.
-- **Purpose:** standardize external API calls and separate request intent, transport execution, response parsing, and domain data.
-- **Stack:** PHP 8.2+, Laravel 12, Composer, Laravel HTTP client/fakes, Pint.
-- **Architecture:** Caller defines intent; Service executes; Receiver parses and shapes responses; immutable DTOs represent domain data.
-- **Patterns:** service boundary, DTO pattern, Template Method-style base callers, dependency injection, immutable value objects, adapter-like response receivers, separation of concerns.
-- **Quality practices:** testability through HTTP fakes; documentation for lifecycle, observability, conventions, and extension points.
-- **Status:** public package; currently primarily package/portfolio use rather than validated professional production use.
-
-### 6.4 Pathframe
+### 6.3 Pathframe
 
 - **Repository:** [`0xkhdr/pathframe`](https://github.com/0xkhdr/pathframe)
 - **Evidence:** user-validated and repository-verified.
@@ -267,7 +254,7 @@ Related repositories include `frontier-action`, `frontier-repository`, and `fron
 - **Quality practices:** journey tests, release gates, generated operation reference, documentation parity checks, scope and concurrency tests, explicit maturity and limitation registry.
 - **Status:** current stable product stages are implemented and approved. Production support is Linux AMD64; broader platforms remain documented portability targets with cross-build evidence only.
 
-### 6.5 Revive
+### 6.4 Revive
 
 - **Repository:** [`0xkhdr/revive`](https://github.com/0xkhdr/revive)
 - **Evidence:** user-validated and repository-verified.
@@ -279,7 +266,7 @@ Related repositories include `frontier-action`, `frontier-repository`, and `fron
 - **Patterns and principles:** Command pattern, declarative configuration, transactional restore, rollback/compensation, hooks, adapter-like package installers, verification after mutation, idempotent/repeatable environment convergence.
 - **Usage:** Mohamed regularly uses Revive for his own development environment.
 
-### 6.6 ContextClipper
+### 6.5 ContextClipper
 
 - **Repository:** [`0xkhdr/contextclipper`](https://github.com/0xkhdr/contextclipper)
 - **Evidence:** user-validated and repository-verified.
@@ -291,7 +278,7 @@ Related repositories include `frontier-action`, `frontier-repository`, and `fron
 - **Patterns and principles:** Strategy for custom filters, rule engine, plugin/extension points, pipeline processing, repository/index abstraction, command interception, bounded input, best-effort secret redaction, raw-data recovery by identifier.
 - **Status and evidence boundary:** current repository documentation claims large token reductions, but no independently validated benchmark is part of this career record. Mohamed does not use the project regularly. Repository tooling does not establish direct pytest or advanced Python implementation expertise.
 
-### 6.7 Aido
+### 6.6 Aido
 
 - **Repository:** [`0xkhdr/aido`](https://github.com/0xkhdr/aido)
 - **Evidence:** user-validated plus repository manifest evidence.
@@ -303,7 +290,7 @@ Related repositories include `frontier-action`, `frontier-repository`, and `fron
 - **Patterns and principles:** ports/adapters direction, provider abstraction, document state and reconciliation, retrieval over curated project knowledge, explicit source authority, change-driven drift detection.
 - **Status:** blueprint and prototype stage; not a shipped product.
 
-### 6.8 Related public Laravel and learning repositories
+### 6.7 Related public Laravel and learning repositories
 
 The GitHub account also contains supporting repositories that demonstrate experiments, extracted Laravel components, examples, or narrower package concerns. Current public names include:
 
@@ -312,13 +299,13 @@ The GitHub account also contains supporting repositories that demonstrate experi
 - **Framework/tool integrations:** `core-filament`, `ffmpeg-example`, `horizon-panel`, `php-caddy`.
 - **Additional tooling experiments:** `clipress`, `context-clipper`, `edge`, and the archived empty `specd` predecessor.
 
-These repositories are part of the account inventory, but they have not all received the same user-level ownership and maturity validation as the seven detailed profiles above. Their presence is evidence of exploration or component work; it is not automatically evidence of production use, adoption, or equal depth.
+These repositories are part of the account inventory, but they have not all received the same user-level ownership and maturity validation as the six detailed profiles above. Their presence is evidence of exploration or component work; it is not automatically evidence of production use, adoption, or equal depth.
 
 ## 7. Ownership and implementation boundaries
 
 ### Direct implementation evidence
 
-Mohamed can directly defend the design and low-level implementation of his professional PHP/Laravel work and the personally implemented Laravel packages Frontier, Guardian, and Caller.
+Mohamed can directly defend the design and low-level implementation of his professional PHP/Laravel work and the personally implemented Laravel packages Frontier and Guardian.
 
 ### AI-assisted artifact evidence
 
@@ -332,7 +319,7 @@ Current open-source and tooling projects are used primarily by Mohamed. No relia
 
 Mohamed Khedr is a backend engineer whose deepest direct implementation expertise is PHP and Laravel. His career progressed from broad feature implementation, to building a complete backend from scratch, to owning six production products, and then to complex synchronization, integration, offline resilience, and production workflows. His strongest recurring domains are backend architecture, data synchronization, transactional reliability, third-party integration, MongoDB/MySQL application design, queues, and reusable Laravel abstractions.
 
-His public engineering work has two complementary tracks. Frontier, Guardian, and Caller provide direct evidence of Laravel package and abstraction design. Pathframe, Revive, ContextClipper, and Aido provide evidence of product definition, system architecture, AI-assisted engineering direction, and developer-tooling problem solving across Go, TypeScript, and Python ecosystems.
+His public engineering work has two complementary tracks. Frontier and Guardian provide direct evidence of Laravel package and abstraction design. Pathframe, Revive, ContextClipper, and Aido provide evidence of product definition, system architecture, AI-assisted engineering direction, and developer-tooling problem solving across Go, TypeScript, and Python ecosystems.
 
 ## 9. Open factual gaps
 

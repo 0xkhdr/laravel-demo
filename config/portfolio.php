@@ -19,7 +19,6 @@ return [
     'projects' => [
         ['name' => 'Frontier', 'text' => 'Laravel application foundations and reusable Action, Repository, caching, and modular architecture packages.', 'url' => 'https://github.com/0xkhdr/frontier', 'evidence' => 'Direct implementation'],
         ['name' => 'Guardian', 'text' => 'Pluggable Laravel authentication orchestration with composable identity, matching, sequences, and token drivers.', 'url' => 'https://github.com/0xkhdr/guardian', 'evidence' => 'Direct implementation'],
-        ['name' => 'Caller', 'text' => 'Laravel outbound HTTP integration architecture separating request intent, transport, response parsing, and immutable DTOs.', 'url' => 'https://github.com/0xkhdr/caller', 'evidence' => 'Direct implementation'],
         ['name' => 'Pathframe', 'text' => 'A local, deterministic development-path protocol that makes structured software changes visible, executable, interruptible, and recoverable for humans and coding agents.', 'url' => 'https://github.com/0xkhdr/pathframe', 'evidence' => 'Architecture direction; AI-assisted implementation'],
         ['name' => 'Revive', 'text' => 'Reproducible developer-environment backup and restoration with manifests, planning, snapshots, verification, and rollback.', 'url' => 'https://github.com/0xkhdr/revive', 'evidence' => 'Architecture direction; AI-assisted implementation'],
     ],
