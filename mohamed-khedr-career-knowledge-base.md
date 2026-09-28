@@ -77,12 +77,12 @@ Portfolio extraction should select the smallest view that answers the purpose: c
 #### Kafka and Debezium CDC synchronization
 
 - **Domain:** fleet and operational-data synchronization between systems.
-- **System boundary:** AVL is Afaqy's main resource holder and system of record for shared resources. Debezium publishes database changes from AVL to Kafka. Taxi and Fleet consume and store the data required for their own business workflows, then continue their processes independently. User-validated September 2026.
+- **System boundary:** one operational system acts as the resource holder and system of record. Debezium publishes database changes to Kafka, while independent consumers store the data required by their own business workflows and continue processing independently. User-validated September 2026.
 - **Problem:** webhook- and HTTP-heavy synchronization suffered from missed events, weak recovery, coupling, data inconsistency, slower propagation, difficult debugging, and request pressure. The CDC solution replaced the old webhook integration behavior between the systems.
-- **Ownership:** the architectural direction was a team decision. Mohamed helped design the architecture and configured Debezium, Kafka Connect, Kafka topics, and consumers in Taxi and Fleet. User-validated September 2026.
-- **Data scope:** operational/master data and relationships held in AVL, including accounts, vehicles, drivers, warehouses, zones, and related resources required by Taxi and Fleet.
+- **Ownership:** the architectural direction was a team decision. Mohamed helped design the architecture and configured Debezium, Kafka Connect, Kafka topics, and independent consumers. User-validated September 2026.
+- **Data scope:** operational/master data and relationships required by downstream business workflows.
 - **Stack:** Apache Kafka, Debezium, Kafka Connect, PHP, Laravel, MySQL.
-- **Architecture:** Debezium captures AVL database changes and publishes them through Kafka. Consumers in Taxi and Fleet persist the resources needed for their respective business workflows. The wider pipeline uses topics, partitions, consumer groups, event serialization, and transformation.
+- **Architecture:** Debezium captures database changes and publishes them through Kafka. Independent consumers persist the resources needed for their respective business workflows. The wider pipeline uses topics, partitions, consumer groups, event serialization, and transformation.
 - **Reliability practices:** lag monitoring and debugging, retries, failed-event handling, schema/payload handling, and near-real-time propagation.
 - **Status:** active in production. Built during Mohamed's Afaqy role; exact project dates are intentionally not recorded.
 - **Scale evidence:** no verified numeric production-scale metric is currently recorded. Do not publish event-volume, record-count, or customer-count claims until measured.
@@ -254,32 +254,20 @@ Related repositories include `frontier-action`, `frontier-repository`, and `fron
 - **Quality practices:** testability through HTTP fakes; documentation for lifecycle, observability, conventions, and extension points.
 - **Status:** public package; currently primarily package/portfolio use rather than validated professional production use.
 
-### 6.4 specd-cli
+### 6.4 Pathframe
 
-- **Repository:** [`0xkhdr/specd-cli`](https://github.com/0xkhdr/specd-cli)
+- **Repository:** [`0xkhdr/pathframe`](https://github.com/0xkhdr/pathframe)
 - **Evidence:** user-validated and repository-verified.
 - **Ownership:** product problem, requirements, lifecycle, constraints, technology choice, and validation by Mohamed; implementation largely AI-assisted.
-- **Domain:** specification-driven coding-agent governance and deterministic workflow enforcement.
-- **Purpose:** require human-approved specifications and plans, then constrain an agent to declared tasks, file scope, evidence, and legal lifecycle transitions.
+- **Domain:** local, deterministic development-path coordination for humans and coding agents.
+- **Purpose:** make structured software changes visible, package approved work, validate lifecycle transitions, support bounded execution and verification, and preserve recovery when work is interrupted or blocked.
 - **Stack:** Go 1.26; standard library only; Markdown and Git as visible sources of truth; static cross-platform binary.
-- **Architecture:** layered CLI (`cmd/specd`, CLI parsing, command dispatch, decision-owning core, persistence/Git/filesystem); local process with no daemon, model call, network call, or telemetry in the deterministic pipeline.
+- **Architecture:** layered CLI (`cmd/pathframe`, CLI parsing, command dispatch, decision-owning core, persistence/Git/filesystem); local process with no daemon, model call, network call, or telemetry in the deterministic pipeline.
 - **Patterns and principles:** state machine, dependency DAG, command dispatch, one-owner rule for contracts and output, fail-closed validation, append-and-replay ledgers, optimistic revision checks, compare-and-swap behavior, file locks, atomic replacement, transaction record and deterministic recovery, evidence binding, human/agent trust boundary.
 - **Quality practices:** journey tests, release gates, generated operation reference, documentation parity checks, scope and concurrency tests, explicit maturity and limitation registry.
-- **Status:** young 0.x project. The base loop is proven on Linux AMD64; broader platforms are gated by automated journeys, with clearly documented limits.
+- **Status:** current stable product stages are implemented and approved. Production support is Linux AMD64; broader platforms remain documented portability targets with cross-build evidence only.
 
-### 6.5 Open Blueprint
-
-- **Repository:** [`0xkhdr/open-blueprint`](https://github.com/0xkhdr/open-blueprint)
-- **Evidence:** user-validated and repository-verified.
-- **Ownership:** problem definition, requirements, system behavior, technology selection, and project direction by Mohamed; implementation primarily AI-assisted.
-- **Domain:** governance configuration for AI coding tools across multiple agent environments.
-- **Purpose:** detect repository topology; scaffold rules, skills, agents, and hooks; validate governance; detect drift; translate configurations between agent backends through a neutral representation.
-- **Stack:** TypeScript 6, Node.js 20+, Bun, Commander, Handlebars, Zod, AJV, unified/remark, Vitest, Biome, OpenTelemetry APIs, VS Code Language Server libraries.
-- **Architecture:** CLI with detector, templater, multi-level validator, translator, neutral BlueprintIR, backend adapters, ownership manifest, reporting and SARIF output, plugin API, and pack distribution.
-- **Patterns and principles:** Adapter pattern, intermediate representation, plugin architecture, schema validation, manifest-based ownership, drift detection, static governance checks, round-trip fidelity testing, explicit manual-vs-machine-checkable results.
-- **Status:** public package at repository version 1.0.0. Artifact capabilities do not convert into direct TypeScript proficiency because implementation was primarily AI-assisted.
-
-### 6.6 Revive
+### 6.5 Revive
 
 - **Repository:** [`0xkhdr/revive`](https://github.com/0xkhdr/revive)
 - **Evidence:** user-validated and repository-verified.
@@ -291,7 +279,7 @@ Related repositories include `frontier-action`, `frontier-repository`, and `fron
 - **Patterns and principles:** Command pattern, declarative configuration, transactional restore, rollback/compensation, hooks, adapter-like package installers, verification after mutation, idempotent/repeatable environment convergence.
 - **Usage:** Mohamed regularly uses Revive for his own development environment.
 
-### 6.7 ContextClipper
+### 6.6 ContextClipper
 
 - **Repository:** [`0xkhdr/contextclipper`](https://github.com/0xkhdr/contextclipper)
 - **Evidence:** user-validated and repository-verified.
@@ -303,7 +291,7 @@ Related repositories include `frontier-action`, `frontier-repository`, and `fron
 - **Patterns and principles:** Strategy for custom filters, rule engine, plugin/extension points, pipeline processing, repository/index abstraction, command interception, bounded input, best-effort secret redaction, raw-data recovery by identifier.
 - **Status and evidence boundary:** current repository documentation claims large token reductions, but no independently validated benchmark is part of this career record. Mohamed does not use the project regularly. Repository tooling does not establish direct pytest or advanced Python implementation expertise.
 
-### 6.8 Aido
+### 6.7 Aido
 
 - **Repository:** [`0xkhdr/aido`](https://github.com/0xkhdr/aido)
 - **Evidence:** user-validated plus repository manifest evidence.
@@ -315,7 +303,7 @@ Related repositories include `frontier-action`, `frontier-repository`, and `fron
 - **Patterns and principles:** ports/adapters direction, provider abstraction, document state and reconciliation, retrieval over curated project knowledge, explicit source authority, change-driven drift detection.
 - **Status:** blueprint and prototype stage; not a shipped product.
 
-### 6.9 Related public Laravel and learning repositories
+### 6.8 Related public Laravel and learning repositories
 
 The GitHub account also contains supporting repositories that demonstrate experiments, extracted Laravel components, examples, or narrower package concerns. Current public names include:
 
@@ -324,7 +312,7 @@ The GitHub account also contains supporting repositories that demonstrate experi
 - **Framework/tool integrations:** `core-filament`, `ffmpeg-example`, `horizon-panel`, `php-caddy`.
 - **Additional tooling experiments:** `clipress`, `context-clipper`, `edge`, and the archived empty `specd` predecessor.
 
-These repositories are part of the account inventory, but they have not all received the same user-level ownership and maturity validation as the eight detailed profiles above. Their presence is evidence of exploration or component work; it is not automatically evidence of production use, adoption, or equal depth.
+These repositories are part of the account inventory, but they have not all received the same user-level ownership and maturity validation as the seven detailed profiles above. Their presence is evidence of exploration or component work; it is not automatically evidence of production use, adoption, or equal depth.
 
 ## 7. Ownership and implementation boundaries
 
@@ -334,7 +322,7 @@ Mohamed can directly defend the design and low-level implementation of his profe
 
 ### AI-assisted artifact evidence
 
-For specd-cli, Open Blueprint, Revive, ContextClipper, and Aido, Mohamed's canonical contribution is product and system thinking: problem selection, requirements, workflow, architecture direction, technology choice, validation, and release direction. The repositories demonstrate his ability to direct complex tools and reason about their systems. They are not treated as proof of equivalent low-level Go, Python, or TypeScript fluency.
+For Pathframe, Revive, ContextClipper, and Aido, Mohamed's canonical contribution is product and system thinking: problem selection, requirements, workflow, architecture direction, technology choice, validation, and release direction. The repositories demonstrate his ability to direct complex tools and reason about their systems. They are not treated as proof of equivalent low-level Go, Python, or TypeScript fluency.
 
 ### Adoption and scale
 
@@ -344,7 +332,7 @@ Current open-source and tooling projects are used primarily by Mohamed. No relia
 
 Mohamed Khedr is a backend engineer whose deepest direct implementation expertise is PHP and Laravel. His career progressed from broad feature implementation, to building a complete backend from scratch, to owning six production products, and then to complex synchronization, integration, offline resilience, and production workflows. His strongest recurring domains are backend architecture, data synchronization, transactional reliability, third-party integration, MongoDB/MySQL application design, queues, and reusable Laravel abstractions.
 
-His public engineering work has two complementary tracks. Frontier, Guardian, and Caller provide direct evidence of Laravel package and abstraction design. specd-cli, Open Blueprint, Revive, ContextClipper, and Aido provide evidence of product definition, system architecture, AI-assisted engineering direction, and developer-tooling problem solving across Go, TypeScript, and Python ecosystems.
+His public engineering work has two complementary tracks. Frontier, Guardian, and Caller provide direct evidence of Laravel package and abstraction design. Pathframe, Revive, ContextClipper, and Aido provide evidence of product definition, system architecture, AI-assisted engineering direction, and developer-tooling problem solving across Go, TypeScript, and Python ecosystems.
 
 ## 9. Open factual gaps
 
