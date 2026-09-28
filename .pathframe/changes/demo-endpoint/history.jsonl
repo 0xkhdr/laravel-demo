@@ -1,0 +1,2 @@
+{"schema":"pathframe.transition/v1","id":"demo-endpoint-initial","timestamp":"2026-09-28T12:58:05.11564376Z","actor":"system","action":"initialize","change":"demo-endpoint","target":"exploring"}
+{"schema":"pathframe.transition/v1","id":"e9416fc66b2b317a451f22223bdd03fd","timestamp":"2026-09-28T12:58:05.11754598Z","actor":"brain","action":"plan","change":"demo-endpoint","source":"exploring","target":"planning","reason":"planning artifacts created"}
