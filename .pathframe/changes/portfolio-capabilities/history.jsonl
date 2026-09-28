@@ -1,0 +1,2 @@
+{"schema":"pathframe.transition/v1","id":"portfolio-capabilities-initial","timestamp":"2026-09-28T15:25:09.904025336Z","actor":"system","action":"initialize","change":"portfolio-capabilities","target":"exploring"}
+{"schema":"pathframe.transition/v1","id":"ff68bea76a0359fa763c42cc42ca107e","timestamp":"2026-09-28T15:25:09.906698511Z","actor":"brain","action":"plan","change":"portfolio-capabilities","source":"exploring","target":"planning","reason":"planning artifacts created"}

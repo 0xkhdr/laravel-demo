@@ -1,10 +1,10 @@
 {
   "schema": "pathframe.workflow/v1",
-  "events": 3,
+  "events": 12,
   "state": {
     "change": "portfolio-interaction-polish",
-    "phase": "ready",
-    "plan_identity": "bef2562cfc891c49977bfdbdf4595479402b2a4569048088b4a52c4399b1aa46",
+    "phase": "done",
+    "plan_identity": "d2c9c1bbeab9dab10e53b11ad89c74e5b5c64f0badc5422cf3f293d9a948c033",
     "plan_mode": "standard",
     "completed": 0,
     "total": 0
