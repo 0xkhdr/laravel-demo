@@ -1,12 +1,11 @@
 <?php
 
-it('renders the build-nothing portfolio', function () {
+it('renders the career portfolio', function () {
     $this->get('/')->assertOk()
-        ->assertSee('Your Name')
-        ->assertSee('About')
-        ->assertSee('Experience')
-        ->assertSee('Selected work')
-        ->assertSee('Skills')
-        ->assertSee('Contact')
-        ->assertSee('Projects will appear here when they are available.');
+        ->assertSee('Mohamed Khedr')
+        ->assertSee('Kafka + Debezium CDC')
+        ->assertSee('Frontier')
+        ->assertSee('PHP / Laravel')
+        ->assertSee('0xkhdr@gmail.com')
+        ->assertDontSee('not available yet');
 });
