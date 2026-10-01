@@ -10,10 +10,12 @@
     "task_packet_preview",
     "sequential_subagent",
     "shared_workspace",
-    "structured_result_return"
+    "structured_result_return",
+    "session_start_orientation"
   ],
   "files": {
     ".agents/skills/pathframe/SKILL.md": "dbaae80114aa68773ac41d80219360a6e5e06aca99fa162dbc9f2d72b08f4820",
-    ".codex/config.toml": "5ee6d5f938bcecefd109b51d50d45af4bf0ae92e1c56bb99a426eb4e34e2c5fb"
+    ".codex/config.toml": "5ee6d5f938bcecefd109b51d50d45af4bf0ae92e1c56bb99a426eb4e34e2c5fb",
+    ".codex/hooks.json": "546655afe505c776c8bab246cc5eccb2801e59ae3b07bbed33df938f59077941"
   }
 }
