@@ -1,0 +1,12 @@
+{
+  "schema": "pathframe.workflow/v1",
+  "events": 17,
+  "state": {
+    "change": "demo-delegated-implementation",
+    "phase": "reviewing",
+    "plan_identity": "44bbe1b083f8a04f68413ccf2687be96c406abf296c2a1b6e3fa36562b4e17d6",
+    "plan_mode": "high-risk",
+    "completed": 0,
+    "total": 0
+  }
+}

@@ -22,11 +22,20 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $attributes = [
+        'timezone' => 'UTC',
+        'email_notifications' => true,
+        'marketing_notifications' => false,
+    ];
+
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'timezone' => 'string',
+            'email_notifications' => 'boolean',
+            'marketing_notifications' => 'boolean',
         ];
     }
 

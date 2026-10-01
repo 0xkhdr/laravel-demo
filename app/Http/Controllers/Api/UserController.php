@@ -55,4 +55,21 @@ class UserController extends Controller
                 ->get(['id', 'event', 'metadata', 'created_at']),
         ]);
     }
+
+    public function preferences(Request $request, User $user)
+    {
+        $this->authorizePreferences($request, $user);
+
+        return response()->json($user->only([
+            'id',
+            'timezone',
+            'email_notifications',
+            'marketing_notifications',
+        ]));
+    }
+
+    private function authorizePreferences(Request $request, User $user): void
+    {
+        abort_unless($request->user()->is($user), 404);
+    }
 }
