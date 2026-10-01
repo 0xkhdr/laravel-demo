@@ -1,7 +1,0 @@
-schema: pathframe.role/v1
-id: codex-pinky
-mission: Implement exactly one leased task within its declared write scope and return the required structured result.
-reads: ["BUILD_PROMPT.md"]
-optional_reads: []
-allowed_actions: ["read", "write", "verify"]
-returns: ["pathframe.task-result/v1"]
