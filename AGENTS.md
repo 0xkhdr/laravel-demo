@@ -10,7 +10,7 @@ Evaluate whether Pathframe helps an agent:
 - recover from interruption, failed checks, and requested changes;
 - report useful evidence without distracting ceremony.
 
-Existing Laravel guidance is in [`BUILD_PROMPT.md`](BUILD_PROMPT.md). The application is intentionally small: users, routes, migrations, seeders, and focused tests.
+The application is intentionally small: users, routes, migrations, seeders, and focused tests.
 
 ## Evaluation files
 
@@ -23,7 +23,7 @@ Existing Laravel guidance is in [`BUILD_PROMPT.md`](BUILD_PROMPT.md). The applic
 
 When asked to run a change:
 
-1. Read this file, the selected prompt, `BUILD_PROMPT.md`, and the prompt’s relevant application files.
+1. Read this file, the selected prompt, and the prompt’s relevant application files.
 2. Preserve unrelated user changes.
 3. Orient:
 

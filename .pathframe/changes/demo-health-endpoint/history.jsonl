@@ -1,0 +1,2 @@
+{"schema":"pathframe.transition/v1","id":"demo-health-endpoint-initial","timestamp":"2026-10-01T14:01:35.605962661Z","actor":"system","action":"initialize","change":"demo-health-endpoint","target":"exploring"}
+{"schema":"pathframe.transition/v1","id":"9f253262ab7831032abae4382e6ced5e","timestamp":"2026-10-01T14:01:35.613133156Z","actor":"brain","action":"plan","change":"demo-health-endpoint","source":"exploring","target":"planning","reason":"planning artifacts created"}
