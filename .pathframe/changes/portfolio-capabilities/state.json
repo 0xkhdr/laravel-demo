@@ -1,9 +1,10 @@
 {
   "schema": "pathframe.workflow/v1",
-  "events": 2,
+  "events": 6,
   "state": {
     "change": "portfolio-capabilities",
-    "phase": "planning",
+    "phase": "replanning",
+    "plan_mode": "quick",
     "completed": 0,
     "total": 0
   }

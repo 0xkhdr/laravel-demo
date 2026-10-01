@@ -22,5 +22,16 @@ return [
         ['name' => 'Pathframe', 'text' => 'A local, deterministic development-path protocol that makes structured software changes visible, executable, interruptible, and recoverable for humans and coding agents.', 'url' => 'https://github.com/0xkhdr/pathframe', 'evidence' => 'Architecture direction; AI-assisted implementation'],
         ['name' => 'Revive', 'text' => 'Reproducible developer-environment backup and restoration with manifests, planning, snapshots, verification, and rollback.', 'url' => 'https://github.com/0xkhdr/revive', 'evidence' => 'Architecture direction; AI-assisted implementation'],
     ],
-    'skills' => ['PHP / Laravel', 'REST APIs', 'Kafka / Debezium', 'MySQL / MongoDB / Redis', 'Queues / Horizon', 'Integrations / Webhooks', 'Transactions / Idempotency', 'PHPUnit / Pest', 'Linux / Git / Docker', 'Production diagnosis'],
+    'skills' => [
+        ['name' => 'PHP / Laravel', 'level' => 'Strong professional', 'description' => 'Primary backend foundation across production systems, reusable Laravel packages, APIs, architecture, and support.'],
+        ['name' => 'REST APIs', 'level' => 'Strong professional', 'description' => 'Designs contracts, validation, schemas, partial success, and integrations for production mobile and web workflows.'],
+        ['name' => 'Kafka / Debezium', 'level' => 'Professional hands-on', 'description' => 'Helped design and configure CDC synchronization with Kafka Connect, topics, consumers, retries, and lag diagnosis.'],
+        ['name' => 'MySQL / MongoDB / Redis', 'level' => 'Professional', 'description' => 'Uses relational and document modeling, queries, migrations, caching, and queue-backed workloads in production applications.'],
+        ['name' => 'Queues / Horizon', 'level' => 'Professional', 'description' => 'Builds asynchronous processing with retries, failed-job handling, batches, monitoring, and operational diagnosis.'],
+        ['name' => 'Integrations / Webhooks', 'level' => 'Strong professional', 'description' => 'Owns provider mapping, authentication, webhooks, retries, errors, testing, rollout, and production troubleshooting.'],
+        ['name' => 'Transactions / Idempotency', 'level' => 'Strong professional', 'description' => 'Applies transaction boundaries, safe replay, duplicate protection, compensation, and failure isolation to critical workflows.'],
+        ['name' => 'PHPUnit / Pest', 'level' => 'Professional PHPUnit; hands-on Pest', 'description' => 'Tests units, APIs, databases, queues, events, integrations, and end-to-end behavior with fakes and mocks.'],
+        ['name' => 'Linux / Git / Docker', 'level' => 'Strong Linux and Git; working Docker', 'description' => 'Uses Linux and Git daily; uses Docker and Compose mainly for local development and open-source work.'],
+        ['name' => 'Production diagnosis', 'level' => 'Strong professional', 'description' => 'Investigates logs, Sentry, Horizon, Kubernetes application behavior, integrations, data issues, and performance problems.'],
+    ],
 ];
