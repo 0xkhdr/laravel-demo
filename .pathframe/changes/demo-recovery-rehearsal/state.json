@@ -1,0 +1,11 @@
+{
+  "schema": "pathframe.workflow/v1",
+  "events": 6,
+  "state": {
+    "change": "demo-recovery-rehearsal",
+    "phase": "replanning",
+    "plan_mode": "standard",
+    "completed": 0,
+    "total": 0
+  }
+}
