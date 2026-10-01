@@ -1,0 +1,10 @@
+{
+  "schema": "pathframe.workflow/v1",
+  "events": 3,
+  "state": {
+    "change": "demo-user-audit-trail",
+    "phase": "replanning",
+    "completed": 0,
+    "total": 0
+  }
+}
