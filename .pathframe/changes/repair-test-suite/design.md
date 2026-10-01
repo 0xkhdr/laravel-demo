@@ -5,11 +5,11 @@ profile: okf-markdown/v1
 
 ## Approach
 
-<approach>
+Add the smallest route implementation, commit an empty Unit test directory marker, and configure the base test case to use `sys_get_temp_dir()` for compiled views.
 
 ## Decisions
 
-- <decision>
+- Keep production storage configuration unchanged; the writable compiled-view path is test-only.
 
 ## Questions
 

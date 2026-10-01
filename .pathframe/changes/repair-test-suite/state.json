@@ -1,9 +1,11 @@
 {
   "schema": "pathframe.workflow/v1",
-  "events": 2,
+  "events": 6,
   "state": {
     "change": "repair-test-suite",
-    "phase": "planning",
+    "phase": "done",
+    "plan_identity": "6ebc2fbfa605d4024229766bb8cdb35f9f9cadd6b731b5de82fed138b96f4e67",
+    "plan_mode": "standard",
     "completed": 0,
     "total": 0
   }
