@@ -1,9 +1,9 @@
 {
   "schema": "pathframe.workflow/v1",
-  "events": 3,
+  "events": 6,
   "state": {
     "change": "portfolio-systems-hover",
-    "phase": "ready",
+    "phase": "blocked",
     "plan_identity": "d796d4f3a34742fd6c4f9ecd4a3bd55d4c6eb76340f16d131b8b3f974eff9e66",
     "plan_mode": "quick",
     "completed": 0,
