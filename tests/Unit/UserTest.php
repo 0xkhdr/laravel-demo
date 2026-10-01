@@ -3,7 +3,14 @@
 use App\Models\User;
 
 it('has the correct fillable attributes', function () {
-    expect((new User)->getFillable())->toBe(['name', 'email', 'password']);
+    expect((new User)->getFillable())->toBe([
+        'name',
+        'email',
+        'password',
+        'timezone',
+        'email_notifications',
+        'marketing_notifications',
+    ]);
 });
 
 it('hides password and remember_token from serialization', function () {

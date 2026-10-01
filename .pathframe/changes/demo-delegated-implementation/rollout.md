@@ -5,7 +5,7 @@ profile: okf-markdown/v1
 
 ## Steps
 
-- Complete T1 through T6 in dependency order; after every Pinky result submit the exact structured result, inspect scope, run Pathframe verification, and semantically accept or request changes.
+- Complete T1 through T6 in dependency order; recovery added T7 for preference persistence and T8 for the stale unit expectation before retrying T6. After every Pinky result submit the exact structured result, inspect scope, run Pathframe verification, and semantically accept or request changes.
 - Run the final focused feature test and the full approved test suite in T6.
 
 ## Rollback

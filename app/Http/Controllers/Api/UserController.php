@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
@@ -59,6 +60,36 @@ class UserController extends Controller
     public function preferences(Request $request, User $user)
     {
         $this->authorizePreferences($request, $user);
+
+        return response()->json($user->only([
+            'id',
+            'timezone',
+            'email_notifications',
+            'marketing_notifications',
+        ]));
+    }
+
+    public function updatePreferences(Request $request, User $user)
+    {
+        $this->authorizePreferences($request, $user);
+
+        $rules = [
+            'timezone' => ['sometimes', 'string'],
+            'email_notifications' => ['sometimes', 'boolean'],
+            'marketing_notifications' => ['sometimes', 'boolean'],
+        ];
+
+        $validated = $request->validate($rules);
+        $unknown = array_diff(array_keys($request->all()), array_keys($rules));
+
+        if ($unknown) {
+            throw ValidationException::withMessages([
+                'preferences' => 'The provided preferences contain unknown fields.',
+            ]);
+        }
+
+        $user->update($validated);
+        $user->activityEvents()->create(['event' => 'preferences.updated']);
 
         return response()->json($user->only([
             'id',
