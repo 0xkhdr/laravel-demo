@@ -1,9 +1,11 @@
 {
   "schema": "pathframe.workflow/v1",
-  "events": 2,
+  "events": 6,
   "state": {
     "change": "demo-health-endpoint",
-    "phase": "planning",
+    "phase": "done",
+    "plan_identity": "963de9582b7b5877a8a507ebc9512436e9700f6df9179c5653614e7db604d1c0",
+    "plan_mode": "quick",
     "completed": 0,
     "total": 0
   }
