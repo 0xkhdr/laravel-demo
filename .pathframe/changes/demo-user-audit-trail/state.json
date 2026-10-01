@@ -1,6 +1,6 @@
 {
   "schema": "pathframe.workflow/v1",
-  "events": 5,
+  "events": 8,
   "state": {
     "change": "demo-user-audit-trail",
     "phase": "ready",
