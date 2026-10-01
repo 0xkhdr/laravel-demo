@@ -7,3 +7,5 @@ Route::get('/health', fn () => response()->json([
     'status' => 'ok',
     'application' => 'laravel-demo',
 ]));
+
+Route::get('/users', [UserController::class, 'index']);

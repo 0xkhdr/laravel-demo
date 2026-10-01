@@ -53,6 +53,43 @@ it('returns second page with remaining users', function () {
         ->assertJsonPath('meta.current_page', 2);
 });
 
+it('filters users by name or email search', function () {
+    $match = User::factory()->create(['name' => 'Ada Lovelace', 'email' => 'ada@example.com']);
+    User::factory()->create(['name' => 'Grace Hopper', 'email' => 'grace@example.com']);
+
+    $this->getJson('/api/users?search=ada')
+        ->assertOk()
+        ->assertJsonCount(1, 'data')
+        ->assertJsonFragment(['id' => $match->id]);
+});
+
+it('returns no users when search has no matches', function () {
+    User::factory()->create(['name' => 'Ada Lovelace', 'email' => 'ada@example.com']);
+
+    $this->getJson('/api/users?search=missing')
+        ->assertOk()
+        ->assertJsonCount(0, 'data')
+        ->assertJsonPath('meta.total', 0);
+});
+
+it('accepts per page values within the bounds', function () {
+    User::factory()->count(2)->create();
+
+    $this->getJson('/api/users?per_page=1')
+        ->assertOk()
+        ->assertJsonPath('meta.per_page', 1);
+
+    $this->getJson('/api/users?per_page=50')
+        ->assertOk()
+        ->assertJsonPath('meta.per_page', 50);
+});
+
+it('rejects per page values outside the bounds', function (string $perPage) {
+    $this->getJson("/api/users?per_page={$perPage}")
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors('per_page');
+})->with(['0', '51']);
+
 it('is publicly accessible without authentication', function () {
     $this->getJson('/api/users')->assertOk();
 });
