@@ -20,8 +20,20 @@ class AuthController extends Controller
         }
 
         $request->session()->regenerate();
+        $user = $request->user();
 
-        return response()->json(['user' => $request->user()->only(['id', 'name', 'email'])]);
+        $user->activityEvents()->create(['event' => 'login']);
+
+        $expiredEventIds = $user->activityEvents()
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
+            ->get()
+            ->skip(100)
+            ->pluck('id');
+
+        $user->activityEvents()->whereKey($expiredEventIds)->delete();
+
+        return response()->json(['user' => $user->only(['id', 'name', 'email'])]);
     }
 
     public function logout(Request $request)

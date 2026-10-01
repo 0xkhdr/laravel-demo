@@ -43,4 +43,16 @@ class UserController extends Controller
             ],
         ]);
     }
+
+    public function activity(Request $request, User $user)
+    {
+        abort_unless($request->user()->is($user), 404);
+
+        return response()->json([
+            'data' => $user->activityEvents()
+                ->orderByDesc('created_at')
+                ->orderByDesc('id')
+                ->get(['id', 'event', 'metadata', 'created_at']),
+        ]);
+    }
 }
