@@ -1,0 +1,12 @@
+{
+  "schema": "pathframe.workflow/v1",
+  "events": 5,
+  "state": {
+    "change": "career-interaction-alignment",
+    "phase": "reviewing",
+    "plan_identity": "46e1d30807a59615b3dd7a94b71926753de4f2ddfa9a31ca0216ea13fb9b7347",
+    "plan_mode": "standard",
+    "completed": 0,
+    "total": 0
+  }
+}

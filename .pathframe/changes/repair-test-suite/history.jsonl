@@ -1,0 +1,2 @@
+{"schema":"pathframe.transition/v1","id":"repair-test-suite-initial","timestamp":"2026-10-01T23:44:54.703238096Z","actor":"system","action":"initialize","change":"repair-test-suite","target":"exploring"}
+{"schema":"pathframe.transition/v1","id":"13e29089b4c63c352431e089a97e97be","timestamp":"2026-10-01T23:44:54.705921634Z","actor":"brain","action":"plan","change":"repair-test-suite","source":"exploring","target":"planning","reason":"planning artifacts created"}

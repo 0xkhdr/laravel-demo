@@ -1,0 +1,10 @@
+{
+  "schema": "pathframe.workflow/v1",
+  "events": 2,
+  "state": {
+    "change": "repair-test-suite",
+    "phase": "planning",
+    "completed": 0,
+    "total": 0
+  }
+}
