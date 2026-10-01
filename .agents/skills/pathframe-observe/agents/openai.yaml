@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pathframe Observe"
+  short_description: "Record evidence-based observations from Pathframe workflows"
+  default_prompt: "Observe this Pathframe session and produce a project-appropriate evidence record."
