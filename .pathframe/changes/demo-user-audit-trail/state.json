@@ -1,9 +1,9 @@
 {
   "schema": "pathframe.workflow/v1",
-  "events": 19,
+  "events": 20,
   "state": {
     "change": "demo-user-audit-trail",
-    "phase": "reviewing",
+    "phase": "done",
     "plan_identity": "8e696b86faea543c01083b21b48632df0922a1de2e18407554a7923fea8d3298",
     "plan_mode": "high-risk",
     "completed": 0,
