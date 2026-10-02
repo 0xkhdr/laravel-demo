@@ -1,7 +1,7 @@
 # Mohamed Khedr — Career Knowledge Base
 
 > Evidence-based career and engineering record  
-> Consolidated: September 2026
+> Consolidated: October 2026
 
 ## 1. Purpose and evidence model
 
@@ -57,6 +57,10 @@ Portfolio extraction should select the smallest view that answers the purpose: c
 - **Current employer:** Afaqy
 - **Current official title:** Mid-Level Backend Engineer
 
+## 2.1 Education
+
+- **Bachelor of Commerce**, Higher Institute of Engineering and Technology in Tanta, 2019.
+
 ## 3. Career chronology
 
 | Period | Organization | Official title | Career scope |
@@ -65,6 +69,7 @@ Portfolio extraction should select the smallest view that answers the purpose: c
 | Jul 2021 – Jan 2022 | Sectors | Junior Backend Developer | Complete backend and architecture ownership for an online-learning platform |
 | Feb 2022 – Apr 2024 | Rowaad | Junior Backend Developer | Independent ownership of multiple production products within a small backend team |
 | May 2024 – Present | Afaqy | Mid-Level Backend Engineer | Complex backend architecture, integration, synchronization, and production ownership |
+| Dec 2025 – Feb 2026 | Freelance, alongside Afaqy | Backend Engineer | End-to-end backend delivery for a digital-card platform |
 
 ## 4. Professional experience
 
@@ -72,13 +77,13 @@ Portfolio extraction should select the smallest view that answers the purpose: c
 
 **Context.** Mohamed joined Afaqy in May 2024 as a Mid-Level Backend Engineer. He works within a backend team of more than 15 engineers. Architecture for platform-wide concerns is collaborative; for assigned features and projects, Mohamed often owns the backend solution from business understanding through production support.
 
-**End-to-end ownership.** His responsibility can include understanding the business need, backend design, API and schema design, implementation, integration coordination, testing, rollout, monitoring, debugging, and production support. He also helps developers understand architecture, investigates difficult issues with them, and has conducted formal mentoring sessions.
+**End-to-end ownership.** His responsibility can include understanding the business need, backend design, API and schema design, implementation, integration coordination, testing, rollout, monitoring, debugging, and production support. He collaborates with backend colleagues on architecture understanding and complex issue investigation; this is peer technical support, not formal mentoring or people management.
 
 #### Kafka and Debezium CDC synchronization
 
 - **Domain:** fleet and operational-data synchronization between systems.
 - **System boundary:** one operational system acts as the resource holder and system of record. Debezium publishes database changes to Kafka, while independent consumers store the data required by their own business workflows and continue processing independently. User-validated September 2026.
-- **Problem:** webhook- and HTTP-heavy synchronization suffered from missed events, weak recovery, coupling, data inconsistency, slower propagation, difficult debugging, and request pressure. The CDC solution replaced the old webhook integration behavior between the systems.
+- **Problem:** webhook-based synchronization created stale downstream data and placed request pressure on the system of record. It also led to missed or delayed updates, duplicate processing, manual recovery work, and difficult debugging.
 - **Ownership:** the architectural direction was a team decision. Mohamed helped design the architecture and configured Debezium, Kafka Connect, Kafka topics, and independent consumers. User-validated September 2026.
 - **Data scope:** operational/master data and relationships required by downstream business workflows.
 - **Stack:** Apache Kafka, Debezium, Kafka Connect, PHP, Laravel, MySQL.
@@ -87,17 +92,17 @@ Portfolio extraction should select the smallest view that answers the purpose: c
 - **Status:** active in production. Built during Mohamed's Afaqy role; exact project dates are intentionally not recorded.
 - **Scale evidence:** no verified numeric production-scale metric is currently recorded. Do not publish event-volume, record-count, or customer-count claims until measured.
 - **Kafka operations access:** Mohamed primarily accesses the Kafka cluster through Conduktor and Kafka UI. User-validated September 2026.
-- **Observed result:** synchronization failures and cross-system inconsistencies were significantly reduced; changes generally propagate within seconds.
+- **Observed result:** independent consumers now process database-change events without webhook polling or request pressure on the source system. The migration addressed stale data, missed or delayed updates, duplicate processing, manual recovery work, and API pressure; changes generally propagate within seconds.
 
 #### Offline-resilient trip synchronization
 
 - **Domain:** mobile-to-backend synchronization for fleet trips.
 - **Problem:** drivers must create trip data while devices are offline and synchronize it after connectivity returns.
-- **Ownership:** Mohamed owned the API contract, schema changes, validation architecture, batch processing, idempotency, duplicate protection, retry behavior, error representation, mobile coordination, testing, rollout, and production support.
+- **Ownership:** Mohamed owned the API contract, schema changes, validation architecture, partial-success processing, duplicate prevention, error representation, mobile coordination, testing, rollout, and production support.
 - **Stack:** PHP, Laravel, MySQL, mobile local storage, Laravel testing tools.
 - **Architecture:** Repository pattern and Service layer; bulk synchronization endpoint; partial-success processing.
-- **Patterns and practices:** thin controllers, focused service methods, per-record validation, partial success, safe replay, idempotency, duplicate protection, failure isolation, and transaction-boundary design.
-- **Behavior:** valid records can succeed while invalid records are reported individually. The API supports large batches, including thousands of records, although typical production batches are smaller.
+- **Patterns and practices:** thin controllers, focused service methods, per-record validation, partial success, duplicate prevention through update-or-create behavior keyed by trip number, failure isolation, and transaction-boundary design.
+- **Behavior:** each submitted trip is processed independently. Valid trips are stored; invalid trips, most commonly those with malformed GPS or trip data, are returned by index so the mobile app can remove successfully synchronized records from local storage and retain failed ones. No maximum batch size is claimed because it was not tested.
 
 #### Client onboarding and synchronization
 
@@ -157,15 +162,24 @@ Portfolio extraction should select the smallest view that answers the purpose: c
 - **Ownership:** Mohamed built the complete backend and its architecture from scratch.
 - **Stack:** PHP, Laravel, MySQL.
 - **Architecture and practices:** REST APIs, relational schema design, Laravel application architecture, service and data-access separation where applicable.
-- **Outcome:** the product was discontinued before production launch.
+- **Outcome:** the product was still in development when Mohamed left the company; subsequent launch status is unknown.
 
 ### 4.4 Giraffe Code
 
 - **Period and title:** February 2021 – July 2021; Fresh Backend Developer.
 - **Domain:** e-commerce backend development.
 - **Stack:** PHP, Laravel, MySQL, queues, external APIs.
-- **Work:** authentication, catalog, orders, checkout, payments, notifications, integrations, database behavior, and queued processing within an established architecture.
-- **Outcome:** the product did not reach production.
+- **Work:** under senior-engineer direction, Mohamed contributed authentication, catalog, cart and order, checkout, payment, notification, external-integration, database, and queued-processing features within an established architecture.
+
+### 4.5 Freelance digital-card platform
+
+- **Period:** December 2025 – February 2026, alongside the Afaqy role.
+- **Disclosure boundary:** project name is not recorded; use the confidentiality-safe alias "freelance digital-card platform."
+- **Context:** a client required a digital-card platform that could reach production quickly.
+- **Ownership:** Mohamed translated the client requirements into backend design, planned the product modules and business workflows, and implemented the backend end to end.
+- **Stack and integrations:** PHP, Laravel, PostgreSQL, Redis, queues, Docker, testing, an internal wallet ledger, and El Joker Codes third-party card-provider integration.
+- **Reliability practices:** wallet balance updates use database transactions and locking for consistency.
+- **Outcome:** reached production within the three-month engagement.
 
 ## 5. Engineering domain map
 
@@ -204,131 +218,64 @@ Professional work includes payments, digital-card providers, shipping, mapping, 
 
 Mohamed has strong daily Linux and Git capability. Docker and Docker Compose are used mainly for local development and personal/open-source work. He can diagnose Nginx behavior and application problems in Kubernetes environments while respecting the infrastructure ownership boundary. Production observability experience includes logs, Sentry, and Horizon.
 
-### Python and AI-assisted tooling domain
+### Developer-workflow product direction
 
-Python appears primarily in developer-tooling repositories, especially ContextClipper and the earlier implementation history of Revive. The repository-level domains include CLI development, MCP servers, Tree-sitter code indexing, SQLite-backed code graphs, output filtering, secret redaction, shell-hook integration, and developer-environment automation.
-
-Mohamed's validated contribution to these projects centers on problem identification, product concept, requirements, architecture direction, technology selection, workflow design, acceptance validation, and release direction. Their Python code was substantially AI-assisted. The repository evidence therefore supports Python-based product and architecture exposure, but it does not yet establish the same direct Python implementation depth as Mohamed's PHP/Laravel work.
+Pathframe and Revive show Mohamed's product and architecture direction for local developer workflows: deterministic, recoverable software-change coordination and reproducible development environments. Their implementation is substantially AI-assisted, so this evidence supports product definition, systems thinking, constraints, validation, and release direction; it does not establish direct Go implementation depth equivalent to his PHP/Laravel work.
 
 ## 6. GitHub repository knowledge
 
 Repository URL base: <https://github.com/0xkhdr>
 
-### 6.1 Frontier
-
-- **Repository:** [`0xkhdr/frontier`](https://github.com/0xkhdr/frontier)
-- **Evidence:** user-validated and repository-verified.
-- **Ownership:** personally conceived, designed, and implemented by Mohamed.
-- **Domain:** Laravel application foundations, reusable architecture, and project scaffolding.
-- **Purpose:** install selected architectural building blocks instead of recreating common Laravel structure and boilerplate for each application.
-- **Stack:** PHP 8.2+, Laravel 10/11/12 components, Composer, Laravel Prompts, Symfony Process, Pest, Orchestra Testbench, Pint, Rector.
-- **Architecture:** meta-package and interactive installer composing separate Action, Repository, and Modular packages.
-- **Patterns:** Action pattern, Repository pattern, caching Decorator, contracts/interfaces, dependency injection, modular architecture, service-provider package integration, strict typing.
-- **Quality practices:** automated tests, package-level isolation, code styling, refactoring checks, PSR-4 autoloading.
-- **Status:** public package and the strongest direct Laravel package-design evidence in the portfolio.
-
-Related repositories include `frontier-action`, `frontier-repository`, and `frontier-modular`, which isolate the Action, Repository/caching, and modular-support capabilities.
-
-### 6.2 Guardian
-
-- **Repository:** [`0xkhdr/guardian`](https://github.com/0xkhdr/guardian)
-- **Evidence:** user-validated and repository-verified.
-- **Ownership:** personally conceived, designed, and implemented by Mohamed.
-- **Domain:** authentication orchestration and pluggable authentication flows for Laravel.
-- **Purpose:** wrap underlying authentication packages while allowing applications to compose identity lookup, credential matching, validation rules, post-authentication steps, and token drivers.
-- **Stack:** PHP 8.2+, Laravel package integration, Composer; compatible concepts for Sanctum, Passport, and JWT drivers.
-- **Architecture:** Guardian orchestrator over Authenticatable, Authenticator, Matcher, Norm, Sequence, and Driver abstractions.
-- **Patterns:** Strategy and Driver patterns, pipeline-style sequencing, contracts/interfaces, dependency injection, orchestration, extensibility through generated components.
-- **Status:** public Laravel package; direct implementation evidence.
-
-### 6.3 Pathframe
+### 6.1 Pathframe
 
 - **Repository:** [`0xkhdr/pathframe`](https://github.com/0xkhdr/pathframe)
 - **Evidence:** user-validated and repository-verified.
 - **Ownership:** product problem, requirements, lifecycle, constraints, technology choice, and validation by Mohamed; implementation largely AI-assisted.
 - **Domain:** local, deterministic development-path coordination for humans and coding agents.
-- **Purpose:** make structured software changes visible, package approved work, validate lifecycle transitions, support bounded execution and verification, and preserve recovery when work is interrupted or blocked.
+- **Purpose:** multi-step coding-agent work can lose its approved plan, scope, current status, and verification evidence as context changes or work is interrupted. Pathframe makes each change visible, constrains execution to approved tasks, records verification separately from completion, and provides a recovery path without relying on a hosted agent platform.
 - **Stack:** Go 1.26; standard library only; Markdown and Git as visible sources of truth; static cross-platform binary.
 - **Architecture:** layered CLI (`cmd/pathframe`, CLI parsing, command dispatch, decision-owning core, persistence/Git/filesystem); local process with no daemon, model call, network call, or telemetry in the deterministic pipeline.
 - **Patterns and principles:** state machine, dependency DAG, command dispatch, one-owner rule for contracts and output, fail-closed validation, append-and-replay ledgers, optimistic revision checks, compare-and-swap behavior, file locks, atomic replacement, transaction record and deterministic recovery, evidence binding, human/agent trust boundary.
 - **Quality practices:** journey tests, release gates, generated operation reference, documentation parity checks, scope and concurrency tests, explicit maturity and limitation registry.
 - **Status:** current stable product stages are implemented and approved. Production support is Linux AMD64; broader platforms remain documented portability targets with cross-build evidence only.
 
-### 6.4 Revive
+### 6.2 Revive
 
 - **Repository:** [`0xkhdr/revive`](https://github.com/0xkhdr/revive)
 - **Evidence:** user-validated and repository-verified.
 - **Ownership:** product concept, requirements, workflows, and architecture direction by Mohamed; implementation largely AI-assisted.
 - **Domain:** reproducible developer-environment backup and restoration.
-- **Purpose:** restore files, templates, encrypted secrets, and packages from a Git repository and manifest, with planning, snapshots, verification, and rollback.
+- **Purpose:** make a developer machine reproducible from a version-controlled definition, reducing the time and uncertainty of setup or recovery without a hosted service. It plans changes before applying them, backs up managed files, restores files, templates, packages, and encrypted secrets, verifies the result, and rolls back managed changes on failure.
 - **Stack:** current implementation in Go 1.26; Cobra CLI; YAML; age-based encryption dependencies; filesystem and Git integration. The project was originally implemented in Python.
 - **Architecture:** manifest-driven CLI; plan, snapshot, apply, verify, and rollback workflow; local state and journal/lock concepts.
 - **Patterns and principles:** Command pattern, declarative configuration, transactional restore, rollback/compensation, hooks, adapter-like package installers, verification after mutation, idempotent/repeatable environment convergence.
-- **Usage:** Mohamed regularly uses Revive for his own development environment.
-
-### 6.5 ContextClipper
-
-- **Repository:** [`0xkhdr/contextclipper`](https://github.com/0xkhdr/contextclipper)
-- **Evidence:** user-validated and repository-verified.
-- **Ownership:** product requirements and architecture direction by Mohamed; implementation mostly AI-generated Python.
-- **Domain:** context optimization for AI coding agents.
-- **Purpose:** compress noisy shell output while preserving useful semantics and expose compact code-structure knowledge to agents.
-- **Stack:** Python 3.12+, MCP, Click, Rich, Tree-sitter and language grammars, SQLite, TOML, psutil, Hatchling; pytest, Ruff, and mypy in repository tooling.
-- **Architecture:** hybrid layer containing shell-hook command interception, filter engine, MCP server, Tree-sitter code graph, SQLite index, and a tee store for raw-output recovery.
-- **Patterns and principles:** Strategy for custom filters, rule engine, plugin/extension points, pipeline processing, repository/index abstraction, command interception, bounded input, best-effort secret redaction, raw-data recovery by identifier.
-- **Status and evidence boundary:** current repository documentation claims large token reductions, but no independently validated benchmark is part of this career record. Mohamed does not use the project regularly. Repository tooling does not establish direct pytest or advanced Python implementation expertise.
-
-### 6.6 Aido
-
-- **Repository:** [`0xkhdr/aido`](https://github.com/0xkhdr/aido)
-- **Evidence:** user-validated plus repository manifest evidence.
-- **Ownership:** product concept, problem definition, workflows, documentation model, system architecture, technology selection, coding-agent integration model, AI/provider design, and prototype direction by Mohamed. Implementation is AI-assisted.
-- **Domain:** repository documentation intelligence and conversational project knowledge.
-- **Purpose:** manage repository documentation in Open Knowledge Format, answer questions from the documented system perspective, and maintain documentation as code changes.
-- **Stack:** current repository manifest declares Go 1.22 and YAML. Earlier design exploration considered SQLite and HTMX; those choices are not treated as current implementation facts without further repository evidence.
-- **Architecture:** documentary agent, project knowledge model, documentation lifecycle, drift-detection workflow, conversational query layer, coding-agent knowledge access, and provider abstraction.
-- **Patterns and principles:** ports/adapters direction, provider abstraction, document state and reconciliation, retrieval over curated project knowledge, explicit source authority, change-driven drift detection.
-- **Status:** blueprint and prototype stage; not a shipped product.
-
-### 6.7 Related public Laravel and learning repositories
-
-The GitHub account also contains supporting repositories that demonstrate experiments, extracted Laravel components, examples, or narrower package concerns. Current public names include:
-
-- **Core architecture components:** `core-action`, `core-auth`, `core-command`, `core-controller`, `core-dispatcher`, `core-edge`, `core-enum`, `core-event`, `core-gate`, `core-model`, `core-modules`, `core-mvc`, `core-pack`, `core-request`.
-- **Laravel architecture and examples:** `authentication`, `blog-example`, `caller-demo`, `design-patterns`, `docker-example`, `frankenphp`, `laravel-11-example`, `laravel-demo`, `multitenant-example`, `to-do`.
-- **Framework/tool integrations:** `core-filament`, `ffmpeg-example`, `horizon-panel`, `php-caddy`.
-- **Additional tooling experiments:** `clipress`, `context-clipper`, `edge`, and the archived empty `specd` predecessor.
-
-These repositories are part of the account inventory, but they have not all received the same user-level ownership and maturity validation as the six detailed profiles above. Their presence is evidence of exploration or component work; it is not automatically evidence of production use, adoption, or equal depth.
+- **Usage and support boundary:** Mohamed uses Revive regularly for his own development environment. Linux is the tested and supported platform; do not claim support for other platforms without direct validation.
 
 ## 7. Ownership and implementation boundaries
 
 ### Direct implementation evidence
 
-Mohamed can directly defend the design and low-level implementation of his professional PHP/Laravel work and the personally implemented Laravel packages Frontier and Guardian.
+Mohamed can directly defend the design and low-level implementation of his professional PHP/Laravel work.
 
 ### AI-assisted artifact evidence
 
-For Pathframe, Revive, ContextClipper, and Aido, Mohamed's canonical contribution is product and system thinking: problem selection, requirements, workflow, architecture direction, technology choice, validation, and release direction. The repositories demonstrate his ability to direct complex tools and reason about their systems. They are not treated as proof of equivalent low-level Go, Python, or TypeScript fluency.
+For Pathframe and Revive, Mohamed's canonical contribution is product and system thinking: problem selection, requirements, workflow, architecture direction, technology choice, validation, and release direction. They are not treated as proof of equivalent low-level Go fluency.
 
 ### Adoption and scale
 
-Current open-source and tooling projects are used primarily by Mohamed. No reliable community-adoption, external-user, download, contributor, or production-adoption metrics are canonical. Repository claims, badges, or package metadata are recorded only when independently verified and should remain separate from personal-impact claims.
+No reliable community-adoption, external-user, download, contributor, or production-adoption metrics are canonical. Repository claims, badges, or package metadata are recorded only when independently verified and should remain separate from personal-impact claims.
 
 ## 8. Career knowledge summary
 
-Mohamed Khedr is a backend engineer whose deepest direct implementation expertise is PHP and Laravel. His career progressed from broad feature implementation, to building a complete backend from scratch, to owning six production products, and then to complex synchronization, integration, offline resilience, and production workflows. His strongest recurring domains are backend architecture, data synchronization, transactional reliability, third-party integration, MongoDB/MySQL application design, queues, and reusable Laravel abstractions.
+Mohamed Khedr is a Backend Engineer specializing in reliable integrations, data synchronization, and transactional workflows using PHP and Laravel. His career progressed from broad feature implementation, to building a complete backend from scratch, to owning six production products, and then to complex synchronization, integration, offline resilience, and production workflows. His strongest recurring domains are backend architecture, data synchronization, transactional reliability, third-party integration, MongoDB/MySQL application design, queues, and reusable Laravel abstractions.
 
-His public engineering work has two complementary tracks. Frontier and Guardian provide direct evidence of Laravel package and abstraction design. Pathframe, Revive, ContextClipper, and Aido provide evidence of product definition, system architecture, AI-assisted engineering direction, and developer-tooling problem solving across Go, TypeScript, and Python ecosystems.
+His selected public engineering work complements this professional record. Pathframe and Revive demonstrate product definition, system architecture, AI-assisted engineering direction, and local developer-workflow problem solving. They do not claim equivalent low-level Go fluency.
 
 ## 9. Open factual gaps
 
 The following information remains incomplete and should be added only after validation:
 
-- Exact official English name of the educational institution and degree as written on the certificate.
-- Quantified mentoring history.
 - Measured before/after synchronization metrics permitted for public use.
-- Measured typical and maximum offline-sync batch observations.
 - Measured impact for WASL and client onboarding.
 - Independently verified open-source adoption.
-- Detailed evidence profiles for every secondary public repository and any private repository intended for inclusion.
+- Technical stack and delivery details permitted for public disclosure for the freelance digital-card platform.
