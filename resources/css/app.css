@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 :root { --bg: #fff; --text: #111; --muted: #666; --line: #d8d8d3; --accent: #e31b23; --space: clamp(1.25rem, 5vw, 5rem); color-scheme: light; }
 :root[data-theme="dark"] { --bg: #111; --text: #f5f5f0; --muted: #aaa; --line: #444; color-scheme: dark; }
 * { box-sizing: border-box; } html { scroll-behavior: smooth; } body { margin: 0; background: var(--bg); color: var(--text); font: 1rem/1.55 system-ui, sans-serif; } a { color: inherit; }

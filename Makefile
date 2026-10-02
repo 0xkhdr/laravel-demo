@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help setup up down build fresh migrate seed test lint shell logs \
+.PHONY: help setup up down build assets fresh migrate seed test lint shell logs \
         cache-clear optimize horizon-pause horizon-continue horizon-terminate
 
 help: ## Show available commands
@@ -29,6 +29,9 @@ down: ## Stop and remove containers
 
 build: ## Rebuild Docker images
 	docker compose build
+
+assets: ## Build frontend assets
+	npm run build
 
 fresh: ## Drop all tables, re-run migrations and seed
 	docker compose exec app php artisan migrate:fresh --seed

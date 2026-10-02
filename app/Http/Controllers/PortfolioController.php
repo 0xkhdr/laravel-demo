@@ -8,6 +8,6 @@ class PortfolioController extends Controller
 {
     public function index(): View
     {
-        return view('portfolio', config('portfolio'));
+        return view('portfolio', ['portfolio' => config('portfolio')]);
     }
 }

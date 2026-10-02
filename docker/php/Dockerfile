@@ -37,6 +37,18 @@ RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["php-fpm"]
 
+# Build local frontend assets once during the production image build.
+FROM node:22-alpine AS frontend
+
+WORKDIR /var/www/html
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY resources ./resources
+COPY vite.config.js ./
+RUN npm run build
+
 # Production stage — code is baked in, vendor installed without dev deps
 FROM base AS production
 
@@ -49,6 +61,8 @@ RUN composer install \
         --no-interaction
 
 COPY . .
+COPY --from=frontend /var/www/html/public/build public/build
 
 RUN composer dump-autoload --optimize --classmap-authoritative \
+    && touch vendor/.composer-installed \
     && chown -R www-data:www-data storage bootstrap/cache

@@ -16,6 +16,7 @@ services:
     build:
       context: .
       dockerfile: docker/php/Dockerfile
+      target: base
     volumes:
       - .:/var/www/html
       - vendor:/var/www/html/vendor
@@ -33,6 +34,7 @@ services:
     build:
       context: .
       dockerfile: docker/php/Dockerfile
+      target: base
     command: ["php", "artisan", "horizon"]
     volumes:
       - .:/var/www/html

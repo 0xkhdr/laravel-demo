@@ -1,15 +1,23 @@
-const root = document.documentElement;
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+Alpine.data('portfolioUi', () => ({
+    menuOpen: false,
+    theme: localStorage.getItem('portfolio-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+    init() {
+        document.documentElement.dataset.theme = this.theme;
+    },
+    toggleTheme() {
+        this.theme = this.theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('portfolio-theme', this.theme);
+        document.documentElement.dataset.theme = this.theme;
+    },
+}));
+Alpine.start();
+
 document.querySelectorAll('main > section').forEach((section) => section.dataset.reveal = '');
 document.querySelectorAll('.card').forEach((card) => card.dataset.tilt = '');
-const nav = document.querySelector('[data-nav]');
-const menu = document.querySelector('[data-menu]');
-const theme = document.querySelector('[data-theme-toggle]');
-const setTheme = (value) => { root.dataset.theme = value; localStorage.setItem('portfolio-theme', value); theme?.setAttribute('aria-pressed', value === 'dark'); };
-const saved = localStorage.getItem('portfolio-theme');
-if (saved) setTheme(saved); else if (matchMedia('(prefers-color-scheme: dark)').matches) setTheme('dark');
-menu?.addEventListener('click', () => { const open = nav.classList.toggle('is-open'); menu.setAttribute('aria-expanded', open); });
-theme?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
-nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { nav.classList.remove('is-open'); menu?.setAttribute('aria-expanded', 'false'); }));
+const nav = document.querySelector('nav');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!reducedMotion && 'IntersectionObserver' in window) { const observer = new IntersectionObserver((entries, instance) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); instance.unobserve(entry.target); } }), { threshold: .12 }); document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element)); } else document.querySelectorAll('[data-reveal]').forEach((element) => element.classList.add('is-visible'));
 const sections = [...document.querySelectorAll('main section[id]')];

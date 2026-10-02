@@ -1,0 +1,13 @@
+.git
+.pathframe
+.agents
+.codex
+node_modules
+vendor
+storage/logs
+storage/framework/cache
+storage/framework/sessions
+storage/framework/testing
+public/build
+.env
+docker-compose.yml

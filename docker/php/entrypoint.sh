@@ -12,11 +12,29 @@ wait_for() {
     echo "$name is ready."
 }
 
-# Install composer dependencies if vendor is missing (development mode)
-if [ ! -f "vendor/autoload.php" ]; then
-    echo "Installing composer dependencies..."
-    composer install --no-interaction --prefer-dist --optimize-autoloader
-fi
+# Install composer dependencies if vendor is missing (development mode).
+# app and horizon share the vendor volume, so only one container may install it.
+install_dependencies() {
+    local lock_dir="vendor/.composer-installing"
+    local install_marker="vendor/.composer-installed"
+
+    while [ ! -f "$install_marker" ]; do
+        if mkdir "$lock_dir" 2>/dev/null; then
+            echo "Installing composer dependencies..."
+            if composer install --no-interaction --prefer-dist --optimize-autoloader; then
+                touch "$install_marker"
+                rmdir "$lock_dir"
+            else
+                rmdir "$lock_dir"
+                return 1
+            fi
+        else
+            sleep 1
+        fi
+    done
+}
+
+install_dependencies
 
 # Wait for required services
 [ -n "$DB_HOST" ]    && wait_for "$DB_HOST"    "${DB_PORT:-3306}"  "MySQL"
