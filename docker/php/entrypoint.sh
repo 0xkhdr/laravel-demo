@@ -36,6 +36,12 @@ install_dependencies() {
 
 install_dependencies
 
+# Bind-mounted runtime directories must be writable by PHP-FPM as well as CLI.
+mkdir -p storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache
+chgrp -R www-data storage bootstrap/cache
+chmod -R g+rwX storage bootstrap/cache
+find storage bootstrap/cache -type d -exec chmod g+s {} +
+
 # Wait for required services
 [ -n "$DB_HOST" ]    && wait_for "$DB_HOST"    "${DB_PORT:-3306}"  "MySQL"
 [ -n "$REDIS_HOST" ] && wait_for "$REDIS_HOST" "${REDIS_PORT:-6379}" "Redis"

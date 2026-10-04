@@ -5,8 +5,9 @@
     <meta name="description" content="{{ $portfolio['intro'] }}"><title>{{ $portfolio['name'] }} — {{ $portfolio['role'] }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body x-data="portfolioUi">
-    <header class="site-header"><a class="logo" href="{{ route('portfolio.home') }}">{{ $portfolio['name'] }}</a><div class="header-actions"><button class="menu-toggle" type="button" aria-controls="primary-nav" :aria-expanded="menuOpen" @click="menuOpen = !menuOpen">Menu</button><nav id="primary-nav" aria-label="Primary navigation" :class="{ 'is-open': menuOpen }"><a href="#about" @click="menuOpen = false">About</a><a href="#experience" @click="menuOpen = false">Experience</a><a href="#projects" @click="menuOpen = false">Projects</a><a href="#skills" @click="menuOpen = false">Skills</a><a href="#contact" @click="menuOpen = false">Contact</a></nav><button class="theme-toggle" type="button" :aria-pressed="theme === 'dark'" @click="toggleTheme">Theme</button></div></header>
+<body x-data="portfolioUi" @keydown.escape.window="menuOpen = false">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header"><a class="logo" href="{{ route('portfolio.home') }}">{{ $portfolio['name'] }}</a><div class="header-actions"><button class="menu-toggle" type="button" aria-controls="primary-nav" :aria-expanded="menuOpen" @click="menuOpen = !menuOpen">Menu</button><nav id="primary-nav" aria-label="Primary navigation" :class="{ 'is-open': menuOpen }"><a href="#about" @click="menuOpen = false">About</a><a href="#work" @click="menuOpen = false">Work</a><a href="#experience" @click="menuOpen = false">Experience</a><a href="#skills" @click="menuOpen = false">Skills</a><a href="#projects" @click="menuOpen = false">Projects</a><a href="#contact" @click="menuOpen = false">Contact</a></nav><button class="theme-toggle" type="button" :aria-pressed="theme === 'dark'" @click="toggleTheme">Theme</button></div></header>
     @yield('content')
 </body>
 </html>
